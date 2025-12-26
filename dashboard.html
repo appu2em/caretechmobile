@@ -2537,7 +2537,7 @@
         let debugTimer = null;
 
         document.addEventListener('keydown', function (e) {
-            if (e.key.toLowerCase() === 'd') {
+            if (e.key && e.key.toLowerCase() === 'd') {
                 debugKeyCount++;
 
                 if (debugTimer) clearTimeout(debugTimer);
