@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NWEBGP5V40"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-NWEBGP5V40');
+</script>
+
+<head>
+    <!-- Config -->
+    <script data-cfasync="false">
+        const CONFIG = {
+            SUPABASE_URL: 'https://oleuggrzmdtcorlvlapp.supabase.co',
+            SUPABASE_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9sZXVnZ3J6bWR0Y29ybHZsYXBwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU0NTI3MDMsImV4cCI6MjA4MTAyODcwM30.dVAunvwATOX1_WMD4KU-O1hgCx0iqa1KGAxHC-n1ndM'
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareTechMobile - Device Repair, AI Tools & Digital Growth Platform</title>
+    <meta name="description"
+        content="Professional device repair, WhatsApp automation, AI tools directory, and online earning resources. Trusted by technicians across India.">
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- NPTEL Theme -->
+    <link rel="stylesheet" href="nptel-theme.css">
+</head>
+
+<body>
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/919962003738" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ===== NPTEL-STYLE HEADER ===== -->
+    <header class="nptel-header">
+        <div class="container">
+            <div class="nptel-header-content">
+                <!-- Logo -->
+                <a href="index.html" class="nptel-logo">
+                    <h1>CareTech<span>Mobile</span></h1>
+                </a>
+
+                <!-- Navigation -->
+                <nav class="nptel-nav">
+                    <a href="index.html" class="active">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="ai-tools.html">AI Tools</a>
+                    <a href="earning-hub.html">Earning Hub</a>
+                    <a href="software.html">Software</a>
+                    <a href="help-center.html">Tech Help</a>
+                    <a href="resources.html">Resources</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="nptel-header-actions">
+                    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <a href="dashboard.html" class="btn-nptel-login">
+                        <i class="fas fa-user"></i> Login
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== HERO CAROUSEL ===== -->
+    <section class="nptel-hero">
+        <div class="hero-carousel">
+            <div class="hero-slides" id="heroSlides">
+                <!-- Slide 1 -->
+                <div class="hero-slide">
+                    <div class="container">
+                        <div class="hero-slide-content">
+                            <div class="hero-text">
+                                <h1>Powering Your <span class="highlight">Device + Digital</span> Growth</h1>
+                                <p>Expert device repair, WhatsApp automation, AI tools directory, and proven earning
+                                    strategies — all in one platform. Trusted by technicians and businesses across
+                                    India.</p>
+                                <div class="hero-buttons">
+                                    <a href="https://wa.me/919962003738" class="btn btn-whatsapp" target="_blank">
+                                        <i class="fab fa-whatsapp"></i> Chat Now
+                                    </a>
+                                    <a href="services.html" class="btn btn-secondary">
+                                        Explore Services
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="hero-visual">
+                                <div class="hero-feature-card neon-glow">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <h4>Device Repair</h4>
+                                    <p>Fast & Reliable</p>
+                                </div>
+                                <div class="hero-feature-card neon-glow">
+                                    <i class="fas fa-robot"></i>
+                                    <h4>AI Automation</h4>
+                                    <p>Smart Solutions</p>
+                                </div>
+                                <div class="hero-feature-card neon-glow">
+                                    <i class="fab fa-whatsapp"></i>
+                                    <h4>WhatsApp Bots</h4>
+                                    <p>Auto-Reply System</p>
+                                </div>
+                                <div class="hero-feature-card neon-glow">
+                                    <i class="fas fa-chart-line"></i>
+                                    <h4>Grow Online</h4>
+                                    <p>Earning Strategies</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Navigation -->
+            <div class="carousel-nav">
+                <button class="carousel-dot active"></button>
+                <button class="carousel-dot"></button>
+                <button class="carousel-dot"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STATS BAR ===== -->
+    <section class="nptel-stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Devices Repaired</div>
+                    <a href="services.html" class="stat-cta">View Services <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">AI Tools Listed</div>
+                    <a href="ai-tools.html" class="stat-cta">Explore Tools <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">WhatsApp Support</div>
+                    <a href="https://wa.me/919962003738" class="stat-cta" target="_blank">Chat Now <i
+                            class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Video Tutorials</div>
+                    <a href="resources.html" class="stat-cta">Watch Now <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== INITIATIVES / SERVICES ===== -->
+    <section class="nptel-initiatives">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Core Initiatives</h2>
+                <p>Everything you need to repair, automate, and grow your tech business</p>
+            </div>
+
+            <div class="initiatives-grid">
+                <!-- Device Repair -->
+                <div class="initiative-card animate-fadeInUp">
+                    <div class="initiative-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Device Repair</h3>
+                    <p>Expert repair for mobiles, laptops, and PCs. Screen replacement, battery change, water damage
+                        recovery.</p>
+                    <a href="services.html#repairs" class="btn-explore">
+                        Explore Now <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- WhatsApp Automation -->
+                <div class="initiative-card animate-fadeInUp">
+                    <div class="initiative-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp Automation</h3>
+                    <p>Build automated workflows for customer service, bulk messaging, and order management systems.</p>
+                    <a href="services.html#automation" class="btn-explore">
+                        Explore Now <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- AI Tools Hub -->
+                <div class="initiative-card animate-fadeInUp">
+                    <div class="initiative-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI Tools Hub</h3>
+                    <p>Discover 100+ curated AI tools for design, content creation, automation, and business growth.</p>
+                    <a href="ai-tools.html" class="btn-explore">
+                        Explore Now <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Online Earning -->
+                <div class="initiative-card animate-fadeInUp">
+                    <div class="initiative-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>Online Earning Hub</h3>
+                    <p>Step-by-step guides for YouTube, freelancing, dropshipping, and affiliate marketing.</p>
+                    <a href="earning-hub.html" class="btn-explore">
+                        Explore Now <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Software Directory -->
+                <div class="initiative-card animate-fadeInUp">
+                    <div class="initiative-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Software Directory</h3>
+                    <p>Download essential software, productivity tools, and automation apps with guides.</p>
+                    <a href="software.html" class="btn-explore">
+                        Explore Now <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Tech Help Center -->
+                <div class="initiative-card animate-fadeInUp">
+                    <div class="initiative-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Tech Help Center</h3>
+                    <p>Quick fixes and troubleshooting guides for common tech problems and solutions.</p>
+                    <a href="help-center.html" class="btn-explore">
+                        Explore Now <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PARTNERS / TRUST SECTION ===== -->
+    <section class="nptel-partners">
+        <div class="container">
+            <div class="partners-header">
+                <h3>Trusted by Technicians Across India</h3>
+            </div>
+            <div class="partners-logos">
+                <div class="partner-logo">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Mobile Technicians</span>
+                </div>
+                <div class="partner-logo">
+                    <i class="fas fa-store"></i>
+                    <span>Small Businesses</span>
+                </div>
+                <div class="partner-logo">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Freelancers</span>
+                </div>
+                <div class="partner-logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Students</span>
+                </div>
+                <div class="partner-logo">
+                    <i class="fas fa-laptop-code"></i>
+                    <span>Developers</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="nptel-testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Users Say</h2>
+                <p>Real feedback from satisfied customers and community members</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Fixed my iPhone screen in just 2 hours! Professional service and
+                        reasonable pricing. Highly recommend CareTechMobile."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RK</div>
+                        <div class="testimonial-info">
+                            <h4>Rajesh Kumar</h4>
+                            <span>Chennai</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The WhatsApp automation saved me 5 hours daily! My customer queries are
+                        now handled automatically. Worth every rupee."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">PS</div>
+                        <div class="testimonial-info">
+                            <h4>Priya Sharma</h4>
+                            <span>Small Business Owner</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"AI Tools Hub is a goldmine! Found amazing tools I never knew existed.
+                        The earning guides helped me start freelancing."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MA</div>
+                        <div class="testimonial-info">
+                            <h4>Mohammed Asif</h4>
+                            <span>Freelancer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section class="nptel-cta">
+        <div class="container">
+            <h2>Ready to Fix, Automate, or Grow?</h2>
+            <p>Get started today with professional device repair, WhatsApp automation, or explore our AI tools directory
+            </p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/919962003738" class="btn btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+                <a href="tel:+919495253265" class="btn btn-secondary">
+                    <i class="fas fa-phone"></i> Call 9495253265
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="nptel-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>CareTech<span>Mobile</span></h3>
+                    <p>Your trusted partner for device repair, WhatsApp automation, AI tools, and digital growth
+                        strategies.</p>
+                    <div class="footer-social">
+                        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/919962003738" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Device Repair</a></li>
+                        <li><a href="services.html#automation">WhatsApp Automation</a></li>
+                        <li><a href="services.html#websites">Mini Websites</a></li>
+                        <li><a href="membership.html">Membership Plans</a></li>
+                        <li><a href="payment.html"><i class="fas fa-credit-card"></i> Payment</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="ai-tools.html">AI Tools Hub</a></li>
+                        <li><a href="earning-hub.html">Online Earning</a></li>
+                        <li><a href="software.html">Software Directory</a></li>
+                        <li><a href="help-center.html">Tech Help Center</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:+919495253265"><i class="fas fa-phone"></i> 9495253265</a></li>
+                        <li><a href="https://wa.me/919962003738"><i class="fab fa-whatsapp"></i> 9962003738</a></li>
+                        <li><a href="mailto:info@caretechmobile.com"><i class="fas fa-envelope"></i>
+                                info@caretechmobile.com</a></li>
+                        <li><a href="contact.html"><i class="fas fa-map-marker-alt"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 CareTechMobile. All rights reserved. Built by <strong>Shihab Rajendran</strong></p>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="refund.html">Refund Policy</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+
+    <script>
+        // ===== DARK MODE TOGGLE =====
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        // Check saved preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+            darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // ===== MOBILE MENU =====
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const nptelNav = document.querySelector('.nptel-nav');
+
+        if (mobileMenuBtn && nptelNav) {
+            mobileMenuBtn.addEventListener('click', () => {
+                nptelNav.classList.toggle('active');
+                mobileMenuBtn.classList.toggle('active');
+            });
+
+            // Close menu when clicking a link
+            nptelNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    nptelNav.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!nptelNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    nptelNav.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                }
+            });
+        }
+
+        // ===== SCROLL ANIMATIONS =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.initiative-card, .testimonial-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+
+        // ===== HEADER SCROLL EFFECT =====
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.nptel-header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.08)';
+            }
+        });
+
+        // ===== SUPABASE AUTH CHECK =====
+        document.addEventListener('DOMContentLoaded', async function () {
+            console.log('📄 NPTEL-style page loaded');
+
+            if (typeof CONFIG !== 'undefined' && window.supabase) {
+                try {
+                    const mySupabase = window.supabase.createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_KEY);
+                    const { data } = await mySupabase.auth.getSession();
+
+                    if (data.session) {
+                        console.log('✅ User logged in:', data.session.user.email);
+
+                        // Get user name
+                        const userName = data.session.user.user_metadata?.full_name ||
+                            data.session.user.email.split('@')[0];
+
+                        // Update header actions to show Profile + Logout
+                        const headerActions = document.querySelector('.nptel-header-actions');
+                        if (headerActions) {
+                            // Keep dark mode toggle, add Profile and Logout
+                            const darkModeBtn = headerActions.querySelector('.dark-mode-toggle');
+                            headerActions.innerHTML = '';
+
+                            if (darkModeBtn) {
+                                headerActions.appendChild(darkModeBtn);
+                            }
+
+                            // Add Profile button
+                            const profileBtn = document.createElement('a');
+                            profileBtn.href = 'profile.html';
+                            profileBtn.className = 'btn-nptel-login';
+                            profileBtn.innerHTML = '<i class="fas fa-user"></i> ' + userName;
+                            headerActions.appendChild(profileBtn);
+
+                            // Add Logout button
+                            const logoutBtn = document.createElement('a');
+                            logoutBtn.href = '#';
+                            logoutBtn.className = 'btn-nptel-login';
+                            logoutBtn.id = 'siteLogoutBtn';
+                            logoutBtn.style.cssText = 'background: #dc3545; margin-left: 8px;';
+                            logoutBtn.innerHTML = '<i class="fas fa-sign-out-alt"></i> Logout';
+                            headerActions.appendChild(logoutBtn);
+
+                            // Logout handler with back button prevention
+                            logoutBtn.addEventListener('click', async function (e) {
+                                e.preventDefault();
+                                console.log('🚪 Logging out...');
+
+                                try {
+                                    localStorage.removeItem('loginTime');
+                                    sessionStorage.clear();
+
+                                    // KEY: Set logout flag to prevent back button
+                                    localStorage.setItem('ctmLoggedOut', Date.now().toString());
+
+                                    await mySupabase.auth.signOut();
+                                    console.log('✅ Logged out');
+
+                                    // Replace history and redirect - prevents back button
+                                    window.history.replaceState(null, '', 'dashboard.html');
+                                    window.location.replace('dashboard.html');
+                                } catch (err) {
+                                    console.error('Logout error:', err);
+                                    localStorage.setItem('ctmLoggedOut', Date.now().toString());
+                                    window.location.replace('dashboard.html');
+                                }
+                            });
+                        }
+                    } else {
+                        console.log('❌ User not logged in - showing Login button');
+                    }
+                } catch (err) {
+                    console.log('Auth check skipped:', err);
+                }
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

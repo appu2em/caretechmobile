@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NWEBGP5V40"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-NWEBGP5V40');
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | WhatsApp Automation, CRM & More | CareTechMobile</title>
+    <meta name="description"
+        content="Mini website, WhatsApp auto-reply, lead follow-up, CRM, laptop repair, and data recovery services for small businesses.">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="nptel-theme.css">
+
+    <style>
+        /* Page Hero */
+        .page-hero {
+            margin-top: 70px;
+            padding: 60px 0;
+            background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 100%);
+            text-align: center;
+        }
+
+        body.dark-mode .page-hero {
+            background: linear-gradient(135deg, #0a1f1a 0%, #0f1a2e 100%);
+        }
+
+        .page-hero h1 {
+            margin-bottom: 15px;
+        }
+
+        .page-hero p {
+            color: var(--gray-600);
+            font-size: 1.1rem;
+        }
+
+        body.dark-mode .page-hero p {
+            color: var(--gray-400);
+        }
+
+        /* Services Detail Section */
+        .services-detail {
+            padding: 80px 0;
+        }
+
+        .service-block {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 80px;
+            padding: 40px;
+            background: white;
+            border-radius: 24px;
+            box-shadow: var(--shadow-md);
+        }
+
+        body.dark-mode .service-block {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .service-block:nth-child(even) {
+            grid-template-columns: 1.2fr 1fr;
+        }
+
+        .service-block:nth-child(even) .service-visual {
+            order: -1;
+        }
+
+        .service-visual {
+            position: relative;
+        }
+
+        .service-visual-icon {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 5rem;
+            color: white;
+        }
+
+        .service-block:nth-child(1) .service-visual-icon {
+            background: linear-gradient(135deg, #E91E63, #FF5722);
+        }
+
+        .service-block:nth-child(2) .service-visual-icon {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+
+        .service-block:nth-child(3) .service-visual-icon {
+            background: linear-gradient(135deg, #3B82F6, #06B6D4);
+        }
+
+        .service-block:nth-child(4) .service-visual-icon {
+            background: linear-gradient(135deg, #8B5CF6, #EC4899);
+        }
+
+        .service-block:nth-child(5) .service-visual-icon {
+            background: linear-gradient(135deg, #F59E0B, #EF4444);
+        }
+
+        .service-block:nth-child(6) .service-visual-icon {
+            background: linear-gradient(135deg, #10B981, #059669);
+        }
+
+        .service-content h2 {
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .service-content .subtitle {
+            color: var(--ctm-primary);
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .service-benefits {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .service-benefits li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            color: var(--gray-700);
+        }
+
+        body.dark-mode .service-benefits li {
+            color: var(--gray-300);
+        }
+
+        .service-benefits li i {
+            color: var(--ctm-primary);
+            margin-top: 4px;
+        }
+
+        .service-cta {
+            margin-top: 25px;
+        }
+
+        /* Pricing Preview */
+        .pricing-preview {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--pastel-green);
+            padding: 12px 20px;
+            border-radius: 50px;
+            margin-top: 15px;
+        }
+
+        body.dark-mode .pricing-preview {
+            background: rgba(21, 195, 154, 0.2);
+        }
+
+        .pricing-preview .price {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--ctm-primary);
+        }
+
+        .pricing-preview .label {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+        }
+
+        body.dark-mode .pricing-preview .label {
+            color: var(--gray-400);
+        }
+
+        /* CTA Section */
+        .services-cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--ctm-primary), #0EA57F);
+            text-align: center;
+            color: white;
+        }
+
+        .services-cta h2 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .services-cta p {
+            opacity: 0.9;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .services-cta .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .services-cta .btn-white {
+            background: white;
+            color: var(--ctm-primary);
+            font-weight: 700;
+        }
+
+        .services-cta .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 992px) {
+            .service-block {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .service-block:nth-child(even) {
+                grid-template-columns: 1fr;
+            }
+
+            .service-block:nth-child(even) .service-visual {
+                order: 0;
+            }
+
+            .service-benefits li {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="https://wa.me/919962003738" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header class="nptel-header">
+        <div class="container">
+            <div class="nptel-header-content">
+                <a href="payment.html" class="payment-link">
+                    <i class="fas fa-credit-card"></i> Payment
+                </a>
+
+                <a href="business-home.html" class="nptel-logo">
+                    <h1>CareTech<span>Mobile</span></h1>
+                </a>
+
+                <nav class="nptel-nav">
+                    <a href="business-home.html">Home</a>
+                    <a href="business-services.html" class="active">Services</a>
+                    <a href="whatsapp-automation.html">WhatsApp Automation</a>
+                    <a href="ai-assist.html">AI Assist</a>
+                    <a href="mini-crm.html">Mini CRM</a>
+                    <a href="how-it-works.html">How It Works</a>
+                    <a href="business-pricing.html">Pricing</a>
+                    <a href="demo.html">Free Demo</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+
+                <div class="nptel-header-actions">
+                    <button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button>
+                    <a href="dashboard.html" class="btn-nptel-login"><i class="fas fa-user"></i> Login</a>
+                </div>
+
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Our <span style="color: var(--ctm-primary)">Services</span></h1>
+            <p>Everything your small business needs to grow and automate</p>
+        </div>
+    </section>
+
+    <!-- Services Detail -->
+    <section class="services-detail">
+        <div class="container">
+
+            <!-- Service 1: Mini Website -->
+            <div class="service-block">
+                <div class="service-content">
+                    <h2>Mini Website Setup</h2>
+                    <p class="subtitle">Simple shop page for your business</p>
+                    <p>A clean, professional website that shows your services and makes it easy for customers to contact
+                        you on WhatsApp.</p>
+
+                    <ul class="service-benefits">
+                        <li><i class="fas fa-check-circle"></i> Professional design that builds trust</li>
+                        <li><i class="fas fa-check-circle"></i> WhatsApp button for instant contact</li>
+                        <li><i class="fas fa-check-circle"></i> Mobile-friendly - works on all phones</li>
+                        <li><i class="fas fa-check-circle"></i> Your services & pricing displayed clearly</li>
+                        <li><i class="fas fa-check-circle"></i> Google Maps location integration</li>
+                    </ul>
+
+                    <div class="pricing-preview">
+                        <span class="price">₹3,000</span>
+                        <span class="label">one-time setup</span>
+                    </div>
+
+                    <div class="service-cta">
+                        <a href="https://wa.me/919962003738?text=Hi,%20I%20want%20a%20mini%20website%20for%20my%20business"
+                            class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Get Started
+                        </a>
+                    </div>
+                </div>
+                <div class="service-visual">
+                    <div class="service-visual-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 2: WhatsApp Auto-Reply -->
+            <div class="service-block">
+                <div class="service-content">
+                    <h2>WhatsApp Auto-Reply</h2>
+                    <p class="subtitle">Never miss a customer message again</p>
+                    <p>When customers message your WhatsApp, they get instant reply - even when you're busy with other
+                        customers or sleeping at night.</p>
+
+                    <ul class="service-benefits">
+                        <li><i class="fas fa-check-circle"></i> Instant replies 24/7 automatically</li>
+                        <li><i class="fas fa-check-circle"></i> Custom messages for your business</li>
+                        <li><i class="fas fa-check-circle"></i> Customers feel valued immediately</li>
+                        <li><i class="fas fa-check-circle"></i> No customer goes to competitor</li>
+                        <li><i class="fas fa-check-circle"></i> Works with WhatsApp Business API</li>
+                    </ul>
+
+                    <div class="pricing-preview">
+                        <span class="price">₹500</span>
+                        <span class="label">per month</span>
+                    </div>
+
+                    <div class="service-cta">
+                        <a href="whatsapp-automation.html" class="btn btn-primary">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-visual">
+                    <div class="service-visual-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 3: Lead Follow-up -->
+            <div class="service-block">
+                <div class="service-content">
+                    <h2>Lead Follow-up System</h2>
+                    <p class="subtitle">Convert more enquiries to sales</p>
+                    <p>Most businesses forget to follow-up with customers who enquired. Our system reminds you
+                        automatically on Day 1, 3, and 7.</p>
+
+                    <ul class="service-benefits">
+                        <li><i class="fas fa-check-circle"></i> Automatic follow-up reminders</li>
+                        <li><i class="fas fa-check-circle"></i> Day 1, 3, 7 follow-up schedule</li>
+                        <li><i class="fas fa-check-circle"></i> Pre-written follow-up messages</li>
+                        <li><i class="fas fa-check-circle"></i> Track which customers responded</li>
+                        <li><i class="fas fa-check-circle"></i> Higher conversion rate guaranteed</li>
+                    </ul>
+
+                    <div class="pricing-preview">
+                        <span class="price">Included</span>
+                        <span class="label">with automation package</span>
+                    </div>
+
+                    <div class="service-cta">
+                        <a href="demo.html" class="btn btn-primary">
+                            See Demo <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-visual">
+                    <div class="service-visual-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 4: Simple CRM -->
+            <div class="service-block">
+                <div class="service-content">
+                    <h2>Simple CRM</h2>
+                    <p class="subtitle">Track all your customers in one place</p>
+                    <p>Stop using Excel or paper. Our simple CRM saves customer details, tracks enquiries, and reminds
+                        you about follow-ups.</p>
+
+                    <ul class="service-benefits">
+                        <li><i class="fas fa-check-circle"></i> Customer name & phone saved automatically</li>
+                        <li><i class="fas fa-check-circle"></i> Track enquiry status (new, pending, done)</li>
+                        <li><i class="fas fa-check-circle"></i> Follow-up reminder notifications</li>
+                        <li><i class="fas fa-check-circle"></i> Simple dashboard - no training needed</li>
+                        <li><i class="fas fa-check-circle"></i> Access from mobile or computer</li>
+                    </ul>
+
+                    <div class="pricing-preview">
+                        <span class="price">₹500</span>
+                        <span class="label">per month</span>
+                    </div>
+
+                    <div class="service-cta">
+                        <a href="mini-crm.html" class="btn btn-primary">
+                            Learn More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-visual">
+                    <div class="service-visual-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 5: Laptop & PC Repair + GST -->
+            <div class="service-block">
+                <div class="service-content">
+                    <h2>Laptop & PC Repair + GST Billing</h2>
+                    <p class="subtitle">Professional hardware service with proper billing</p>
+                    <p>Get your laptop or PC repaired with proper GST billing. Perfect for businesses that need formal
+                        invoices for accounting.</p>
+
+                    <ul class="service-benefits">
+                        <li><i class="fas fa-check-circle"></i> Laptop screen, battery, keyboard repair</li>
+                        <li><i class="fas fa-check-circle"></i> PC hardware upgrades & troubleshooting</li>
+                        <li><i class="fas fa-check-circle"></i> Proper GST invoice provided</li>
+                        <li><i class="fas fa-check-circle"></i> On-site service available</li>
+                        <li><i class="fas fa-check-circle"></i> 30-day service warranty</li>
+                    </ul>
+
+                    <div class="pricing-preview">
+                        <span class="price">₹500+</span>
+                        <span class="label">depending on issue</span>
+                    </div>
+
+                    <div class="service-cta">
+                        <a href="https://wa.me/919962003738?text=Hi,%20I%20need%20laptop/PC%20repair%20service"
+                            class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Get Quote
+                        </a>
+                    </div>
+                </div>
+                <div class="service-visual">
+                    <div class="service-visual-icon">
+                        <i class="fas fa-laptop-medical"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service 6: Data Recovery -->
+            <div class="service-block">
+                <div class="service-content">
+                    <h2>Data Recovery</h2>
+                    <p class="subtitle">Lost data? We can help recover it</p>
+                    <p>Accidentally deleted files? Hard disk crashed? Phone not booting? We specialize in recovering
+                        your important data.</p>
+
+                    <ul class="service-benefits">
+                        <li><i class="fas fa-check-circle"></i> Hard disk & SSD data recovery</li>
+                        <li><i class="fas fa-check-circle"></i> Mobile phone data recovery</li>
+                        <li><i class="fas fa-check-circle"></i> Deleted file recovery</li>
+                        <li><i class="fas fa-check-circle"></i> Formatted drive recovery</li>
+                        <li><i class="fas fa-check-circle"></i> No data, no charge policy</li>
+                    </ul>
+
+                    <div class="pricing-preview">
+                        <span class="price">₹1,000+</span>
+                        <span class="label">free diagnosis</span>
+                    </div>
+
+                    <div class="service-cta">
+                        <a href="https://wa.me/919962003738?text=Hi,%20I%20need%20data%20recovery%20help"
+                            class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Get Help Now
+                        </a>
+                    </div>
+                </div>
+                <div class="service-visual">
+                    <div class="service-visual-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="services-cta">
+        <div class="container">
+            <h2>Ready to Automate Your Business?</h2>
+            <p>Get a free demo and see how we can help you grow</p>
+            <div class="cta-buttons">
+                <a href="demo.html" class="btn btn-white">
+                    <i class="fas fa-play"></i> Get Free Demo
+                </a>
+                <a href="https://wa.me/919962003738" class="btn btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="nptel-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>CareTech<span>Mobile</span></h3>
+                    <p>Helping small businesses grow with WhatsApp automation and smart solutions.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="business-home.html">Home</a></li>
+                        <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="business-pricing.html">Pricing</a></li>
+                        <li><a href="demo.html">Free Demo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:+919495253265"><i class="fas fa-phone"></i> 9495253265</a></li>
+                        <li><a href="https://wa.me/919962003738"><i class="fab fa-whatsapp"></i> 9962003738</a></li>
+                        <li><a href="mailto:info@caretechmobile.com"><i class="fas fa-envelope"></i>
+                                info@caretechmobile.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 CareTechMobile. Built by <strong>Shihab Rajendran</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark Mode
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        if (localStorage.getItem('darkMode') === 'true') {
+            body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+            darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const nptelNav = document.querySelector('.nptel-nav');
+        mobileMenuBtn.addEventListener('click', () => {
+            nptelNav.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>

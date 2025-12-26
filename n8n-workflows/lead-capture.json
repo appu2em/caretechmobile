@@ -1,0 +1,142 @@
+{
+  "name": "CareTechMobile - Lead Capture",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "caretech-lead",
+        "httpMethod": "POST",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "webhook-1",
+      "name": "Website Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [200, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1",
+              "name": "ticket_id",
+              "value": "={{ 'CTM-' + Date.now() }}",
+              "type": "string"
+            },
+            {
+              "id": "2",
+              "name": "name",
+              "value": "={{ $json.name || $json.body?.name || 'Unknown' }}",
+              "type": "string"
+            },
+            {
+              "id": "3",
+              "name": "phone",
+              "value": "={{ ($json.phone || $json.body?.phone || '').replace(/\\D/g, '') }}",
+              "type": "string"
+            },
+            {
+              "id": "4",
+              "name": "service",
+              "value": "={{ $json.service || $json.body?.service || 'General Enquiry' }}",
+              "type": "string"
+            },
+            {
+              "id": "5",
+              "name": "message",
+              "value": "={{ $json.message || $json.body?.message || '' }}",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "id": "set-1",
+      "name": "Prepare Lead Data",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v21.0/961828997005342/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer EAAZAsIGSgOysBQdbqFgS0v8bdSphKUXVmIGFGHFrsA3V5YKV4qN5LmOJ48y2FC2Y0MvuxNwCAeC304sqWclrDXm8p25C4IXIw5hxpgAHwwJ3BSA4gPh4ND3Hriev3nFetBZAJqQseBWoH0xR74UhTYb6WHW0X07YHTgAJm8DPsk8YBp1Tn6zwKwf49FqcpqTZAQb7p3p0fCwE0RoRtFfGeriXxnrM5E0QnJzGHCPLN8DZBOarENmvNvCZAah912AXsUQD9SlCCIxcAxQ0kGoSQ5e1ZBgZDZD"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"{{ $json.phone }}\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": \"🙏 வணக்கம் {{ $json.name }}!\\n\\nCareTechMobile-ல உங்கள் enquiry received!\\n\\n🎫 Ticket: {{ $json.ticket_id }}\\n📋 Service: {{ $json.service }}\\n\\n⏰ நாங்கள் 30 நிமிடத்தில் contact பண்றோம்!\\n\\n- CareTechMobile Team\"\n  }\n}",
+        "options": {}
+      },
+      "id": "http-customer",
+      "name": "WhatsApp → Customer",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [700, 200]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v21.0/961828997005342/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer EAAZAsIGSgOysBQdbqFgS0v8bdSphKUXVmIGFGHFrsA3V5YKV4qN5LmOJ48y2FC2Y0MvuxNwCAeC304sqWclrDXm8p25C4IXIw5hxpgAHwwJ3BSA4gPh4ND3Hriev3nFetBZAJqQseBWoH0xR74UhTYb6WHW0X07YHTgAJm8DPsk8YBp1Tn6zwKwf49FqcpqTZAQb7p3p0fCwE0RoRtFfGeriXxnrM5E0QnJzGHCPLN8DZBOarENmvNvCZAah912AXsUQD9SlCCIxcAxQ0kGoSQ5e1ZBgZDZD"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"919495253265\",\n  \"type\": \"text\",\n  \"text\": {\n    \"body\": \"🔔 NEW LEAD!\\n\\n🎫 {{ $json.ticket_id }}\\n👤 {{ $json.name }}\\n📱 {{ $json.phone }}\\n🔧 {{ $json.service }}\\n💬 {{ $json.message }}\\n\\nReply: CLOSE {{ $json.ticket_id }}\"\n  }\n}",
+        "options": {}
+      },
+      "id": "http-admin",
+      "name": "WhatsApp → Admin",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [700, 400]
+    }
+  ],
+  "connections": {
+    "Website Webhook": {
+      "main": [
+        [
+          {
+            "node": "Prepare Lead Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Lead Data": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp → Customer",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "WhatsApp → Admin",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

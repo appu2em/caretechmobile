@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel — CareTechMobile</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="nptel-theme.css">
+    <link rel="stylesheet" href="admin-style.css">
+</head>
+
+<body>
+
+    <!-- ===== LOGIN PAGE ===== -->
+    <div class="login-page" id="loginPage">
+        <div class="login-box">
+            <h1>🔐 Admin Panel</h1>
+            <p>CareTechMobile Management</p>
+
+            <div class="login-error" id="loginError"></div>
+
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label><i class="fas fa-envelope"></i> Email</label>
+                    <input type="email" id="adminEmail" placeholder="admin@caretechmobile.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> Password</label>
+                    <input type="password" id="adminPassword" placeholder="Enter password" required>
+                </div>
+
+                <button type="submit" class="btn-login" id="loginBtn">
+                    <i class="fas fa-sign-in-alt"></i> Login to Admin Panel
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== ADMIN LAYOUT ===== -->
+    <div class="admin-layout" id="adminLayout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <h2>CareTech<span style="color: var(--ctm-primary);">Mobile</span></h2>
+                <span>⚙️ Admin Panel</span>
+            </div>
+
+            <ul class="sidebar-menu">
+                <li><a href="#" class="active" data-section="dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#" data-section="requests"><i class="fas fa-clipboard-list"></i> Service Requests</a></li>
+                <li><a href="#" data-section="users"><i class="fas fa-users"></i> Users</a></li>
+
+                <div class="menu-divider"></div>
+                <div class="menu-label">Management</div>
+
+                <li><a href="#" data-section="services"><i class="fas fa-cogs"></i> Services</a></li>
+                <li><a href="#" data-section="payments"><i class="fas fa-rupee-sign"></i> Payments</a></li>
+
+                <div class="menu-divider"></div>
+                <div class="menu-label">Account</div>
+
+                <li><a href="#" data-section="settings"><i class="fas fa-user-cog"></i> Settings</a></li>
+                <li><a href="index.html"><i class="fas fa-globe"></i> View Website</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <div class="page-title">
+                    <h1 id="pageTitle">Dashboard</h1>
+                    <p id="pageSubtitle">Overview of your business</p>
+                </div>
+
+                <div class="top-actions">
+                    <div class="admin-profile">
+                        <div class="admin-avatar">A</div>
+                        <div class="admin-info">
+                            <strong id="adminName">Admin</strong>
+                            <span>Super Admin</span>
+                        </div>
+                    </div>
+                    <button class="btn-logout" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+
+            <!-- ===== DASHBOARD ===== -->
+            <div id="dashboard" class="section-page active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue"><i class="fas fa-users"></i></div>
+                        <div class="stat-value" id="totalUsers">0</div>
+                        <div class="stat-label">Total Users</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon yellow"><i class="fas fa-clipboard-list"></i></div>
+                        <div class="stat-value" id="totalRequests">0</div>
+                        <div class="stat-label">Service Requests</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green"><i class="fas fa-check-circle"></i></div>
+                        <div class="stat-value" id="completedRequests">0</div>
+                        <div class="stat-label">Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon primary"><i class="fas fa-cogs"></i></div>
+                        <div class="stat-value" id="totalServices">0</div>
+                        <div class="stat-label">Services</div>
+                    </div>
+                </div>
+
+                <div class="data-card">
+                    <div class="data-header">
+                        <h3>📋 Recent Service Requests</h3>
+                        <button class="btn-sm btn-outline" data-section="requests">View All</button>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Service</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentRequestsTable">
+                            <tr>
+                                <td colspan="5" class="loading-state"><i class="fas fa-spinner fa-spin"></i>
+                                    <p>Loading...</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ===== REQUESTS ===== -->
+            <div id="requests" class="section-page">
+                <div class="quick-stats">
+                    <div class="quick-stat">Pending: <strong id="pendingCount">0</strong></div>
+                    <div class="quick-stat">In Progress: <strong id="progressCount">0</strong></div>
+                    <div class="quick-stat">Completed: <strong id="completedCount">0</strong></div>
+                </div>
+
+                <div class="data-card">
+                    <div class="data-header">
+                        <h3>All Service Requests</h3>
+                        <button class="btn-sm btn-outline" id="refreshRequests"><i class="fas fa-sync-alt"></i>
+                            Refresh</button>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Service</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="allRequestsTable">
+                            <tr>
+                                <td colspan="6" class="loading-state"><i class="fas fa-spinner fa-spin"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ===== USERS ===== -->
+            <div id="users" class="section-page">
+                <div class="data-card">
+                    <div class="data-header">
+                        <h3>All Users</h3>
+                        <button class="btn-sm btn-outline" id="refreshUsers"><i class="fas fa-sync-alt"></i>
+                            Refresh</button>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Plan</th>
+                                <th>Joined</th>
+                            </tr>
+                        </thead>
+                        <tbody id="allUsersTable">
+                            <tr>
+                                <td colspan="4" class="loading-state"><i class="fas fa-spinner fa-spin"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ===== SERVICES ===== -->
+            <div id="services" class="section-page">
+                <div class="data-card">
+                    <div class="data-header">
+                        <h3><i class="fas fa-cogs"></i> Manage Services</h3>
+                        <div class="header-actions">
+                            <button class="btn-sm btn-outline" id="refreshServices"><i
+                                    class="fas fa-sync-alt"></i></button>
+                            <button class="btn-sm btn-primary" id="addServiceBtn"><i class="fas fa-plus"></i> Add
+                                Service</button>
+                        </div>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Service Name</th>
+                                <th>Category</th>
+                                <th>Price (₹)</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="allServicesTable">
+                            <tr>
+                                <td colspan="5" class="loading-state"><i class="fas fa-spinner fa-spin"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ===== PAYMENTS ===== -->
+            <div id="payments" class="section-page">
+                <div class="data-card">
+                    <div class="data-header">
+                        <h3>Payment History</h3>
+                    </div>
+                    <div class="empty-state">
+                        <i class="fas fa-receipt"></i>
+                        <h4>No payments yet</h4>
+                        <p>Payment integration coming soon!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== SETTINGS ===== -->
+            <div id="settings" class="section-page">
+
+                <!-- Profile Card -->
+                <div class="data-card" style="margin-bottom: 20px;">
+                    <div class="data-header">
+                        <h3><i class="fas fa-user-circle"></i> Admin Profile</h3>
+                    </div>
+                    <div class="profile-info">
+                        <div class="profile-avatar">
+                            <div class="avatar-circle">A</div>
+                        </div>
+                        <div class="profile-details">
+                            <p><strong>Email:</strong> <span id="profileEmail">Loading...</span></p>
+                            <p><strong>Role:</strong> Super Admin</p>
+                            <p><strong>Last Login:</strong> <span id="lastLogin">-</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Password Change Card -->
+                <div class="data-card">
+                    <div class="data-header">
+                        <h3><i class="fas fa-lock"></i> Change Password</h3>
+                    </div>
+
+                    <div class="password-change-form">
+                        <!-- Alert Messages -->
+                        <div class="settings-alert success" id="passwordSuccess" style="display: none;">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Password successfully மாத்திட்டோம்!</span>
+                        </div>
+                        <div class="settings-alert error" id="passwordError" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span id="passwordErrorMsg">Error occurred</span>
+                        </div>
+
+                        <form id="changePasswordForm">
+                            <div class="form-group">
+                                <label><i class="fas fa-key"></i> Current Password</label>
+                                <div class="password-input-wrapper">
+                                    <input type="password" id="currentPassword" placeholder="இப்போதைய password"
+                                        required>
+                                    <button type="button" class="toggle-pass"
+                                        onclick="togglePasswordVisibility('currentPassword', this)">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label><i class="fas fa-lock"></i> New Password</label>
+                                <div class="password-input-wrapper">
+                                    <input type="password" id="newPassword" placeholder="புதிய password (min 6 chars)"
+                                        required minlength="6">
+                                    <button type="button" class="toggle-pass"
+                                        onclick="togglePasswordVisibility('newPassword', this)">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                                <!-- Password Strength Bar -->
+                                <div class="password-strength-bar">
+                                    <div class="strength-fill" id="strengthFill"></div>
+                                </div>
+                                <small class="strength-text" id="strengthText"></small>
+                            </div>
+
+                            <div class="form-group">
+                                <label><i class="fas fa-check-double"></i> Confirm New Password</label>
+                                <div class="password-input-wrapper">
+                                    <input type="password" id="confirmPassword" placeholder="புதிய password confirm"
+                                        required>
+                                    <button type="button" class="toggle-pass"
+                                        onclick="togglePasswordVisibility('confirmPassword', this)">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Requirements Checklist -->
+                            <div class="password-requirements">
+                                <p><strong>Requirements:</strong></p>
+                                <ul>
+                                    <li id="req-length"><i class="fas fa-circle"></i> Minimum 6 characters</li>
+                                    <li id="req-match"><i class="fas fa-circle"></i> Passwords match</li>
+                                </ul>
+                            </div>
+
+                            <button type="submit" class="btn-save" id="changePasswordBtn">
+                                <i class="fas fa-save"></i> Update Password
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ===== UPDATE STATUS MODAL ===== -->
+    <div class="modal" id="updateStatusModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Update Request</h2>
+                <button class="modal-close" id="closeUpdateModal">&times;</button>
+            </div>
+            <form id="updateStatusForm">
+                <input type="hidden" id="updateRequestId">
+
+                <div class="form-group">
+                    <label>Status</label>
+                    <select id="newStatus">
+                        <option value="pending">Pending</option>
+                        <option value="in_progress">In Progress</option>
+                        <option value="completed">Completed</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Estimated Cost (₹)</label>
+                        <input type="number" id="estimatedCost" placeholder="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Final Cost (₹)</label>
+                        <input type="number" id="finalCost" placeholder="0">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Admin Notes</label>
+                    <textarea id="adminNotes" rows="3" placeholder="Internal notes..."></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" id="cancelUpdateBtn">Cancel</button>
+                    <button type="submit" class="btn-save">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== ADD SERVICE MODAL ===== -->
+    <div class="modal" id="addServiceModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-plus-circle"></i> Add New Service</h2>
+                <button class="modal-close" id="closeServiceModal">&times;</button>
+            </div>
+            <form id="addServiceForm">
+                <div class="form-group">
+                    <label>Service Name *</label>
+                    <input type="text" id="serviceName" required placeholder="e.g., Screen Repair">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="serviceCategory">
+                            <option value="repair">🔧 Repair</option>
+                            <option value="software">💻 Software</option>
+                            <option value="automation">🤖 Automation</option>
+                            <option value="consulting">📊 Consulting</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Price (₹) *</label>
+                        <input type="number" id="servicePrice" required placeholder="1000" min="0">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="serviceDesc" rows="3" placeholder="Service description..."></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" id="cancelServiceBtn">Cancel</button>
+                    <button type="submit" class="btn-save"><i class="fas fa-plus"></i> Add Service</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== EDIT SERVICE MODAL ===== -->
+    <div class="modal" id="editServiceModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-edit"></i> Edit Service</h2>
+                <button class="modal-close" id="closeEditServiceModal">&times;</button>
+            </div>
+            <form id="editServiceForm">
+                <input type="hidden" id="editServiceId">
+
+                <div class="form-group">
+                    <label>Service Name *</label>
+                    <input type="text" id="editServiceName" required placeholder="e.g., Screen Repair">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select id="editServiceCategory">
+                            <option value="repair">🔧 Repair</option>
+                            <option value="software">💻 Software</option>
+                            <option value="automation">🤖 Automation</option>
+                            <option value="consulting">📊 Consulting</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Price (₹) *</label>
+                        <input type="number" id="editServicePrice" required placeholder="1000" min="0">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="editServiceDesc" rows="3" placeholder="Service description..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Status</label>
+                    <select id="editServiceStatus">
+                        <option value="true">✅ Active</option>
+                        <option value="false">❌ Inactive</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" id="cancelEditServiceBtn">Cancel</button>
+                    <button type="submit" class="btn-save"><i class="fas fa-save"></i> Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toastContainer"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="admin-script.js"></script>
+
+</body>
+
+</html>

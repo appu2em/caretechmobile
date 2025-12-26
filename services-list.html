@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Services — CareTechMobile</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="config.js"></script>
+<script>
+    const supabase = window.supabase.createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_KEY);
+</script>
+    <style>
+        :root {
+            --primary: #15C39A;
+            --primary-dark: #0ea57f;
+            --dark: #1a1a2e;
+            --darker: #12121f;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(26, 26, 46, 0.95);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h2 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-nav a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .header-nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Page Hero */
+        .page-hero {
+            padding: 60px 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(21,195,154,0.1), transparent);
+        }
+
+        .page-hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .page-hero p {
+            color: #888;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        /* Search & Filter */
+        .filters {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.08);
+            border-radius: 30px;
+            padding: 0 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .search-box i {
+            color: #888;
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            padding: 12px 15px;
+            color: #fff;
+            font-size: 1rem;
+            width: 250px;
+        }
+
+        .search-box input:focus {
+            outline: none;
+        }
+
+        .search-box input::placeholder {
+            color: #666;
+        }
+
+        /* Category Tabs */
+        .category-tabs {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 20px 0;
+        }
+
+        .category-tab {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 25px;
+            color: #aaa;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .category-tab:hover, .category-tab.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+        }
+
+        .category-tab i {
+            margin-right: 8px;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 40px 0 80px;
+        }
+
+        .category-section {
+            margin-bottom: 50px;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .category-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(21,195,154,0.15);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .category-icon i {
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+
+        .category-title h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+        }
+
+        .category-title span {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            background: rgba(21,195,154,0.05);
+        }
+
+        .service-name {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-name i {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .service-desc {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .service-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .service-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-book {
+            padding: 10px 20px;
+            background: rgba(21,195,154,0.15);
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-book:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #888;
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 25px rgba(37,211,102,0.4);
+            z-index: 999;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-float i {
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0,0,0,0.3);
+            padding: 30px 0;
+            text-align: center;
+            color: #666;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-hero h1 { font-size: 1.8rem; }
+            .search-box input { width: 180px; }
+            .services-grid { grid-template-columns: 1fr; }
+        }
+
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/919962003738" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h2>CareTech<span style="color: var(--primary);">Mobile</span></h2>
+                </div>
+                <nav class="header-nav">
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="dashboard.html">Dashboard</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>🛠️ All Services</h1>
+            <p>Browse our complete list of services and book instantly</p>
+            
+            <!-- Search -->
+            <div class="filters">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search services...">
+                </div>
+            </div>
+
+            <!-- Category Tabs -->
+            <div class="category-tabs">
+                <button class="category-tab active" data-category="all">
+                    <i class="fas fa-th"></i> All
+                </button>
+                <button class="category-tab" data-category="mobile_repair">
+                    <i class="fas fa-mobile-alt"></i> Mobile
+                </button>
+                <button class="category-tab" data-category="laptop_repair">
+                    <i class="fas fa-laptop"></i> Laptop
+                </button>
+                <button class="category-tab" data-category="pc_repair">
+                    <i class="fas fa-desktop"></i> PC
+                </button>
+                <button class="category-tab" data-category="automation">
+                    <i class="fab fa-whatsapp"></i> Automation
+                </button>
+                <button class="category-tab" data-category="digital">
+                    <i class="fas fa-globe"></i> Digital
+                </button>
+                <button class="category-tab" data-category="consulting">
+                    <i class="fas fa-brain"></i> AI/Consulting
+                </button>
+                <button class="category-tab" data-category="other">
+                    <i class="fas fa-ellipsis-h"></i> Other
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div id="servicesContainer">
+                <!-- Services will be loaded here -->
+                <div class="empty-state">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading services...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 CareTechMobile. All rights reserved.</p>
+    </footer>
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <script>
+        // ============================================
+        // CONFIG
+        // ============================================
+        const SUPABASE_URL = "https://oleuggrzmdtcorlvlapp.supabase.co";
+        const SUPABASE_KEY = "YOUR_ANON_KEY_HERE";
+        
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        let allServices = [];
+        let currentCategory = 'all';
+
+        // Category Info
+        const categoryInfo = {
+            'mobile_repair': { icon: 'fa-mobile-alt', title: 'Mobile Repair' },
+            'laptop_repair': { icon: 'fa-laptop', title: 'Laptop Repair' },
+            'pc_repair': { icon: 'fa-desktop', title: 'PC/Desktop' },
+            'automation': { icon: 'fa-whatsapp', iconType: 'fab', title: 'WhatsApp Automation' },
+            'digital': { icon: 'fa-globe', title: 'Digital Services' },
+            'consulting': { icon: 'fa-brain', title: 'AI & Consulting' },
+            'other': { icon: 'fa-cog', title: 'Other Services' }
+        };
+
+        // ============================================
+        // LOAD SERVICES
+        // ============================================
+        async function loadServices() {
+            try {
+                const { data, error } = await supabase
+                    .from('services')
+                    .select('*')
+                    .eq('active', true)
+                    .order('category')
+                    .order('price');
+                
+                if (error) throw error;
+                
+                allServices = data || [];
+                renderServices(allServices);
+                
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('servicesContainer').innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p>Error loading services. Please refresh.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // ============================================
+        // RENDER SERVICES
+        // ============================================
+        function renderServices(services) {
+            const container = document.getElementById('servicesContainer');
+            
+            if (services.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-search"></i>
+                        <h3>No services found</h3>
+                        <p>Try a different search or category</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Group by category
+            const grouped = {};
+            services.forEach(service => {
+                const cat = service.category || 'other';
+                if (!grouped[cat]) grouped[cat] = [];
+                grouped[cat].push(service);
+            });
+            
+            let html = '';
+            
+            for (const [category, items] of Object.entries(grouped)) {
+                const info = categoryInfo[category] || { icon: 'fa-cog', title: category };
+                const iconClass = info.iconType === 'fab' ? 'fab' : 'fas';
+                
+                html += `
+                    <div class="category-section" data-category="${category}">
+                        <div class="category-header">
+                            <div class="category-icon">
+                                <i class="${iconClass} ${info.icon}"></i>
+                            </div>
+                            <div class="category-title">
+                                <h2>${info.title}</h2>
+                                <span>${items.length} services</span>
+                            </div>
+                        </div>
+                        
+                        <div class="services-grid">
+                            ${items.map(service => `
+                                <div class="service-card" data-name="${service.service_name.toLowerCase()}">
+                                    <div class="service-name">
+                                        <i class="fas fa-check-circle"></i>
+                                        ${service.service_name}
+                                    </div>
+                                    <p class="service-desc">${service.description || ''}</p>
+                                    <div class="service-footer">
+                                        <span class="service-price">₹${service.price.toLocaleString()}</span>
+                                        <a href="payment.html?service=${encodeURIComponent(service.service_name)}&amount=${service.price}" class="btn-book">
+                                            Book Now
+                                        </a>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            container.innerHTML = html;
+        }
+
+        // ============================================
+        // CATEGORY FILTER
+        // ============================================
+        document.querySelectorAll('.category-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Update active tab
+                document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                currentCategory = this.dataset.category;
+                filterServices();
+            });
+        });
+
+        // ============================================
+        // SEARCH
+        // ============================================
+        document.getElementById('searchInput').addEventListener('input', function() {
+            filterServices();
+        });
+
+        function filterServices() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            
+            let filtered = allServices;
+            
+            // Filter by category
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(s => s.category === currentCategory);
+            }
+            
+            // Filter by search
+            if (searchTerm) {
+                filtered = filtered.filter(s => 
+                    s.service_name.toLowerCase().includes(searchTerm) ||
+                    (s.description && s.description.toLowerCase().includes(searchTerm))
+                );
+            }
+            
+            renderServices(filtered);
+        }
+
+        // ============================================
+        // INIT
+        // ============================================
+        loadServices();
+    </script>
+
+</body>
+</html>

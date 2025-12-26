@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NWEBGP5V40"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-NWEBGP5V40');
+</script>
+
+<head>
+    <!-- Config -->
+    <script data-cfasync="false">
+        const CONFIG = {
+            SUPABASE_URL: 'https://oleuggrzmdtcorlvlapp.supabase.co',
+            SUPABASE_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9sZXVnZ3J6bWR0Y29ybHZsYXBwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU0NTI3MDMsImV4cCI6MjA4MTAyODcwM30.dVAunvwATOX1_WMD4KU-O1hgCx0iqa1KGAxHC-n1ndM'
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Automation for Small Business | Never Miss a Customer | CareTechMobile</title>
+    <meta name="description"
+        content="We help small businesses who struggle to get customers - by automating leads and follow-ups via WhatsApp. Website to entry. Automation to value. Result is money.">
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- NPTEL Theme -->
+    <link rel="stylesheet" href="nptel-theme.css">
+
+    <!-- Business Page Styles -->
+    <style>
+        /* ===== HEADER ADDITIONS ===== */
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .payment-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #F59E0B, #EF4444);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .payment-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4);
+        }
+
+        /* Services Dropdown */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .dropdown-trigger {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .dropdown-trigger i {
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-dropdown:hover .dropdown-trigger i {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 220px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        body.dark-mode .dropdown-menu {
+            background: var(--dark-surface);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            color: var(--gray-700);
+            transition: all 0.2s ease;
+        }
+
+        body.dark-mode .dropdown-menu a {
+            color: var(--gray-300);
+        }
+
+        .dropdown-menu a:hover {
+            background: var(--pastel-green);
+            color: var(--ctm-primary);
+        }
+
+        body.dark-mode .dropdown-menu a:hover {
+            background: rgba(21, 195, 154, 0.1);
+        }
+
+        .dropdown-menu a i {
+            width: 20px;
+            color: var(--ctm-primary);
+        }
+
+        /* ===== SIMPLIFIED FOOTER ===== */
+        .footer-simple {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        .footer-contact h4 {
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-contact p i {
+            width: 20px;
+            color: var(--ctm-primary);
+        }
+
+        .footer-contact a {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-contact a:hover {
+            color: var(--ctm-primary);
+        }
+
+        @media (max-width: 768px) {
+            .header-left {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .payment-link {
+                font-size: 0.75rem;
+                padding: 6px 12px;
+            }
+
+            .footer-simple {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-contact p {
+                justify-content: center;
+            }
+        }
+
+        /* ===== BUSINESS HERO SECTION ===== */
+        .business-hero {
+            margin-top: 70px;
+            padding: 80px 0 60px;
+            background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 50%, #fce4ec 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.dark-mode .business-hero {
+            background: linear-gradient(135deg, #0a1f1a 0%, #0f1a2e 50%, #1a0f1a 100%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(21, 195, 154, 0.15);
+            color: var(--ctm-primary);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--gray-900);
+        }
+
+        body.dark-mode .hero-title {
+            color: var(--white);
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--ctm-primary), #3B82F6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray-600);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        body.dark-mode .hero-subtitle {
+            color: var(--gray-400);
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-whatsapp-large {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 36px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-whatsapp-large:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.5);
+        }
+
+        .btn-whatsapp-large i {
+            font-size: 1.4rem;
+        }
+
+        /* Hero Visual */
+        .hero-visual-card {
+            background: white;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        body.dark-mode .hero-visual-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .phone-mockup {
+            background: linear-gradient(135deg, #DCF8C6 0%, #E8F5E9 100%);
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        body.dark-mode .phone-mockup {
+            background: linear-gradient(135deg, #1a2f1a 0%, #0f1f0f 100%);
+        }
+
+        .chat-bubble {
+            background: white;
+            padding: 12px 16px;
+            border-radius: 18px;
+            border-bottom-left-radius: 4px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            font-size: 0.95rem;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        body.dark-mode .chat-bubble {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .chat-bubble.reply {
+            background: #DCF8C6;
+            border-radius: 18px;
+            border-bottom-right-radius: 4px;
+            margin-left: auto;
+            max-width: 80%;
+        }
+
+        body.dark-mode .chat-bubble.reply {
+            background: #128C7E;
+            color: white;
+        }
+
+        .chat-bubble.auto-reply {
+            border: 2px solid var(--ctm-primary);
+        }
+
+        .chat-bubble .auto-tag {
+            display: inline-block;
+            background: var(--ctm-primary);
+            color: white;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 50px;
+            margin-bottom: 6px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== PROBLEM SECTION ===== */
+        .problem-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        body.dark-mode .problem-section {
+            background: var(--dark-surface);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .problem-card {
+            background: var(--pastel-pink);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .problem-card:nth-child(2) {
+            background: var(--pastel-orange);
+        }
+
+        .problem-card:nth-child(3) {
+            background: var(--pastel-purple);
+        }
+
+        body.dark-mode .problem-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .problem-icon {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            color: var(--nptel-accent);
+        }
+
+        body.dark-mode .problem-icon {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .problem-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .problem-card p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+
+        body.dark-mode .problem-card p {
+            color: var(--gray-400);
+        }
+
+        /* ===== SOLUTION SECTION ===== */
+        .solution-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #E8F5E9, #E3F2FD);
+        }
+
+        body.dark-mode .solution-section {
+            background: var(--dark-bg);
+        }
+
+        .solution-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .solution-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .solution-step {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            background: white;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .solution-step {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .solution-step:hover {
+            transform: translateX(10px);
+            border-left: 4px solid var(--ctm-primary);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--ctm-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .solution-step h4 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        .solution-step p {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        body.dark-mode .solution-step p {
+            color: var(--gray-400);
+        }
+
+        /* ===== SERVICES GRID ===== */
+        .services-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        body.dark-mode .services-section {
+            background: var(--dark-surface);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        body.dark-mode .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--ctm-primary);
+            box-shadow: 0 20px 40px rgba(21, 195, 154, 0.2);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .service-card:nth-child(1) .service-icon {
+            background: linear-gradient(135deg, #E91E63, #FF5722);
+        }
+
+        .service-card:nth-child(2) .service-icon {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+
+        .service-card:nth-child(3) .service-icon {
+            background: linear-gradient(135deg, #3B82F6, #06B6D4);
+        }
+
+        .service-card:nth-child(4) .service-icon {
+            background: linear-gradient(135deg, #8B5CF6, #EC4899);
+        }
+
+        .service-card:nth-child(5) .service-icon {
+            background: linear-gradient(135deg, #F59E0B, #EF4444);
+        }
+
+        .service-card:nth-child(6) .service-icon {
+            background: linear-gradient(135deg, #10B981, #059669);
+        }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        body.dark-mode .service-card p {
+            color: var(--gray-400);
+        }
+
+        /* ===== TARGET CUSTOMERS ===== */
+        .target-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--ctm-primary), #0EA57F);
+            color: white;
+        }
+
+        .target-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .target-title h2 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .target-title p {
+            opacity: 0.9;
+        }
+
+        .target-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .target-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 16px 24px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .target-item:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
+        }
+
+        .target-item i {
+            font-size: 1.3rem;
+        }
+
+        .target-item span {
+            font-weight: 600;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            padding: 80px 0;
+            background: var(--gray-50);
+            text-align: center;
+        }
+
+        body.dark-mode .cta-section {
+            background: var(--dark-bg);
+        }
+
+        .cta-box {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 30px;
+            box-shadow: var(--shadow-lg);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        body.dark-mode .cta-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cta-box h2 {
+            margin-bottom: 15px;
+        }
+
+        .cta-box p {
+            color: var(--gray-600);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        body.dark-mode .cta-box p {
+            color: var(--gray-400);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* ===== MOBILE RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-visual-card {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .hero-cta-group {
+                justify-content: center;
+            }
+
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .solution-content {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .target-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/919962003738" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ===== HEADER ===== -->
+    <header class="nptel-header">
+        <div class="container">
+            <div class="nptel-header-content">
+                <!-- Payment Link First -->
+                <a href="payment.html" class="payment-link">
+                    <i class="fas fa-credit-card"></i> Payment
+                </a>
+
+                <!-- Logo -->
+                <a href="business-home.html" class="nptel-logo">
+                    <h1>CareTech<span>Mobile</span></h1>
+                </a>
+
+                <!-- Navigation - 9 items (Payment removed) -->
+                <nav class="nptel-nav">
+                    <a href="business-home.html" class="active">Home</a>
+                    <a href="business-services.html">Services</a>
+                    <a href="whatsapp-automation.html">WhatsApp Automation</a>
+                    <a href="ai-assist.html">AI Assist</a>
+                    <a href="mini-crm.html">Mini CRM</a>
+                    <a href="how-it-works.html">How It Works</a>
+                    <a href="business-pricing.html">Pricing</a>
+                    <a href="demo.html">Free Demo</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+
+                <div class="nptel-header-actions">
+                    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <a href="dashboard.html" class="btn-nptel-login">
+                        <i class="fas fa-user"></i> Login
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="business-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fas fa-rocket"></i>
+                        Small Business Automation
+                    </div>
+                    <h1 class="hero-title">
+                        Struggling to <span class="highlight">Get Customers?</span><br>
+                        We Automate Your <span class="highlight">Leads & Follow-ups.</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Never miss a WhatsApp enquiry again. Auto-reply instantly,
+                        follow-up automatically, and convert more leads to paying customers.
+                    </p>
+                    <div class="hero-cta-group">
+                        <a href="https://wa.me/919962003738?text=Hi,%20I%20want%20to%20know%20about%20WhatsApp%20automation%20for%20my%20business"
+                            class="btn-whatsapp-large" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            Get Free Demo
+                        </a>
+                        <a href="how-it-works.html" class="btn btn-secondary">
+                            How It Works
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual-card">
+                    <div class="phone-mockup">
+                        <div class="chat-bubble">
+                            Hi, I want to repair my mobile screen. Available today?
+                        </div>
+                        <div class="chat-bubble reply auto-reply">
+                            <span class="auto-tag">⚡ Auto Reply</span><br>
+                            Hello! Thanks for messaging. Yes, we're available today 10 AM - 8 PM. Please share your
+                            phone model for quote. 📱
+                        </div>
+                        <div class="chat-bubble">
+                            iPhone 13 Pro Max
+                        </div>
+                        <div class="chat-bubble reply auto-reply">
+                            <span class="auto-tag">⚡ Auto Reply</span><br>
+                            Great! iPhone 13 Pro Max screen repair: ₹4,500 - ₹6,000. Come to our shop or we'll collect
+                            from your location. 🛵
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROBLEM SECTION ===== -->
+    <section class="problem-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Is This Happening in Your Business?</h2>
+                <p>Most small business owners face these problems every single day</p>
+            </div>
+
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-comment-slash"></i>
+                    </div>
+                    <h3>Missing WhatsApp Messages</h3>
+                    <p>When you're busy, customer messages go unanswered and you lose business</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-user-clock"></i>
+                    </div>
+                    <h3>Forgetting to Follow-up</h3>
+                    <p>No time to follow-up with customers who enquired - leads go cold</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-user-minus"></i>
+                    </div>
+                    <h3>Losing Customers to Competitors</h3>
+                    <p>When you reply late, customers go to your competitor instead</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SOLUTION SECTION ===== -->
+    <section class="solution-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Solution - Simple & Automatic</h2>
+                <p>How we help you never miss a customer</p>
+            </div>
+
+            <div class="solution-content">
+                <div class="solution-visual">
+                    <img src="https://placehold.co/500x400/15C39A/ffffff?text=WhatsApp+Auto+System"
+                        alt="WhatsApp Automation System" style="border-radius: 20px; width: 100%;">
+                </div>
+                <div class="solution-steps">
+                    <div class="solution-step">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h4>Customer Messages You</h4>
+                            <p>Anyone sends WhatsApp message to your business number</p>
+                        </div>
+                    </div>
+                    <div class="solution-step">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h4>Auto Reply Goes Instantly</h4>
+                            <p>They get helpful reply immediately - even when you're busy</p>
+                        </div>
+                    </div>
+                    <div class="solution-step">
+                        <div class="step-number">3</div>
+                        <div>
+                            <h4>Lead Saved Automatically</h4>
+                            <p>Customer details saved in your CRM - no manual entry</p>
+                        </div>
+                    </div>
+                    <div class="solution-step">
+                        <div class="step-number">4</div>
+                        <div>
+                            <h4>Follow-up Reminders</h4>
+                            <p>System reminds you to follow-up on Day 1, 3, 7</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES SECTION ===== -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>Everything your small business needs to grow</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Mini Website</h3>
+                    <p>Simple shop page with WhatsApp button. Customer can see your services & contact easily.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp Auto-Reply</h3>
+                    <p>Never miss a message. Auto-reply to customers 24/7, even when you're busy.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Lead Follow-up</h3>
+                    <p>Automatic reminder messages sent to customers. Convert more enquiries to sales.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Simple CRM</h3>
+                    <p>Track all customers in one place. No more lost phone numbers or missed follow-ups.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-medical"></i>
+                    </div>
+                    <h3>Laptop & PC Repair + GST</h3>
+                    <p>Hardware repair services with proper GST billing. Professional service for businesses.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Data Recovery</h3>
+                    <p>Lost data from hard disk, SSD, or mobile? We recover it. Don't panic, contact us.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TARGET CUSTOMERS ===== -->
+    <section class="target-section">
+        <div class="container">
+            <div class="target-title">
+                <h2>Who Is This For?</h2>
+                <p>We help these local businesses grow with automation</p>
+            </div>
+
+            <div class="target-grid">
+                <div class="target-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Mobile Repair Shops</span>
+                </div>
+                <div class="target-item">
+                    <i class="fas fa-laptop"></i>
+                    <span>Laptop Service Centers</span>
+                </div>
+                <div class="target-item">
+                    <i class="fas fa-stethoscope"></i>
+                    <span>Clinics & Doctors</span>
+                </div>
+                <div class="target-item">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <span>Tuition Centers</span>
+                </div>
+                <div class="target-item">
+                    <i class="fas fa-wrench"></i>
+                    <span>AC / Plumber / Electrician</span>
+                </div>
+                <div class="target-item">
+                    <i class="fas fa-store"></i>
+                    <span>Local Service Shops</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA SECTION ===== -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Ready to Never Miss a Customer?</h2>
+                <p>
+                    Get a free demo in just 10 minutes.
+                    See how our system can help your business grow.
+                </p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/919962003738?text=Hi,%20I%20want%20a%20free%20demo%20for%20WhatsApp%20automation"
+                        class="btn btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Get Free Demo
+                    </a>
+                    <a href="tel:+919495253265" class="btn btn-secondary">
+                        <i class="fas fa-phone"></i> Call 9495253265
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER (Simplified) ===== -->
+    <footer class="nptel-footer">
+        <div class="container">
+            <div class="footer-simple">
+                <div class="footer-brand">
+                    <h3>CareTech<span>Mobile</span></h3>
+                    <p>Helping small businesses automate leads & follow-ups.</p>
+                    <div class="footer-social">
+                        <a href="https://wa.me/919962003738" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:info@caretechmobile.com"><i class="fas fa-envelope"></i></a>
+                        <a href="tel:+919495253265"><i class="fas fa-phone"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+919495253265">9495253265</a></p>
+                    <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/919962003738">9962003738</a></p>
+                    <p><i class="fas fa-envelope"></i> <a
+                            href="mailto:info@caretechmobile.com">info@caretechmobile.com</a></p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 CareTechMobile. Built by <strong>Shihab Rajendran</strong></p>
+                <div class="footer-bottom-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== SCRIPTS ===== -->
+    <script>
+        // ===== DARK MODE TOGGLE =====
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        if (localStorage.getItem('darkMode') === 'true') {
+            body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+            darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // ===== MOBILE MENU =====
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const nptelNav = document.querySelector('.nptel-nav');
+
+        if (mobileMenuBtn && nptelNav) {
+            mobileMenuBtn.addEventListener('click', () => {
+                nptelNav.classList.toggle('active');
+                mobileMenuBtn.classList.toggle('active');
+            });
+
+            nptelNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    nptelNav.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!nptelNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    nptelNav.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                }
+            });
+        }
+
+        // ===== SCROLL ANIMATIONS =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.problem-card, .solution-step, .service-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+
+        // ===== HEADER SCROLL EFFECT =====
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.nptel-header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.08)';
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+# Backup folder - contains old/sensitive files
+backup/
+
+# VS Code settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Snapshots
+.snapshots/
