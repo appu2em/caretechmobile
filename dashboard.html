@@ -2568,8 +2568,10 @@
                 // Hide dashboard, show login
                 document.getElementById('dashboardContainer').classList.add('hidden');
                 document.getElementById('authContainer').classList.remove('hidden');
-                document.getElementById('loggedInNav')?.classList.add('hidden');
-                document.getElementById('logoutLink')?.style.display = 'none';
+                const loggedInNav = document.getElementById('loggedInNav');
+                const logoutLink = document.getElementById('logoutLink');
+                if (loggedInNav) loggedInNav.classList.add('hidden');
+                if (logoutLink) logoutLink.style.display = 'none';
                 // Hide dashboard nav and actions
                 const dashNav = document.getElementById('dashboardNav');
                 const dashActions = document.getElementById('dashboardActions');

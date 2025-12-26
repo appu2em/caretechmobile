@@ -1290,13 +1290,22 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Minimal Header - Just Logo for Clean Login -->
+    <!-- Header - Shows nav after login -->
     <header class="nptel-header" id="mainHeader" style="background: rgba(15, 23, 42, 0.98);">
         <div class="container">
-            <div class="nptel-header-content" style="justify-content: center;">
+            <div class="nptel-header-content">
                 <a href="business-home.html" class="nptel-logo">
                     <h1>CareTech<span>Mobile</span></h1>
                 </a>
+                <!-- Navigation - shown when logged in -->
+                <nav class="nptel-nav" id="dashboardNav" style="display: none;">
+                    <a href="business-home.html">Home</a>
+                    <a href="dashboard.html" class="active">Dashboard</a>
+                    <a href="profile.html">Profile</a>
+                </nav>
+                <div class="nptel-header-actions" id="dashboardActions" style="display: none;">
+                    <a href="#" id="logoutBtn" class="btn-nptel-login"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
             </div>
         </div>
     </header>
@@ -2090,6 +2099,12 @@
             if (logoutLink) logoutLink.style.display = 'flex';
             if (backToHomeBtn) backToHomeBtn.classList.add('hidden');
 
+            // Show dashboard navigation and actions
+            const dashboardNav = document.getElementById('dashboardNav');
+            const dashboardActions = document.getElementById('dashboardActions');
+            if (dashboardNav) dashboardNav.style.display = 'flex';
+            if (dashboardActions) dashboardActions.style.display = 'flex';
+
             // Start session timer for auto-logout (8 hours = 28800000 ms)
             startSessionTimer();
 
@@ -2445,7 +2460,10 @@
         // ============================================
         // LOGOUT - Strong back button prevention
         // ============================================
-        document.getElementById('logoutLink').addEventListener('click', async function (e) {
+        const logoutLinkEl = document.getElementById('logoutLink');
+        const logoutBtnEl = document.getElementById('logoutBtn');
+
+        async function performLogout(e) {
             e.preventDefault();
             debugLog('Logout clicked');
 
@@ -2475,9 +2493,12 @@
 
             } catch (error) {
                 debugLog('Logout error', error);
-                showToast('Error logging out', 'error');
+                showToast('Logout failed', 'error');
             }
-        });
+        }
+
+        if (logoutLinkEl) logoutLinkEl.addEventListener('click', performLogout);
+        if (logoutBtnEl) logoutBtnEl.addEventListener('click', performLogout);
 
         // ============================================
         // CHECK EXISTING SESSION
@@ -2547,8 +2568,15 @@
                 // Hide dashboard, show login
                 document.getElementById('dashboardContainer').classList.add('hidden');
                 document.getElementById('authContainer').classList.remove('hidden');
-                document.getElementById('loggedInNav').classList.add('hidden');
-                document.getElementById('logoutLink').style.display = 'none';
+                const loggedInNav = document.getElementById('loggedInNav');
+                const logoutLink = document.getElementById('logoutLink');
+                if (loggedInNav) loggedInNav.classList.add('hidden');
+                if (logoutLink) logoutLink.style.display = 'none';
+                // Hide dashboard nav and actions
+                const dashNav = document.getElementById('dashboardNav');
+                const dashActions = document.getElementById('dashboardActions');
+                if (dashNav) dashNav.style.display = 'none';
+                if (dashActions) dashActions.style.display = 'none';
             }
         });
 
