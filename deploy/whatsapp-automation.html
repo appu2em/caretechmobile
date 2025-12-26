@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NWEBGP5V40"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-NWEBGP5V40');
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Automation for Business | Auto Reply & Follow-up | CareTechMobile</title>
+    <meta name="description"
+        content="Never miss a WhatsApp customer. Auto-reply instantly, follow-up automatically, convert more leads. Perfect for small business owners.">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="nptel-theme.css">
+
+    <style>
+        /* Hero */
+        .whatsapp-hero {
+            margin-top: 70px;
+            padding: 80px 0 60px;
+            background: linear-gradient(135deg, #DCF8C6 0%, #E8F5E9 50%, #C8E6C9 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.dark-mode .whatsapp-hero {
+            background: linear-gradient(135deg, #0a1f1a 0%, #1a2f1a 50%, #0f1f0f 100%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #25D366;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-title .highlight {
+            color: #25D366;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray-600);
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        body.dark-mode .hero-subtitle {
+            color: var(--gray-400);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        /* Flow Diagram */
+        .flow-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        body.dark-mode .flow-section {
+            background: var(--dark-surface);
+        }
+
+        .flow-diagram {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            padding: 30px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-mode .flow-step {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .flow-step:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .flow-connector {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        .flow-connector i {
+            font-size: 2rem;
+            color: #25D366;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(5px);
+            }
+        }
+
+        .flow-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .flow-step:nth-child(1) .flow-icon {
+            background: linear-gradient(135deg, #64B5F6, #2196F3);
+        }
+
+        .flow-step:nth-child(3) .flow-icon {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+
+        .flow-step:nth-child(5) .flow-icon {
+            background: linear-gradient(135deg, #FFB74D, #FF9800);
+        }
+
+        .flow-step:nth-child(7) .flow-icon {
+            background: linear-gradient(135deg, #BA68C8, #9C27B0);
+        }
+
+        .flow-step:nth-child(9) .flow-icon {
+            background: linear-gradient(135deg, #81C784, #4CAF50);
+        }
+
+        .flow-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+
+        .flow-content p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+
+        body.dark-mode .flow-content p {
+            color: var(--gray-400);
+        }
+
+        /* Features Grid */
+        .features-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #E8F5E9, #F1F8E9);
+        }
+
+        body.dark-mode .features-section {
+            background: var(--dark-bg);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        body.dark-mode .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: #25D366;
+            box-shadow: 0 20px 40px rgba(37, 211, 102, 0.2);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+
+        body.dark-mode .feature-card p {
+            color: var(--gray-400);
+        }
+
+        /* Demo Chat */
+        .demo-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        body.dark-mode .demo-section {
+            background: var(--dark-surface);
+        }
+
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .demo-phone {
+            background: linear-gradient(135deg, #1a1a2e, #2d2d44);
+            border-radius: 40px;
+            padding: 20px;
+            max-width: 350px;
+            margin: 0 auto;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .demo-phone-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: #128C7E;
+            border-radius: 20px 20px 0 0;
+            color: white;
+        }
+
+        .demo-phone-header .avatar {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #128C7E;
+            font-weight: 700;
+        }
+
+        .demo-phone-header .name {
+            font-weight: 600;
+        }
+
+        .demo-phone-header .status {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .demo-chat-area {
+            background: linear-gradient(135deg, #E5DDD5, #ECE5DD);
+            padding: 20px 15px;
+            min-height: 350px;
+            border-radius: 0 0 20px 20px;
+        }
+
+        body.dark-mode .demo-chat-area {
+            background: linear-gradient(135deg, #1a2f1a, #0f1f0f);
+        }
+
+        .chat-msg {
+            max-width: 85%;
+            padding: 10px 14px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            position: relative;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .chat-msg.user {
+            background: white;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-msg.bot {
+            background: #DCF8C6;
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+        }
+
+        body.dark-mode .chat-msg.user {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        body.dark-mode .chat-msg.bot {
+            background: #128C7E;
+            color: white;
+        }
+
+        .chat-msg .auto-badge {
+            position: absolute;
+            top: -8px;
+            right: 10px;
+            background: #25D366;
+            color: white;
+            font-size: 0.65rem;
+            padding: 2px 8px;
+            border-radius: 50px;
+        }
+
+        .chat-msg .time {
+            font-size: 0.7rem;
+            color: #999;
+            text-align: right;
+            margin-top: 4px;
+        }
+
+        .demo-content h2 {
+            margin-bottom: 20px;
+        }
+
+        .demo-content p {
+            color: var(--gray-600);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        body.dark-mode .demo-content p {
+            color: var(--gray-400);
+        }
+
+        .demo-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .demo-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 1rem;
+            color: var(--gray-700);
+        }
+
+        body.dark-mode .demo-features li {
+            color: var(--gray-300);
+        }
+
+        .demo-features li i {
+            color: #25D366;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            opacity: 0.9;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: white;
+            color: #128C7E;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 992px) {
+
+            .hero-content,
+            .demo-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-cta {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="https://wa.me/919962003738" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Header -->
+    <header class="nptel-header">
+        <div class="container">
+            <div class="nptel-header-content">
+                <a href="payment.html" class="payment-link">
+                    <i class="fas fa-credit-card"></i> Payment
+                </a>
+
+                <a href="business-home.html" class="nptel-logo">
+                    <h1>CareTech<span>Mobile</span></h1>
+                </a>
+
+                <nav class="nptel-nav">
+                    <a href="business-home.html">Home</a>
+                    <a href="business-services.html">Services</a>
+                    <a href="whatsapp-automation.html" class="active">WhatsApp Automation</a>
+                    <a href="ai-assist.html">AI Assist</a>
+                    <a href="mini-crm.html">Mini CRM</a>
+                    <a href="how-it-works.html">How It Works</a>
+                    <a href="business-pricing.html">Pricing</a>
+                    <a href="demo.html">Free Demo</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+
+                <div class="nptel-header-actions">
+                    <button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button>
+                    <a href="dashboard.html" class="btn-nptel-login"><i class="fas fa-user"></i> Login</a>
+                </div>
+
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="whatsapp-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp Business Automation
+                    </div>
+                    <h1 class="hero-title">
+                        Never Miss a <span class="highlight">WhatsApp</span> Customer Again
+                    </h1>
+                    <p class="hero-subtitle">
+                        Auto-reply instantly when you're busy. Follow-up automatically.
+                        Convert more enquiries into paying customers - without any extra effort.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="demo.html" class="btn btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> Get Free Demo
+                        </a>
+                        <a href="#how-it-works" class="btn btn-secondary">
+                            See How It Works
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <img src="https://placehold.co/450x400/25D366/ffffff?text=WhatsApp+Auto+Reply"
+                        alt="WhatsApp Automation"
+                        style="border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flow Diagram -->
+    <section class="flow-section" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How WhatsApp Automation Works</h2>
+                <p>Simple 5-step process that works 24/7 for your business</p>
+            </div>
+
+            <div class="flow-diagram">
+                <div class="flow-step">
+                    <div class="flow-icon"><i class="fas fa-user"></i></div>
+                    <div class="flow-content">
+                        <h3>Customer Messages You</h3>
+                        <p>Someone sends a WhatsApp message to your business number</p>
+                    </div>
+                </div>
+
+                <div class="flow-connector"><i class="fas fa-arrow-down"></i></div>
+
+                <div class="flow-step">
+                    <div class="flow-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="flow-content">
+                        <h3>Instant Auto-Reply</h3>
+                        <p>They receive helpful reply in seconds - even when you're busy or sleeping</p>
+                    </div>
+                </div>
+
+                <div class="flow-connector"><i class="fas fa-arrow-down"></i></div>
+
+                <div class="flow-step">
+                    <div class="flow-icon"><i class="fas fa-database"></i></div>
+                    <div class="flow-content">
+                        <h3>Lead Saved Automatically</h3>
+                        <p>Customer's name, phone, and message saved in your CRM - no manual entry</p>
+                    </div>
+                </div>
+
+                <div class="flow-connector"><i class="fas fa-arrow-down"></i></div>
+
+                <div class="flow-step">
+                    <div class="flow-icon"><i class="fas fa-bell"></i></div>
+                    <div class="flow-content">
+                        <h3>You Get Notified</h3>
+                        <p>You receive alert about new enquiry - respond when you're free</p>
+                    </div>
+                </div>
+
+                <div class="flow-connector"><i class="fas fa-arrow-down"></i></div>
+
+                <div class="flow-step">
+                    <div class="flow-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="flow-content">
+                        <h3>Automatic Follow-up</h3>
+                        <p>If customer doesn't respond, follow-up messages sent on Day 1, 3, 7</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Business Owners Love This</h2>
+                <p>Real benefits that help you save time and earn more</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Save 3+ Hours Daily</h3>
+                    <p>No more typing same reply again and again. Auto-reply handles it for you.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-user-check"></i></div>
+                    <h3>Never Lose a Customer</h3>
+                    <p>Even late night enquiries get instant response. No customer goes to competitor.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Convert More Leads</h3>
+                    <p>Automatic follow-up increases conversion by 30%. No lead forgotten.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Chat -->
+    <section class="demo-section">
+        <div class="container">
+            <div class="demo-container">
+                <div class="demo-phone">
+                    <div class="demo-phone-header">
+                        <div class="avatar">CB</div>
+                        <div>
+                            <div class="name">CareTech Business</div>
+                            <div class="status">Online</div>
+                        </div>
+                    </div>
+                    <div class="demo-chat-area">
+                        <div class="chat-msg user">
+                            Hi, I want to repair my mobile screen
+                            <div class="time">10:30 AM</div>
+                        </div>
+                        <div class="chat-msg bot">
+                            <span class="auto-badge">⚡ Auto</span>
+                            Hello! 👋 Thanks for messaging CareTech Mobile.
+                            <br><br>
+                            We're available today 10 AM - 8 PM.<br>
+                            Please share your phone model for a quote.
+                            <div class="time">10:30 AM ✓✓</div>
+                        </div>
+                        <div class="chat-msg user">
+                            Samsung S21 Ultra
+                            <div class="time">10:31 AM</div>
+                        </div>
+                        <div class="chat-msg bot">
+                            <span class="auto-badge">⚡ Auto</span>
+                            Great choice! Samsung S21 Ultra screen repair:
+                            <br><br>
+                            💰 Price: ₹5,500 - ₹7,000<br>
+                            ⏱️ Time: 2-3 hours<br>
+                            ✅ Warranty: 30 days
+                            <br><br>
+                            Visit our shop or we'll collect! 🛵
+                            <div class="time">10:31 AM ✓✓</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-content">
+                    <h2>See It In Action</h2>
+                    <p>
+                        This is exactly what your customers will experience.
+                        Instant, helpful replies that make them feel valued.
+                    </p>
+                    <ul class="demo-features">
+                        <li><i class="fas fa-check-circle"></i> Replies in 3 seconds - not 3 hours</li>
+                        <li><i class="fas fa-check-circle"></i> Custom messages for your business</li>
+                        <li><i class="fas fa-check-circle"></i> Works with official WhatsApp Business API</li>
+                        <li><i class="fas fa-check-circle"></i> No app installation needed</li>
+                        <li><i class="fas fa-check-circle"></i> Works 24/7, even holidays</li>
+                    </ul>
+                    <a href="https://wa.me/919962003738?text=Hi,%20I%20want%20to%20see%20WhatsApp%20automation%20demo"
+                        class="btn btn-whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Try Demo Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Automate Your WhatsApp?</h2>
+            <p>Setup takes just 1 day. Start converting more customers tomorrow.</p>
+            <div class="cta-buttons">
+                <a href="demo.html" class="btn-white">
+                    <i class="fas fa-play"></i> Get Free Demo
+                </a>
+                <a href="tel:+919495253265" class="btn btn-secondary" style="border-color: white; color: white;">
+                    <i class="fas fa-phone"></i> Call 9495253265
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="nptel-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>CareTech<span>Mobile</span></h3>
+                    <p>Helping small businesses grow with WhatsApp automation.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="business-home.html">Home</a></li>
+                        <li><a href="business-services.html">Services</a></li>
+                        <li><a href="business-pricing.html">Pricing</a></li>
+                        <li><a href="demo.html">Free Demo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:+919495253265"><i class="fas fa-phone"></i> 9495253265</a></li>
+                        <li><a href="https://wa.me/919962003738"><i class="fab fa-whatsapp"></i> 9962003738</a></li>
+                        <li><a href="mailto:info@caretechmobile.com"><i class="fas fa-envelope"></i>
+                                info@caretechmobile.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 CareTechMobile. Built by <strong>Shihab Rajendran</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark Mode
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        if (localStorage.getItem('darkMode') === 'true') {
+            body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const isDark = body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+            darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const nptelNav = document.querySelector('.nptel-nav');
+        mobileMenuBtn.addEventListener('click', () => {
+            nptelNav.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
+
+        // Scroll Animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.flow-step, .feature-card').forEach((el, i) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = `all 0.5s ease ${i * 0.1}s`;
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>

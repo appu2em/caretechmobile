@@ -1,0 +1,218 @@
+/* ========== MOBILE RESPONSIVE CSS ========== */
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* ========== MOBILE FIRST (Default) ========== */
+@media screen and (max-width: 768px) {
+    
+    /* Header / Navbar */
+    .navbar {
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    .nav-item {
+        margin: 10px 0;
+    }
+    
+    .hamburger {
+        display: block !important;
+        cursor: pointer;
+        font-size: 24px;
+    }
+    
+    /* Logo */
+    .logo {
+        max-width: 150px;
+        height: auto;
+    }
+    
+    /* Login Form */
+    .login-container {
+        width: 95%;
+        max-width: 350px;
+        margin: 20px auto;
+        padding: 20px;
+    }
+    
+    .login-form input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        font-size: 16px; /* iOS zoom prevent */
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    
+    .login-form button {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    /* Cards / Grid */
+    .card-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .card {
+        padding: 15px;
+        border-radius: 8px;
+    }
+    
+    /* Tables - Scrollable */
+    .table-wrapper {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    table {
+        min-width: 600px;
+    }
+    
+    /* Buttons */
+    .btn {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        margin: 5px 0;
+        text-align: center;
+    }
+    
+    /* Dashboard */
+    .dashboard-sidebar {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 80%;
+        height: 100%;
+        background: #fff;
+        z-index: 1000;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    .dashboard-sidebar.open {
+        transform: translateX(0);
+    }
+    
+    .dashboard-content {
+        width: 100%;
+        padding: 10px;
+    }
+    
+    /* Hide elements on mobile */
+    .desktop-only {
+        display: none !important;
+    }
+    
+    /* Show elements on mobile */
+    .mobile-only {
+        display: block !important;
+    }
+    
+    /* Font sizes */
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.2rem; }
+    p { font-size: 1rem; }
+    
+    /* Images */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /* Footer */
+    .footer {
+        text-align: center;
+        padding: 20px 10px;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+    }
+}
+
+/* ========== TABLET ========== */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .nav-menu {
+        display: flex;
+    }
+    
+    .hamburger {
+        display: none;
+    }
+}
+
+/* ========== DESKTOP ========== */
+@media screen and (min-width: 1025px) {
+    .card-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .mobile-only {
+        display: none !important;
+    }
+    
+    .desktop-only {
+        display: block !important;
+    }
+}
+
+/* ========== TOUCH FRIENDLY ========== */
+@media (hover: none) and (pointer: coarse) {
+    .btn, 
+    button, 
+    a {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}

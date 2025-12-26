@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NWEBGP5V40"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-NWEBGP5V40');</script>
+
+<head>
+    <script
+        data-cfasync="false">const CONFIG = { SUPABASE_URL: 'https://oleuggrzmdtcorlvlapp.supabase.co', SUPABASE_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9sZXVnZ3J6bWR0Y29ybHZsYXBwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU0NTI3MDMsImV4cCI6MjA4MTAyODcwM30.dVAunvwATOX-O1hgCx0iqa1KGAxHC-n1ndM' };</script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | CareTech Mobile - Device Repair & Digital Growth</title>
+    <meta name="description"
+        content="Contact CareTech Mobile for device repairs, WhatsApp automation, AI consulting, and digital growth solutions.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="nptel-theme.css">
+
+    <style>
+        .contact-hero {
+            margin-top: 70px;
+            padding: 80px 0 100px;
+            background: linear-gradient(135deg, var(--nptel-blue), var(--nptel-purple));
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.dark-mode .contact-hero {
+            background: linear-gradient(135deg, #0a1a2e, #1a0f2e);
+        }
+
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(21, 195, 154, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .contact-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .contact-hero h1 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-hero h1 .highlight {
+            background: linear-gradient(135deg, var(--ctm-primary), #00BFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .contact-hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .hero-buttons .btn {
+            padding: 14px 30px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .quick-contact {
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+            padding-bottom: 60px;
+        }
+
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition-normal);
+            border-top: 4px solid transparent;
+        }
+
+        body.dark-mode .contact-card {
+            background: var(--dark-card);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .contact-card.whatsapp {
+            border-top-color: #25D366;
+        }
+
+        .contact-card.call {
+            border-top-color: var(--nptel-blue);
+        }
+
+        .contact-card.email {
+            border-top-color: #EA4335;
+        }
+
+        .contact-card.location {
+            border-top-color: var(--ctm-primary);
+        }
+
+        .contact-card-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--white);
+        }
+
+        .contact-card.whatsapp .contact-card-icon {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+
+        .contact-card.call .contact-card-icon {
+            background: linear-gradient(135deg, var(--nptel-blue), #00BCD4);
+        }
+
+        .contact-card.email .contact-card-icon {
+            background: linear-gradient(135deg, #EA4335, #FBBC05);
+        }
+
+        .contact-card.location .contact-card-icon {
+            background: linear-gradient(135deg, var(--ctm-primary), var(--nptel-teal));
+        }
+
+        .contact-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-card p {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        body.dark-mode .contact-card p {
+            color: var(--gray-400);
+        }
+
+        .contact-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        .contact-card.whatsapp .contact-card-link {
+            background: rgba(37, 211, 102, 0.1);
+            color: #25D366;
+        }
+
+        .contact-card.whatsapp .contact-card-link:hover {
+            background: #25D366;
+            color: white;
+        }
+
+        .contact-card.call .contact-card-link {
+            background: rgba(0, 123, 255, 0.1);
+            color: var(--nptel-blue);
+        }
+
+        .contact-card.call .contact-card-link:hover {
+            background: var(--nptel-blue);
+            color: white;
+        }
+
+        .contact-card.email .contact-card-link {
+            background: rgba(234, 67, 53, 0.1);
+            color: #EA4335;
+        }
+
+        .contact-card.email .contact-card-link:hover {
+            background: #EA4335;
+            color: white;
+        }
+
+        .contact-card.location .contact-card-link {
+            background: rgba(21, 195, 154, 0.1);
+            color: var(--ctm-primary);
+        }
+
+        .contact-card.location .contact-card-link:hover {
+            background: var(--ctm-primary);
+            color: white;
+        }
+
+        .form-section {
+            padding: 80px 0;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .form-wrapper {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow-md);
+        }
+
+        body.dark-mode .form-wrapper {
+            background: var(--dark-card);
+        }
+
+        .form-wrapper h2 {
+            margin-bottom: 10px;
+        }
+
+        .form-wrapper>p {
+            color: var(--gray-600);
+            margin-bottom: 30px;
+        }
+
+        body.dark-mode .form-wrapper>p {
+            color: var(--gray-400);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            transition: var(--transition-fast);
+        }
+
+        body.dark-mode .form-group input,
+        body.dark-mode .form-group textarea,
+        body.dark-mode .form-group select {
+            background: var(--dark-surface);
+            border-color: var(--dark-border);
+            color: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--ctm-primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: var(--ctm-primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-submit:hover {
+            background: var(--ctm-primary-dark);
+        }
+
+        .info-wrapper h2 {
+            margin-bottom: 10px;
+        }
+
+        .info-wrapper>p {
+            color: var(--gray-600);
+            margin-bottom: 30px;
+        }
+
+        body.dark-mode .info-wrapper>p {
+            color: var(--gray-400);
+        }
+
+        .info-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        body.dark-mode .info-item {
+            border-color: var(--dark-border);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--pastel-green);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--ctm-primary);
+            flex-shrink: 0;
+        }
+
+        body.dark-mode .info-icon {
+            background: rgba(21, 195, 154, 0.15);
+        }
+
+        .info-content h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .info-content p {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        body.dark-mode .info-content p {
+            color: var(--gray-400);
+        }
+
+        .info-content a {
+            color: var(--ctm-primary);
+            text-decoration: none;
+        }
+
+        .hours-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--pastel-green);
+            padding: 6px 12px;
+            border-radius: var(--radius-xl);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--ctm-primary-dark);
+            margin-top: 5px;
+        }
+
+        body.dark-mode .hours-badge {
+            background: rgba(21, 195, 154, 0.2);
+            color: var(--ctm-primary-light);
+        }
+
+        .map-section {
+            padding: 60px 0;
+            background: var(--gray-50);
+        }
+
+        body.dark-mode .map-section {
+            background: var(--dark-bg);
+        }
+
+        .map-wrapper {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+
+        @media (max-width: 1024px) {
+            .nptel-nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="https://wa.me/919962003738" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <header class="nptel-header">
+        <div class="container">
+            <div class="nptel-header-content">
+                <a href="business-home.html" class="nptel-logo">
+                    <h1>CareTech<span>Mobile</span></h1>
+                </a>
+
+                <nav class="nptel-nav">
+                    <a href="business-home.html">Home</a>
+                    <a href="payment.html">Payment</a>
+                    <a href="business-services.html">Services</a>
+                    <a href="whatsapp-automation.html">WhatsApp Automation</a>
+                    <a href="ai-assist.html">AI Assist</a>
+                    <a href="mini-crm.html">Mini CRM</a>
+                    <a href="how-it-works.html">How It Works</a>
+                    <a href="business-pricing.html">Pricing</a>
+                    <a href="demo.html">Free Demo</a>
+                    <a href="contact.html" class="active">Contact</a>
+                </nav>
+
+                <div class="nptel-header-actions">
+                    <button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button>
+                    <a href="dashboard.html" class="btn-nptel-login"><i class="fas fa-user"></i> Login</a>
+                </div>
+
+                <button class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Get in <span class="highlight">Touch</span></h1>
+            <p>We're here to help with device repairs, automation solutions, AI consulting, and digital growth
+                strategies</p>
+            <div class="hero-buttons">
+                <a href="https://wa.me/919962003738" class="btn btn-whatsapp" target="_blank"><i
+                        class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+                <a href="tel:+919962003738" class="btn btn-secondary"><i class="fas fa-phone"></i> Call Us Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="quick-contact">
+        <div class="container">
+            <div class="contact-cards">
+                <div class="contact-card whatsapp">
+                    <div class="contact-card-icon"><i class="fab fa-whatsapp"></i></div>
+                    <h3>WhatsApp Support</h3>
+                    <p>Instant replies, fastest way to reach us 24/7</p>
+                    <a href="https://wa.me/919962003738" class="contact-card-link" target="_blank"><i
+                            class="fab fa-whatsapp"></i> Chat Now</a>
+                </div>
+                <div class="contact-card call">
+                    <div class="contact-card-icon"><i class="fas fa-phone"></i></div>
+                    <h3>Call Us</h3>
+                    <p>Speak directly with our tech experts</p>
+                    <a href="tel:+919962003738" class="contact-card-link"><i class="fas fa-phone"></i> 9962003738</a>
+                </div>
+                <div class="contact-card email">
+                    <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
+                    <h3>Email Us</h3>
+                    <p>For detailed inquiries and partnerships</p>
+                    <a href="mailto:info@caretechmobile.com" class="contact-card-link"><i class="fas fa-envelope"></i>
+                        Send Email</a>
+                </div>
+                <div class="contact-card location">
+                    <div class="contact-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3>Visit Us</h3>
+                    <p>Mannarkkad,Palakkad, Kerala, India</p>
+                    <a href="https://maps.google.com/?q=Mannarkkad,Kerala" class="contact-card-link" target="_blank"><i
+                            class="fas fa-map-marker-alt"></i> Get Directions</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="form-section">
+        <div class="container">
+            <div class="form-grid">
+                <div class="form-wrapper">
+                    <h2>Send Us a Message</h2>
+                    <p>Fill out the form and we'll get back to you within 24 hours</p>
+                    <form id="contactForm">
+                        <div class="form-group"><label>Your Name *</label><input type="text" name="name" required
+                                placeholder="Enter your full name"></div>
+                        <div class="form-group"><label>Phone Number *</label><input type="tel" name="phone" required
+                                placeholder="10-digit mobile number"></div>
+                        <div class="form-group"><label>Email Address</label><input type="email" name="email"
+                                placeholder="your@email.com"></div>
+                        <div class="form-group"><label>Service Interested In</label><select name="service">
+                                <option value="">Select a service</option>
+                                <option value="Device Repair">Device Repair</option>
+                                <option value="WhatsApp Automation">WhatsApp Automation</option>
+                                <option value="AI Consulting">AI Consulting</option>
+                                <option value="Website Development">Website Development</option>
+                                <option value="Online Earning Guidance">Online Earning Guidance</option>
+                                <option value="Other">Other</option>
+                            </select></div>
+                        <div class="form-group"><label>Your Message *</label><textarea name="message" required
+                                placeholder="Describe your requirements or issue..."></textarea></div>
+                        <button type="submit" class="btn-submit"><i class="fab fa-whatsapp"></i> Send via
+                            WhatsApp</button>
+                    </form>
+                </div>
+
+                <div class="info-wrapper">
+                    <h2>Contact Information</h2>
+                    <p>Reach out to us through any of these channels</p>
+
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fab fa-whatsapp"></i></div>
+                        <div class="info-content">
+                            <h4>WhatsApp Business</h4>
+                            <p>+91 9962003738</p><a href="https://wa.me/919962003738">Click to chat instantly</a>
+                            <div class="hours-badge"><i class="fas fa-clock"></i> 24/7 Support</div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-phone"></i></div>
+                        <div class="info-content">
+                            <h4>Phone Support</h4>
+                            <p>+91 9495253265 | +91 9962003738</p>
+                            <div class="hours-badge"><i class="fas fa-clock"></i> 9 AM - 9 PM IST</div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="info-content">
+                            <h4>Email</h4>
+                            <p><a href="mailto:info@caretechmobile.com">info@caretechmobile.com</a></p>
+
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="info-content">
+                            <h4>Office Address</h4>
+                            <p>Mannarkkad,Palakkad District<br>Kerala 678595, India</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fas fa-headset"></i></div>
+                        <div class="info-content">
+                            <h4>Remote Support</h4>
+                            <p>TeamViewer & AnyDesk support available</p><a
+                                href="https://wa.me/919962003738?text=I need remote support">Request remote session</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="map-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Find Us</h2>
+                <p>Visit our service center in Mannarkkad, Kerala</p>
+            </div>
+            <div class="map-wrapper">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31505.42562912934!2d76.32!3d9.68!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b088301c9b0c1c9%3A0x3a5b0e4e0e8f0e0d!2sMannarkkad%2C%20Kerala!5e0!3m2!1sen!2sin!4v1"
+                    allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="nptel-cta">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p>Whether it's device repair, automation, or digital growth — we're here to help you succeed</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/919962003738" class="btn btn-whatsapp" target="_blank"><i
+                        class="fab fa-whatsapp"></i> Start a Conversation</a>
+                <a href="services.html" class="btn btn-secondary"><i class="fas fa-tools"></i> Explore Services</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="nptel-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>CareTech<span>Mobile</span></h3>
+                    <p>Your trusted partner for device repair, WhatsApp automation, AI tools, and digital growth
+                        strategies.</p>
+                    <div class="footer-social"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i
+                                class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a
+                            href="#"><i class="fab fa-linkedin-in"></i></a><a href="https://wa.me/919962003738"><i
+                                class="fab fa-whatsapp"></i></a></div>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Device Repair</a></li>
+                        <li><a href="services.html#automation">WhatsApp Automation</a></li>
+                        <li><a href="services.html#digital">Mini Websites</a></li>
+                        <li><a href="membership.html">Membership</a></li>
+                        <li><a href="payment.html"><i class="fas fa-credit-card"></i> Payment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="ai-tools.html">AI Tools Hub</a></li>
+                        <li><a href="earning-hub.html">Online Earning</a></li>
+                        <li><a href="software.html">Software Directory</a></li>
+                        <li><a href="help-center.html">Tech Help</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:+919495253265"><i class="fas fa-phone"></i> 9495253265</a></li>
+                        <li><a href="https://wa.me/919962003738"><i class="fab fa-whatsapp"></i> 9962003738</a></li>
+                        <li><a href="mailto:info@caretechmobile.com"><i class="fas fa-envelope"></i>
+                                info@caretechmobile.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 CareTechMobile. All rights reserved. Built by <strong>Shihab Rajendran</strong></p>
+                <div class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a><a
+                        href="terms.html">Terms</a><a href="refund.html">Refund</a><a href="sitemap.html">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        if (localStorage.getItem('darkMode') === 'true') { document.body.classList.add('dark-mode'); darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; }
+        darkModeToggle.addEventListener('click', () => { document.body.classList.toggle('dark-mode'); const isDark = document.body.classList.contains('dark-mode'); localStorage.setItem('darkMode', isDark); darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>'; });
+
+        document.getElementById('mobileMenuBtn').addEventListener('click', function () { const nav = document.querySelector('.nptel-nav'); nav.classList.toggle('active'); this.classList.toggle('active'); });
+
+        document.getElementById('contactForm').addEventListener('submit', function (e) { e.preventDefault(); const data = Object.fromEntries(new FormData(this)); let msg = `*Contact Form Submission*%0A%0AName: ${data.name}%0APhone: ${data.phone}%0A`; if (data.email) msg += `Email: ${data.email}%0A`; if (data.service) msg += `Service: ${data.service}%0A`; msg += `Message: ${data.message}`; window.open(`https://wa.me/919962003738?text=${msg}`, '_blank'); alert('Thank you! Your message has been sent via WhatsApp.'); this.reset(); });
+    </script>
+
+    <!-- WhatsApp Automation Integration -->
+    <script src="whatsapp-integration.js"></script>
+
+    <!-- Global Auth Helper - Shows Logout on all pages when logged in -->
+    <script src="auth-helper.js"></script>
+</body>
+
+</html>

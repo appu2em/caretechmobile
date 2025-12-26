@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NWEBGP5V40"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-NWEBGP5V40');</script>
+
+<head>
+    <script
+        data-cfasync="false">const CONFIG = { SUPABASE_URL: 'https://oleuggrzmdtcorlvlapp.supabase.co', SUPABASE_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9sZXVnZ3J6bWR0Y29ybHZsYXBwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU0NTI3MDMsImV4cCI6MjA4MTAyODcwM30.dVAunvwATOX-O1hgCx0iqa1KGAxHC-n1ndM' };</script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software & Tools Directory — Free Downloads | CareTechMobile</title>
+    <meta name="description"
+        content="Download essential software, productivity tools, and utilities. Complete directory with installation guides and ratings.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="nptel-theme.css">
+
+    <style>
+        .software-hero {
+            margin-top: 70px;
+            padding: 80px 0 60px;
+            background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-green));
+            text-align: center;
+        }
+
+        body.dark-mode .software-hero {
+            background: linear-gradient(135deg, #0f1a2e, #0a1f1a);
+        }
+
+        .software-hero h1 .highlight {
+            background: linear-gradient(135deg, var(--nptel-blue), var(--ctm-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .software-hero p {
+            font-size: 1.15rem;
+            color: var(--gray-600);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        body.dark-mode .software-hero p {
+            color: var(--gray-400);
+        }
+
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 16px 20px 16px 50px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-xl);
+            font-size: 1rem;
+            background: var(--white);
+        }
+
+        body.dark-mode .search-box input {
+            background: var(--dark-card);
+            border-color: var(--dark-border);
+            color: var(--white);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--ctm-primary);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-400);
+        }
+
+        .filter-section {
+            padding: 30px 0;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 70px;
+            z-index: 90;
+        }
+
+        body.dark-mode .filter-section {
+            background: var(--dark-surface);
+            border-color: var(--dark-border);
+        }
+
+        .filter-chips {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-chip {
+            padding: 10px 20px;
+            background: var(--gray-100);
+            border: none;
+            border-radius: var(--radius-xl);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-size: 0.9rem;
+        }
+
+        body.dark-mode .filter-chip {
+            background: var(--dark-card);
+            color: var(--gray-300);
+        }
+
+        .filter-chip:hover,
+        .filter-chip.active {
+            background: var(--ctm-primary);
+            color: var(--white);
+        }
+
+        .software-section {
+            padding: 60px 0;
+        }
+
+        .software-section.alt-bg {
+            background: var(--gray-50);
+        }
+
+        body.dark-mode .software-section.alt-bg {
+            background: var(--dark-bg);
+        }
+
+        /* Featured Cards */
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .featured-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            border: 2px solid var(--gray-200);
+            position: relative;
+            transition: var(--transition-normal);
+        }
+
+        body.dark-mode .featured-card {
+            background: var(--dark-card);
+            border-color: var(--dark-border);
+        }
+
+        .featured-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--ctm-primary);
+        }
+
+        .software-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 12px;
+            border-radius: var(--radius-xl);
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .software-badge.premium {
+            background: linear-gradient(135deg, var(--nptel-orange), #FFC107);
+            color: #fff;
+        }
+
+        .software-badge.free {
+            background: var(--pastel-green);
+            color: var(--ctm-primary-dark);
+        }
+
+        .software-logo {
+            width: 60px;
+            height: 60px;
+            background: var(--gray-100);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        body.dark-mode .software-logo {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .featured-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .software-tagline {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        body.dark-mode .software-tagline {
+            color: var(--gray-400);
+        }
+
+        .software-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .software-rating i {
+            color: #FBBF24;
+            font-size: 0.9rem;
+        }
+
+        .software-rating span {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            margin-left: 5px;
+        }
+
+        .software-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        .software-specs span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .software-specs i {
+            color: var(--ctm-primary);
+        }
+
+        .software-price {
+            margin-bottom: 20px;
+        }
+
+        .software-price strong {
+            font-size: 1.3rem;
+            color: var(--ctm-primary);
+        }
+
+        .price-note {
+            color: var(--gray-500);
+            font-size: 0.85rem;
+            margin-left: 8px;
+        }
+
+        .software-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .software-actions .btn-primary,
+        .software-actions .btn-secondary {
+            flex: 1;
+            padding: 12px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .software-actions .btn-primary {
+            background: var(--ctm-primary);
+            color: var(--white);
+            border: none;
+        }
+
+        .software-actions .btn-primary:hover {
+            background: var(--ctm-primary-dark);
+        }
+
+        .software-actions .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--gray-300);
+            color: var(--gray-700);
+            text-decoration: none;
+        }
+
+        body.dark-mode .software-actions .btn-secondary {
+            border-color: var(--dark-border);
+            color: var(--gray-300);
+        }
+
+        /* Software Grid */
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .software-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            border: 1px solid var(--gray-200);
+            transition: var(--transition-fast);
+        }
+
+        body.dark-mode .software-card {
+            background: var(--dark-card);
+            border-color: var(--dark-border);
+        }
+
+        .software-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--ctm-primary);
+        }
+
+        .software-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .software-icon-small {
+            width: 45px;
+            height: 45px;
+            background: var(--gray-100);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        body.dark-mode .software-icon-small {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .software-header h4 {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .software-category {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+        }
+
+        .software-card>p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin-bottom: 15px;
+        }
+
+        body.dark-mode .software-card>p {
+            color: var(--gray-400);
+        }
+
+        .software-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            font-size: 0.85rem;
+        }
+
+        .badge-free {
+            background: var(--pastel-green);
+            color: var(--ctm-primary-dark);
+            padding: 4px 10px;
+            border-radius: var(--radius-xl);
+            font-weight: 600;
+        }
+
+        body.dark-mode .badge-free {
+            background: rgba(21, 195, 154, 0.2);
+            color: var(--ctm-primary-light);
+        }
+
+        .size-label {
+            color: var(--gray-500);
+        }
+
+        .rating-small {
+            color: #FBBF24;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn-download {
+            width: 100%;
+            padding: 10px;
+            background: var(--gray-100);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        body.dark-mode .btn-download {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--gray-300);
+        }
+
+        .btn-download:hover {
+            background: var(--ctm-primary);
+            color: var(--white);
+        }
+
+        /* Support Banner */
+        .support-banner {
+            padding: 50px 0;
+            background: linear-gradient(135deg, var(--pastel-purple), var(--pastel-pink));
+        }
+
+        body.dark-mode .support-banner {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(236, 72, 153, 0.15));
+        }
+
+        .support-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .support-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--nptel-purple);
+        }
+
+        body.dark-mode .support-icon {
+            background: var(--dark-card);
+        }
+
+        .support-text h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .support-text p {
+            color: var(--gray-600);
+        }
+
+        body.dark-mode .support-text p {
+            color: var(--gray-400);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            max-width: 450px;
+            width: 100%;
+            position: relative;
+        }
+
+        body.dark-mode .modal-content {
+            background: var(--dark-surface);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--gray-500);
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+        }
+
+        body.dark-mode .form-group input {
+            background: var(--dark-card);
+            border-color: var(--dark-border);
+            color: var(--white);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--ctm-primary);
+        }
+
+        .modal .btn-primary {
+            width: 100%;
+            padding: 14px;
+            background: var(--ctm-primary);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        @media (max-width: 1024px) {
+            .nptel-nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .featured-grid,
+            .software-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .support-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="https://wa.me/919962003738" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <!-- NPTEL Header -->
+    <header class="nptel-header">
+        <div class="container">
+            <div class="nptel-header-content">
+                <a href="index.html" class="nptel-logo">
+                    <h1>CareTech<span>Mobile</span></h1>
+                </a>
+                <nav class="nptel-nav">
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="ai-tools.html">AI Tools</a>
+                    <a href="earning-hub.html">Earning Hub</a>
+                    <a href="software.html" class="active">Software</a>
+                    <a href="help-center.html">Tech Help</a>
+                    <a href="resources.html">Resources</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+                <div class="nptel-header-actions">
+                    <button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button>
+                    <a href="dashboard.html" class="btn-nptel-login"><i class="fas fa-user"></i> Login</a>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="software-hero">
+        <div class="container">
+            <h1>Software & <span class="highlight">Tools Directory</span></h1>
+            <p>Essential software downloads with installation guides and expert recommendations</p>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="softwareSearch"
+                    placeholder="Search software (e.g., Adobe, Office, antivirus...)">
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-chips">
+                <button class="filter-chip active" data-category="all">All Software</button>
+                <button class="filter-chip" data-category="productivity">Productivity</button>
+                <button class="filter-chip" data-category="design">Design & Creative</button>
+                <button class="filter-chip" data-category="development">Development</button>
+                <button class="filter-chip" data-category="security">Security</button>
+                <button class="filter-chip" data-category="utilities">Utilities</button>
+                <button class="filter-chip" data-category="communication">Communication</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Software -->
+    <section class="software-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Most Downloaded Software</h2>
+                <p>Top picks with verified safe downloads</p>
+            </div>
+            <div class="featured-grid">
+                <div class="featured-card" data-category="productivity">
+                    <div class="software-badge premium">Premium</div>
+                    <div class="software-logo"><i class="fas fa-file-word" style="color: #2B579A;"></i></div>
+                    <h3>Microsoft Office 2021</h3>
+                    <p class="software-tagline">Complete office suite: Word, Excel, PowerPoint, Outlook</p>
+                    <div class="software-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><span>4.8/5</span></div>
+                    <div class="software-specs"><span><i class="fas fa-laptop"></i> Windows/Mac</span><span><i
+                                class="fas fa-hdd"></i> 4GB Required</span><span><i class="fas fa-download"></i>
+                            2.5GB</span></div>
+                    <div class="software-price"><strong>₹4,899</strong><span class="price-note">Lifetime License</span>
+                    </div>
+                    <div class="software-actions"><button class="btn-primary"
+                            onclick="openDownloadModal('Microsoft Office 2021')">Get Download Link</button><a href="#"
+                            class="btn-secondary">Guide</a></div>
+                </div>
+
+                <div class="featured-card" data-category="design">
+                    <div class="software-badge premium">Premium</div>
+                    <div class="software-logo"><i class="fas fa-palette" style="color: #31A8FF;"></i></div>
+                    <h3>Adobe Photoshop 2024</h3>
+                    <p class="software-tagline">Professional photo editing and graphic design software</p>
+                    <div class="software-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><span>4.9/5</span></div>
+                    <div class="software-specs"><span><i class="fas fa-laptop"></i> Windows/Mac</span><span><i
+                                class="fas fa-hdd"></i> 8GB RAM</span><span><i class="fas fa-download"></i> 3.1GB</span>
+                    </div>
+                    <div class="software-price"><strong>$54.99/month</strong><span class="price-note">Creative
+                            Cloud</span></div>
+                    <div class="software-actions"><button class="btn-primary"
+                            onclick="openDownloadModal('Adobe Photoshop 2024')">Get Download Link</button><a href="#"
+                            class="btn-secondary">Guide</a></div>
+                </div>
+
+                <div class="featured-card" data-category="utilities">
+                    <div class="software-badge free">Free Trial</div>
+                    <div class="software-logo"><i class="fas fa-file-archive" style="color: #00A4EF;"></i></div>
+                    <h3>WinRAR 7.0</h3>
+                    <p class="software-tagline">Powerful archive manager for ZIP, RAR, and more formats</p>
+                    <div class="software-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star-half-alt"></i><span>4.6/5</span></div>
+                    <div class="software-specs"><span><i class="fas fa-laptop"></i> Windows</span><span><i
+                                class="fas fa-hdd"></i> 512MB RAM</span><span><i class="fas fa-download"></i> 3MB</span>
+                    </div>
+                    <div class="software-price"><strong>Free</strong><span class="price-note">40-day trial</span></div>
+                    <div class="software-actions"><button class="btn-primary"
+                            onclick="openDownloadModal('WinRAR 7.0')">Download Free</button><a href="#"
+                            class="btn-secondary">Guide</a></div>
+                </div>
+            </div>
+
+            <!-- Software Grid -->
+            <div class="section-header">
+                <h2>Complete Software Directory</h2>
+                <p>Browse by category or search above</p>
+            </div>
+            <div class="software-grid" id="softwareGrid">
+                <div class="software-card" data-category="productivity">
+                    <div class="software-header">
+                        <div class="software-icon-small"><i class="fab fa-google" style="color: #4285F4;"></i></div>
+                        <div>
+                            <h4>Google Chrome</h4><span class="software-category">Productivity</span>
+                        </div>
+                    </div>
+                    <p>Fast, secure browser with sync across devices</p>
+                    <div class="software-meta"><span class="badge-free">Free</span><span class="size-label">95MB</span>
+                        <div class="rating-small"><i class="fas fa-star"></i> 4.7</div>
+                    </div><button class="btn-download" onclick="openDownloadModal('Google Chrome')"><i
+                            class="fas fa-download"></i> Download</button>
+                </div>
+
+                <div class="software-card" data-category="productivity">
+                    <div class="software-header">
+                        <div class="software-icon-small"><i class="fab fa-firefox" style="color: #FF7139;"></i></div>
+                        <div>
+                            <h4>Mozilla Firefox</h4><span class="software-category">Productivity</span>
+                        </div>
+                    </div>
+                    <p>Privacy-focused browser with extensive add-ons</p>
+                    <div class="software-meta"><span class="badge-free">Free</span><span class="size-label">56MB</span>
+                        <div class="rating-small"><i class="fas fa-star"></i> 4.6</div>
+                    </div><button class="btn-download" onclick="openDownloadModal('Mozilla Firefox')"><i
+                            class="fas fa-download"></i> Download</button>
+                </div>
+
+                <div class="software-card" data-category="productivity">
+                    <div class="software-header">
+                        <div class="software-icon-small"><i class="fas fa-file-pdf" style="color: #DC3545;"></i></div>
+                        <div>
+                            <h4>Adobe Acrobat Reader</h4><span class="software-category">Productivity</span>
+                        </div>
+                    </div>
+                    <p>View, print, sign, and annotate PDF documents</p>
+                    <div class="software-meta"><span class="badge-free">Free</span><span class="size-label">220MB</span>
+                        <div class="rating-small"><i class="fas fa-star"></i> 4.5</div>
+                    </div><button class="btn-download" onclick="openDownloadModal('Adobe Acrobat Reader')"><i
+                            class="fas fa-download"></i> Download</button>
+                </div>
+
+                <div class="software-card" data-category="design">
+                    <div class="software-header">
+                        <div class="software-icon-small"><i class="fas fa-paint-brush" style="color: #26C9FF;"></i>
+                        </div>
+                        <div>
+                            <h4>GIMP</h4><span class="software-category">Design & Creative</span>
+                        </div>
+                    </div>
+                    <p>Free open-source image editor (Photoshop alternative)</p>
+                    <div class="software-meta"><span class="badge-free">Free</span><span class="size-label">280MB</span>
+                        <div class="rating-small"><i class="fas fa-star"></i> 4.4</div>
+                    </div><button class="btn-download" onclick="openDownloadModal('GIMP')"><i
+                            class="fas fa-download"></i> Download</button>
+                </div>
+
+                <div class="software-card" data-category="design">
+                    <div class="software-header">
+                        <div class="software-icon-small"><i class="fas fa-video" style="color: #9146FF;"></i></div>
+                        <div>
+                            <h4>DaVinci Resolve</h4><span class="software-category">Design & Creative</span>
+                        </div>
+                    </div>
+                    <p>Professional video editing and color grading</p>
+                    <div class="software-meta"><span class="badge-free">Free</span><span class="size-label">3.2GB</span>
+                        <div class="rating-small"><i class="fas fa-star"></i> 4.8</div>
+                    </div><button class="btn-download" onclick="openDownloadModal('DaVinci Resolve')"><i
+                            class="fas fa-download"></i> Download</button>
+                </div>
+
+                <div class="software-card" data-category="design">
+                    <div class="software-header">
+                        <div class="software-icon-small"><i class="fas fa-cube" style="color: #F5792A;"></i></div>
+                        <div>
+                            <h4>Blender</h4><span class="software-category">Design & Creative</span>
+                        </div>
+                    </div>
+                    <p>Free 3D modeling, animation, and rendering software</p>
+                    <div class="software-meta"><span class="badge-free">Free</span><span class="size-label">290MB</span>
+                        <div class="rating-small"><i class="fas fa-star"></i> 4.7</div>
+                    </div><button class="btn-download" onclick="openDownloadModal('Blender')"><i
+                            class="fas fa-download"></i> Download</button>
+                </div>
+
+                <div class="software-card" data-category="development">
+                    <div class="software-header">
+                        <div class="software-icon-small"><i class="fas fa-code" style="color: #007ACC;"></i></div>
+                        <div>
+                            <h4>Visual Studio Code</h4><span class="software-category">Development</span>
+                        </div>
+                    </div>
+                    <p>Powerful code editor for web and cloud development</p>
+                    <div class="software-meta"><span class="badge-free">Free</span><span class="size-label">85MB</span>
+                        <div class="rating-small"><i class="fas fa-star"></i> 4.9</div>
+                    </div><button class="btn-download" onclick="openDownloadModal('VS Code')"><i
+                            class="fas fa-download"></i> Download</button>
+                </div>
+
+                <div class="software-card" data-category="development">
+                    <div class="software-header">
+                        <div class="software-icon-small"><i class="fab fa-github"></i></div>
+                        <div>
+                            <h4>GitHub Desktop</h4><span class="software-category">Development</span>
+                        </div>
+                    </div>
+                    <p>Simplify your Git workflow with desktop app</p>
+                    <div class="software-meta"><span class="badge-free">Free</span><span class="size-label">120MB</span>
+                        <div class="rating-small"><i class="fas fa-star"></i> 4.5</div>
+                    </div><button class="btn-download" onclick="openDownloadModal('GitHub Desktop')"><i
+                            class="fas fa-download"></i> Download</button>
+                </div>
+
+                <div class="software-card" data-category="development">
+                    <div class="software-header">
+                        <div class="software-icon-small"><i class="fab fa-python" style="color: #3776AB;"></i></div>
+                        <div>
+                            <h4>Python 3.12</h4><span class="software-category">Development</span>
+                        </div>
+                    </div>
+                    <p>Popular programming language for AI and web apps</p>
+                    <div class="software-meta"><span class="badge-free">Free</span><span class="size-label">28MB</span>
+                        <div class="rating-small"><i class="fas fa-star"></i> 4.8</div>
+                    </div><button class="btn-download" onclick="openDownloadModal('Python')"><i
+                            class="fas fa-download"></i> Download</button>
+                </div>
+
+                <div class="software-card" data-category="security">
+                    <div class="software-header">
+                        <div class="software-icon-small"><i class="fas fa-shield-alt" style="color: #F7941D;"></i></div>
+                        <div>
+                            <h4>Avast Free Antivirus</h4><span class="software-category">Security</span>
+                        </div>
+                    </div>
+                    <p>Real-time protection against malware and viruses</p>
+                    <div class="software-meta"><span class="badge-free">Free</span><span class="size-label">550MB</span>
+                        <div class="rating-small"><i class="fas fa-star"></i> 4.3</div>
+                    </div><button class="btn-download" onclick="openDownloadModal('Avast')"><i
+                            class="fas fa-download"></i> Download</button>
+                </div>
+
+                <div class="software-card" data-category="security">
+                    <div class="software-header">
+                        <div class="software-icon-small"><i class="fas fa-lock" style="color: #00A4EF;"></i></div>
+                        <div>
+                            <h4>Malwarebytes</h4><span class="software-category">Security</span>
+                        </div>
+                    </div>
+                    <p>Advanced malware removal and real-time protection</p>
+                    <div class="software-meta"><span class="badge-free">Free Trial</span><span
+                            class="size-label">85MB</span>
+                        <div class="rating-small"><i class="fas fa-star"></i> 4.6</div>
+                    </div><button class="btn-download" onclick="openDownloadModal('Malwarebytes')"><i
+                            class="fas fa-download"></i> Download</button>
+                </div>
+
+                <div class="software-card" data-category="utilities">
+                    <div class="software-header">
+                        <div class="software-icon-small"><i class="fas fa-broom" style="color: #FF6C37;"></i></div>
+                        <div>
+                            <h4>CCleaner</h4><span class="software-category">Utilities</span>
+                        </div>
+                    </div>
+                    <p>System optimization and privacy cleaning tool</p>
+                    <div class="software-meta"><span class="badge-free">Free</span><span class="size-label">45MB</span>
+                        <div class="rating-small"><i class="fas fa-star"></i> 4.4</div>
+                    </div><button class="btn-download" onclick="openDownloadModal('CCleaner')"><i
+                            class="fas fa-download"></i> Download</button>
+                </div>
+
+                <div class="software-card" data-category="utilities">
+                    <div class="software-header">
+                        <div class="software-icon-small"><i class="fas fa-hdd" style="color: #4CAF50;"></i></div>
+                        <div>
+                            <h4>Recuva</h4><span class="software-category">Utilities</span>
+                        </div>
+                    </div>
+                    <p>Recover deleted files from hard drives and USB</p>
+                    <div class="software-meta"><span class="badge-free">Free</span><span class="size-label">8MB</span>
+                        <div class="rating-small"><i class="fas fa-star"></i> 4.5</div>
+                    </div><button class="btn-download" onclick="openDownloadModal('Recuva')"><i
+                            class="fas fa-download"></i> Download</button>
+                </div>
+
+                <div class="software-card" data-category="communication">
+                    <div class="software-header">
+                        <div class="software-icon-small"><i class="fab fa-skype" style="color: #00AFF0;"></i></div>
+                        <div>
+                            <h4>Skype</h4><span class="software-category">Communication</span>
+                        </div>
+                    </div>
+                    <p>Video calls, messaging, and screen sharing</p>
+                    <div class="software-meta"><span class="badge-free">Free</span><span class="size-label">75MB</span>
+                        <div class="rating-small"><i class="fas fa-star"></i> 4.2</div>
+                    </div><button class="btn-download" onclick="openDownloadModal('Skype')"><i
+                            class="fas fa-download"></i> Download</button>
+                </div>
+
+                <div class="software-card" data-category="communication">
+                    <div class="software-header">
+                        <div class="software-icon-small"><i class="fab fa-discord" style="color: #5865F2;"></i></div>
+                        <div>
+                            <h4>Discord</h4><span class="software-category">Communication</span>
+                        </div>
+                    </div>
+                    <p>Voice, video, and text chat for communities</p>
+                    <div class="software-meta"><span class="badge-free">Free</span><span class="size-label">120MB</span>
+                        <div class="rating-small"><i class="fas fa-star"></i> 4.6</div>
+                    </div><button class="btn-download" onclick="openDownloadModal('Discord')"><i
+                            class="fas fa-download"></i> Download</button>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="color: var(--gray-500);"><strong id="visibleCount">15</strong> software shown. <a
+                        href="membership.html" style="color: var(--ctm-primary);">Pro members</a> get access to 100+
+                    premium software.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Banner -->
+    <section class="support-banner">
+        <div class="container">
+            <div class="support-content">
+                <div class="support-icon"><i class="fas fa-headset"></i></div>
+                <div class="support-text">
+                    <h3>Need Help Installing Software?</h3>
+                    <p>Our tech support team can remotely install and configure any software for you</p>
+                </div>
+                <a href="https://wa.me/919962003738" class="btn btn-whatsapp" target="_blank"><i
+                        class="fab fa-whatsapp"></i> Get Installation Help</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="nptel-cta">
+        <div class="container">
+            <h2>Can't Find the Software You Need?</h2>
+            <p>Request any software and we'll provide download links with installation support</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/919962003738" class="btn btn-whatsapp" target="_blank"><i
+                        class="fab fa-whatsapp"></i> Request Software</a>
+                <a href="resources.html" class="btn btn-secondary"><i class="fas fa-download"></i> Download Tools
+                    Pack</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="nptel-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>CareTech<span>Mobile</span></h3>
+                    <p>Your trusted partner for device repair, WhatsApp automation, AI tools, and digital growth
+                        strategies.</p>
+                    <div class="footer-social"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i
+                                class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a
+                            href="#"><i class="fab fa-linkedin-in"></i></a><a href="https://wa.me/919962003738"><i
+                                class="fab fa-whatsapp"></i></a></div>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Device Repair</a></li>
+                        <li><a href="services.html#automation">WhatsApp Automation</a></li>
+                        <li><a href="services.html#digital">Mini Websites</a></li>
+                        <li><a href="membership.html">Membership</a></li>
+                        <li><a href="payment.html"><i class="fas fa-credit-card"></i> Payment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="ai-tools.html">AI Tools Hub</a></li>
+                        <li><a href="earning-hub.html">Online Earning</a></li>
+                        <li><a href="software.html">Software Directory</a></li>
+                        <li><a href="help-center.html">Tech Help</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:+919495253265"><i class="fas fa-phone"></i> 9495253265</a></li>
+                        <li><a href="https://wa.me/919962003738"><i class="fab fa-whatsapp"></i> 9962003738</a></li>
+                        <li><a href="mailto:info@caretechmobile.com"><i class="fas fa-envelope"></i>
+                                info@caretechmobile.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 CareTechMobile. All rights reserved. Built by <strong>Shihab Rajendran</strong></p>
+                <div class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of
+                        Service</a><a href="refund.html">Refund Policy</a><a href="sitemap.html">Sitemap</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="downloadModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeDownloadModal()">&times;</span>
+            <h2 id="downloadTitle">Download Software</h2>
+            <p style="color: var(--gray-600); margin-bottom: 25px;">Enter your details to receive download link via
+                WhatsApp</p>
+            <form id="downloadForm">
+                <input type="hidden" id="softwareName" name="softwareName">
+                <div class="form-group"><label>Your Name *</label><input type="text" name="name" required
+                        placeholder="Enter your name"></div>
+                <div class="form-group"><label>WhatsApp Number *</label><input type="tel" name="phone" required
+                        placeholder="10-digit number"></div>
+                <div class="form-group"><label>Email (optional)</label><input type="email" name="email"
+                        placeholder="For installation guides"></div>
+                <button type="submit" class="btn-primary">Get Download Link</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Dark Mode
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        if (localStorage.getItem('darkMode') === 'true') { document.body.classList.add('dark-mode'); darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; }
+        darkModeToggle.addEventListener('click', () => { document.body.classList.toggle('dark-mode'); const isDark = document.body.classList.contains('dark-mode'); localStorage.setItem('darkMode', isDark); darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>'; });
+
+        // Mobile Menu
+        document.getElementById('mobileMenuBtn').addEventListener('click', function () { const nav = document.querySelector('.nptel-nav'); nav.classList.toggle('active'); this.classList.toggle('active'); });
+
+        // Search
+        document.getElementById('softwareSearch').addEventListener('input', function (e) { const term = e.target.value.toLowerCase(); let count = 0; document.querySelectorAll('.software-card, .featured-card').forEach(card => { const name = card.querySelector('h3, h4').textContent.toLowerCase(); const desc = card.querySelector('p').textContent.toLowerCase(); if (name.includes(term) || desc.includes(term)) { card.style.display = 'block'; if (card.classList.contains('software-card')) count++; } else { card.style.display = 'none'; } }); document.getElementById('visibleCount').textContent = count; });
+
+        // Filter
+        document.querySelectorAll('.filter-chip').forEach(chip => { chip.addEventListener('click', function () { document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active')); this.classList.add('active'); const cat = this.getAttribute('data-category'); let count = 0; document.querySelectorAll('.software-card, .featured-card').forEach(card => { if (cat === 'all' || card.getAttribute('data-category') === cat) { card.style.display = 'block'; if (card.classList.contains('software-card')) count++; } else { card.style.display = 'none'; } }); document.getElementById('visibleCount').textContent = count; }); });
+
+        // Modal
+        function openDownloadModal(name) { document.getElementById('downloadModal').style.display = 'flex'; document.getElementById('softwareName').value = name; document.getElementById('downloadTitle').textContent = 'Download ' + name; }
+        function closeDownloadModal() { document.getElementById('downloadModal').style.display = 'none'; }
+        window.onclick = function (e) { if (e.target === document.getElementById('downloadModal')) closeDownloadModal(); }
+
+        document.getElementById('downloadForm').addEventListener('submit', function (e) { e.preventDefault(); const data = Object.fromEntries(new FormData(this)); let msg = `*Software Download Request*%0A%0ASoftware: ${data.softwareName}%0AName: ${data.name}%0APhone: ${data.phone}%0A`; if (data.email) msg += `Email: ${data.email}%0A`; window.open(`https://wa.me/919962003738?text=${msg}`, '_blank'); alert('Thank you! Check WhatsApp for your download link.'); closeDownloadModal(); this.reset(); });
+    </script>
+
+    <!-- Global Auth Helper - Shows Logout on all pages when logged in -->
+    <script src="auth-helper.js"></script>
+</body>
+
+</html>

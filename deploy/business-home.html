@@ -769,11 +769,8 @@
                     <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
                         <i class="fas fa-moon"></i>
                     </button>
-                    <a href="dashboard.html" class="btn-nptel-login" id="loginBtn">
+                    <a href="dashboard.html" class="btn-nptel-login">
                         <i class="fas fa-user"></i> Login
-                    </a>
-                    <a href="#" class="btn-nptel-login" id="logoutBtn" style="display: none;">
-                        <i class="fas fa-sign-out-alt"></i> Logout
                     </a>
                 </div>
 
@@ -1142,39 +1139,6 @@
                 header.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.08)';
             }
         });
-        // ===== AUTH STATE CHECK - Toggle Login/Logout =====
-        (async function checkAuthState() {
-            try {
-                const supabaseClient = window.supabase.createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_KEY);
-                const { data: { session } } = await supabaseClient.auth.getSession();
-
-                const loginBtn = document.getElementById('loginBtn');
-                const logoutBtn = document.getElementById('logoutBtn');
-
-                if (session && session.user) {
-                    // User is logged in - show Logout, hide Login
-                    if (loginBtn) loginBtn.style.display = 'none';
-                    if (logoutBtn) logoutBtn.style.display = 'flex';
-
-                    // Add logout handler
-                    if (logoutBtn) {
-                        logoutBtn.addEventListener('click', async (e) => {
-                            e.preventDefault();
-                            await supabaseClient.auth.signOut();
-                            sessionStorage.clear();
-                            localStorage.setItem('ctmLoggedOut', Date.now().toString());
-                            window.location.reload();
-                        });
-                    }
-                } else {
-                    // User is NOT logged in - show Login, hide Logout
-                    if (loginBtn) loginBtn.style.display = 'flex';
-                    if (logoutBtn) logoutBtn.style.display = 'none';
-                }
-            } catch (error) {
-                console.error('Auth check error:', error);
-            }
-        })();
     </script>
 </body>
 

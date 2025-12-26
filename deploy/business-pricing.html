@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NWEBGP5V40"></script>
+<script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-NWEBGP5V40');</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing | Simple & Honest | CareTechMobile</title>
+    <meta name="description"
+        content="Simple pricing for small businesses. Setup ₹3,000-5,000 + Monthly ₹500. One extra customer covers the cost.">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="nptel-theme.css">
+
+    <style>
+        .page-hero {
+            margin-top: 70px;
+            padding: 80px 0;
+            background: linear-gradient(135deg, #FFF3E0, #FFECB3);
+            text-align: center;
+        }
+
+        body.dark-mode .page-hero {
+            background: linear-gradient(135deg, #1a1f0f 0%, #2f2a0f 100%);
+        }
+
+        .pricing-section {
+            padding: 80px 0;
+            background: var(--white);
+        }
+
+        body.dark-mode .pricing-section {
+            background: var(--dark-surface);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.dark-mode .pricing-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--ctm-primary);
+            transform: scale(1.02);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--ctm-primary);
+            color: white;
+            padding: 5px 40px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            transform: rotate(45deg);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pricing-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin: 0 auto 20px;
+        }
+
+        .pricing-card:first-child .pricing-icon {
+            background: linear-gradient(135deg, #F59E0B, #EF4444);
+        }
+
+        .pricing-card:last-child .pricing-icon {
+            background: linear-gradient(135deg, var(--ctm-primary), #06B6D4);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .pricing-card .subtitle {
+            color: var(--gray-500);
+            margin-bottom: 20px;
+        }
+
+        .price-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 5px;
+        }
+
+        body.dark-mode .price-amount {
+            color: white;
+        }
+
+        .price-amount span {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--gray-500);
+        }
+
+        .price-period {
+            color: var(--gray-500);
+            margin-bottom: 25px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            color: var(--gray-700);
+        }
+
+        body.dark-mode .pricing-features li {
+            color: var(--gray-300);
+        }
+
+        .pricing-features li i {
+            color: var(--ctm-primary);
+        }
+
+        .value-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #E8F5E9, #F1F8E9);
+        }
+
+        body.dark-mode .value-section {
+            background: var(--dark-bg);
+        }
+
+        .value-box {
+            background: white;
+            padding: 40px;
+            border-radius: 24px;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-md);
+        }
+
+        body.dark-mode .value-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .value-box h2 {
+            margin-bottom: 15px;
+        }
+
+        .value-box .highlight-text {
+            font-size: 1.3rem;
+            color: var(--ctm-primary);
+            font-weight: 700;
+            margin: 20px 0;
+            padding: 20px;
+            background: var(--pastel-green);
+            border-radius: 12px;
+        }
+
+        body.dark-mode .value-box .highlight-text {
+            background: rgba(21, 195, 154, 0.2);
+        }
+
+        .add-ons-section {
+            padding: 60px 0;
+            background: var(--white);
+        }
+
+        body.dark-mode .add-ons-section {
+            background: var(--dark-surface);
+        }
+
+        .add-ons-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .add-on-card {
+            background: var(--gray-50);
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        body.dark-mode .add-on-card {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .add-on-card h4 {
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .add-on-card .price {
+            color: var(--ctm-primary);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #F59E0B, #EF4444);
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            opacity: 0.95;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: white;
+            color: #F59E0B !important;
+        }
+
+        @media (max-width: 768px) {
+
+            .pricing-grid,
+            .add-ons-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="https://wa.me/919962003738" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <header class="nptel-header">
+        <div class="container">
+            <div class="nptel-header-content">
+                <a href="payment.html" class="payment-link">
+                    <i class="fas fa-credit-card"></i> Payment
+                </a>
+
+                <a href="business-home.html" class="nptel-logo">
+                    <h1>CareTech<span>Mobile</span></h1>
+                </a>
+
+                <nav class="nptel-nav">
+                    <a href="business-home.html">Home</a>
+                    <a href="business-services.html">Services</a>
+                    <a href="whatsapp-automation.html">WhatsApp Automation</a>
+                    <a href="ai-assist.html">AI Assist</a>
+                    <a href="mini-crm.html">Mini CRM</a>
+                    <a href="how-it-works.html">How It Works</a>
+                    <a href="business-pricing.html" class="active">Pricing</a>
+                    <a href="demo.html">Free Demo</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+
+                <div class="nptel-header-actions">
+                    <button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button>
+                    <a href="dashboard.html" class="btn-nptel-login"><i class="fas fa-user"></i> Login</a>
+                </div>
+
+                <button class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1>Simple, Honest <span style="color: #F59E0B;">Pricing</span></h1>
+            <p>No hidden costs. No confusing plans. Just pay for what you need.</p>
+        </div>
+    </section>
+
+    <section class="pricing-section">
+        <div class="container">
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Setup Cost</h3>
+                    <p class="subtitle">One-time payment</p>
+                    <div class="price-amount">₹3,000 - ₹5,000</div>
+                    <p class="price-period">depends on complexity</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> Mini website setup</li>
+                        <li><i class="fas fa-check-circle"></i> WhatsApp automation config</li>
+                        <li><i class="fas fa-check-circle"></i> CRM dashboard setup</li>
+                        <li><i class="fas fa-check-circle"></i> Custom auto-reply messages</li>
+                        <li><i class="fas fa-check-circle"></i> Follow-up sequence creation</li>
+                        <li><i class="fas fa-check-circle"></i> Training & demo</li>
+                    </ul>
+                    <a href="demo.html" class="btn btn-primary" style="width: 100%;">Get Started</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-icon"><i class="fas fa-sync-alt"></i></div>
+                    <h3>Monthly Support</h3>
+                    <p class="subtitle">Ongoing service</p>
+                    <div class="price-amount">₹500 <span>/month</span></div>
+                    <p class="price-period">billed monthly</p>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> WhatsApp support</li>
+                        <li><i class="fas fa-check-circle"></i> Message updates & changes</li>
+                        <li><i class="fas fa-check-circle"></i> CRM maintenance</li>
+                        <li><i class="fas fa-check-circle"></i> Website updates</li>
+                        <li><i class="fas fa-check-circle"></i> Performance monitoring</li>
+                        <li><i class="fas fa-check-circle"></i> Priority response</li>
+                    </ul>
+                    <a href="https://wa.me/919962003738" class="btn btn-whatsapp" style="width: 100%;" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Contact Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="value-section">
+        <div class="container">
+            <div class="value-box">
+                <h2>Think About It This Way...</h2>
+                <p>Monthly cost is ₹500. Average customer value for a repair shop is ₹500-2000.</p>
+                <div class="highlight-text">
+                    "Just ONE extra customer covers this entire monthly cost!"
+                </div>
+                <p>If automation brings you just <strong>1 extra customer per month</strong>, you're already in profit.
+                    Most businesses see 5-10+ extra leads per month.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="add-ons-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Other Services</h2>
+                <p>Additional services if you need them</p>
+            </div>
+
+            <div class="add-ons-grid">
+                <div class="add-on-card">
+                    <h4>Laptop/PC Repair</h4>
+                    <p class="price">₹500+</p>
+                    <p style="color: var(--gray-500); font-size: 0.85rem;">per service + GST</p>
+                </div>
+                <div class="add-on-card">
+                    <h4>Data Recovery</h4>
+                    <p class="price">₹1,000+</p>
+                    <p style="color: var(--gray-500); font-size: 0.85rem;">free diagnosis</p>
+                </div>
+                <div class="add-on-card">
+                    <h4>Custom Development</h4>
+                    <p class="price">Quote</p>
+                    <p style="color: var(--gray-500); font-size: 0.85rem;">based on requirements</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>No Hidden Costs. No Surprises.</h2>
+            <p>Still have questions? Let's talk on WhatsApp.</p>
+            <div class="cta-buttons">
+                <a href="demo.html" class="btn btn-white"><i class="fas fa-play"></i> Get Free Demo</a>
+                <a href="https://wa.me/919962003738" class="btn btn-secondary"
+                    style="border-color: white; color: white;" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Ask Questions
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="nptel-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>CareTech<span>Mobile</span></h3>
+                    <p>Honest pricing, quality service.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:+919495253265"><i class="fas fa-phone"></i> 9495253265</a></li>
+                        <li><a href="https://wa.me/919962003738"><i class="fab fa-whatsapp"></i> 9962003738</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 CareTechMobile. Built by <strong>Shihab Rajendran</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        if (localStorage.getItem('darkMode') === 'true') { body.classList.add('dark-mode'); darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; }
+        darkModeToggle.addEventListener('click', () => { body.classList.toggle('dark-mode'); localStorage.setItem('darkMode', body.classList.contains('dark-mode')); darkModeToggle.innerHTML = body.classList.contains('dark-mode') ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>'; });
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => { document.querySelector('.nptel-nav').classList.toggle('active'); document.getElementById('mobileMenuBtn').classList.toggle('active'); });
+    </script>
+</body>
+
+</html>
