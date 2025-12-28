@@ -1,897 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NWEBGP5V40"></script>
-<script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-NWEBGP5V40');</script>
 
 <head>
-    <script
-        data-cfasync="false">const CONFIG = { SUPABASE_URL: 'https://oleuggrzmdtcorlvlapp.supabase.co', SUPABASE_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9sZXVnZ3J6bWR0Y29ybHZsYXBwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU0NTI3MDMsImV4cCI6MjA4MTAyODcwM30.dVAunvwATOX-O1hgCx0iqa1KGAxHC-n1ndM' };</script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Help Center — Troubleshooting Guides | CareTechMobile</title>
-    <meta name="description"
-        content="Get instant tech support, troubleshooting guides, and solutions for mobile, laptop, and software issues.">
+    <title>Help Center | CareTechMobile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="nptel-theme.css">
-
+    <link rel="stylesheet" href="ubona-style.css">
+    <link rel="stylesheet" href="chat-widget.css">
     <style>
-        .help-hero {
-            margin-top: 70px;
-            padding: 80px 0 60px;
-            background: linear-gradient(135deg, var(--pastel-orange), var(--pastel-pink));
+        .page-hero {
+            padding: 120px 0 60px;
+            background: linear-gradient(135deg, #FEF3C7, #FDE68A);
             text-align: center;
         }
 
-        body.dark-mode .help-hero {
-            background: linear-gradient(135deg, #1f1a0f, #2a0f1f);
+        .faq-section {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
         }
 
-        .help-hero h1 .highlight {
-            background: linear-gradient(135deg, var(--nptel-orange), var(--nptel-pink));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .help-hero p {
-            font-size: 1.15rem;
-            color: var(--gray-600);
-            max-width: 600px;
-            margin: 0 auto 30px;
-        }
-
-        body.dark-mode .help-hero p {
-            color: var(--gray-400);
-        }
-
-        .search-box {
-            max-width: 550px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 16px 20px 16px 50px;
-            border: 2px solid var(--gray-200);
-            border-radius: var(--radius-xl);
-            font-size: 1rem;
-            background: var(--white);
-        }
-
-        body.dark-mode .search-box input {
-            background: var(--dark-card);
-            border-color: var(--dark-border);
-            color: var(--white);
-        }
-
-        .search-box input:focus {
-            outline: none;
-            border-color: var(--ctm-primary);
-        }
-
-        .search-box i {
-            position: absolute;
-            left: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--gray-400);
-        }
-
-        /* Category Cards */
-        .category-section {
-            padding: 60px 0;
-        }
-
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 20px;
-        }
-
-        .category-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 25px 20px;
-            text-align: center;
-            border: 2px solid var(--gray-200);
-            cursor: pointer;
-            transition: var(--transition-normal);
-        }
-
-        body.dark-mode .category-card {
-            background: var(--dark-card);
-            border-color: var(--dark-border);
-        }
-
-        .category-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--ctm-primary);
-        }
-
-        .category-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.6rem;
-            color: var(--white);
-            margin: 0 auto 15px;
-        }
-
-        .category-icon.mobile {
-            background: linear-gradient(135deg, var(--nptel-blue), #00BCD4);
-        }
-
-        .category-icon.laptop {
-            background: linear-gradient(135deg, var(--nptel-purple), #9C27B0);
-        }
-
-        .category-icon.software {
-            background: linear-gradient(135deg, var(--nptel-orange), #FFC107);
-        }
-
-        .category-icon.network {
-            background: linear-gradient(135deg, var(--ctm-primary), var(--nptel-teal));
-        }
-
-        .category-icon.data {
-            background: linear-gradient(135deg, #DC3545, #E91E63);
-        }
-
-        .category-icon.whatsapp {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-        }
-
-        .category-card h3 {
-            font-size: 1rem;
-            margin-bottom: 5px;
-        }
-
-        .category-card p {
-            font-size: 0.85rem;
-            color: var(--gray-500);
-        }
-
-        /* Accordion */
-        .troubleshoot-section {
-            padding: 60px 0;
-            background: var(--gray-50);
-        }
-
-        body.dark-mode .troubleshoot-section {
-            background: var(--dark-bg);
-        }
-
-        .accordion-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .accordion-item {
-            background: var(--white);
-            border-radius: var(--radius-md);
+        .faq-item {
+            background: white;
+            border-radius: 12px;
             margin-bottom: 15px;
-            border: 1px solid var(--gray-200);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             overflow: hidden;
         }
 
-        body.dark-mode .accordion-item {
-            background: var(--dark-card);
-            border-color: var(--dark-border);
-        }
-
-        .accordion-header {
+        .faq-question {
+            padding: 20px 25px;
+            cursor: pointer;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            padding: 20px;
-            cursor: pointer;
-            transition: var(--transition-fast);
-        }
-
-        .accordion-header:hover {
-            background: var(--gray-50);
-        }
-
-        body.dark-mode .accordion-header:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .accordion-title {
-            display: flex;
             align-items: center;
-            gap: 15px;
+            font-weight: 600;
         }
 
-        .accordion-title i {
-            width: 40px;
-            height: 40px;
-            background: var(--pastel-blue);
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--nptel-blue);
+        .faq-question:hover {
+            background: #f9fafb;
         }
 
-        .accordion-title h3 {
-            font-size: 1rem;
-            margin: 0;
-        }
-
-        .accordion-icon {
-            transition: transform 0.3s ease;
-            color: var(--gray-400);
-        }
-
-        .accordion-item.active .accordion-icon {
-            transform: rotate(180deg);
-        }
-
-        .accordion-content {
+        .faq-answer {
+            padding: 0 25px 20px;
+            color: var(--gray-600);
+            line-height: 1.8;
             display: none;
-            padding: 0 20px 20px;
         }
 
-        .accordion-item.active .accordion-content {
+        .faq-item.active .faq-answer {
             display: block;
         }
 
-        .solution-steps {
-            background: var(--gray-50);
-            border-radius: var(--radius-sm);
-            padding: 20px;
-        }
-
-        body.dark-mode .solution-steps {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .solution-steps h4 {
-            margin-bottom: 15px;
-            color: var(--ctm-primary);
-        }
-
-        .solution-steps ol {
-            padding-left: 20px;
-        }
-
-        .solution-steps li {
-            margin-bottom: 10px;
-            color: var(--gray-600);
-        }
-
-        body.dark-mode .solution-steps li {
-            color: var(--gray-400);
-        }
-
-        .solution-steps li strong {
-            color: var(--gray-800);
-        }
-
-        body.dark-mode .solution-steps li strong {
-            color: var(--white);
-        }
-
-        .solution-note {
-            margin-top: 15px;
-            padding: 12px;
-            background: var(--pastel-green);
-            border-radius: var(--radius-sm);
-            font-size: 0.9rem;
-        }
-
-        body.dark-mode .solution-note {
-            background: rgba(21, 195, 154, 0.15);
-        }
-
-        .solution-note.warning {
-            background: var(--pastel-orange);
-        }
-
-        body.dark-mode .solution-note.warning {
-            background: rgba(253, 126, 20, 0.15);
-        }
-
-        .solution-steps .btn-primary {
-            margin-top: 20px;
-            padding: 12px 24px;
-            background: var(--ctm-primary);
-            color: var(--white);
-            border: none;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .solution-steps .btn-primary:hover {
-            background: var(--ctm-primary-dark);
-        }
-
-        .solution-steps .btn-primary.urgent {
-            background: #DC3545;
-        }
-
-        .show-all-btn {
-            display: block;
-            margin: 20px auto 0;
-            padding: 12px 30px;
-            background: var(--gray-100);
-            border: none;
-            border-radius: var(--radius-xl);
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        body.dark-mode .show-all-btn {
-            background: var(--dark-card);
-            color: var(--gray-300);
-        }
-
-        .show-all-btn:hover {
-            background: var(--ctm-primary);
-            color: var(--white);
-        }
-
-        /* Live Support */
-        .live-support {
-            padding: 60px 0;
-            background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-green));
-        }
-
-        body.dark-mode .live-support {
-            background: linear-gradient(135deg, #0f1a2e, #0a1f1a);
-        }
-
-        .support-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 40px;
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        body.dark-mode .support-card {
-            background: var(--dark-card);
-        }
-
-        .support-card-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--ctm-primary), var(--nptel-blue));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: var(--white);
-            margin: 0 auto 20px;
-        }
-
-        .support-card h2 {
-            margin-bottom: 10px;
-        }
-
-        .support-card>p {
-            color: var(--gray-600);
-            margin-bottom: 30px;
-        }
-
-        body.dark-mode .support-card>p {
-            color: var(--gray-400);
-        }
-
-        .support-options {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .support-method {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 15px 25px;
-            background: var(--gray-50);
-            border-radius: var(--radius-md);
-            text-decoration: none;
-            color: var(--gray-800);
-            border: none;
-            cursor: pointer;
-            transition: var(--transition-fast);
-        }
-
-        body.dark-mode .support-method {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--gray-300);
-        }
-
-        .support-method:hover {
-            background: var(--ctm-primary);
-            color: var(--white);
-        }
-
-        .support-method i {
-            font-size: 1.5rem;
-        }
-
-        .support-method div {
-            text-align: left;
-        }
-
-        .support-method strong {
-            display: block;
-            font-size: 0.95rem;
-        }
-
-        .support-method span {
-            font-size: 0.8rem;
-            opacity: 0.7;
-        }
-
-        @media (max-width: 1024px) {
-            .nptel-nav {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: flex;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .category-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .support-options {
-                flex-direction: column;
-                align-items: center;
-            }
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
         }
     </style>
 </head>
 
 <body>
-    <a href="https://wa.me/919962003738" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
-    <!-- NPTEL Header -->
-    <header class="nptel-header">
+    <header class="ubona-header" id="mainHeader">
         <div class="container">
-            <div class="nptel-header-content">
-                <a href="index.html" class="nptel-logo">
+            <div class="header-container">
+                <a href="business-home.html" class="ubona-logo">
                     <h1>CareTech<span>Mobile</span></h1>
+                    <small style="font-size: 0.5rem; opacity: 0.7; display: block; margin-top: -5px;">the complete business solution</small>
                 </a>
-                <nav class="nptel-nav">
-                    <a href="index.html">Home</a>
-                    <a href="services.html">Services</a>
-                    <a href="ai-tools.html">AI Tools</a>
-                    <a href="earning-hub.html">Earning Hub</a>
-                    <a href="software.html">Software</a>
-                    <a href="help-center.html" class="active">Tech Help</a>
-                    <a href="resources.html">Resources</a>
-                    <a href="contact.html">Contact</a>
-                </nav>
-                <div class="nptel-header-actions">
-                    <button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button>
-                    <a href="dashboard.html" class="btn-nptel-login"><i class="fas fa-user"></i> Login</a>
-                </div>
-                <button class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></button>
+                <nav class="ubona-nav"><a href="business-home.html">Home</a><a href="contact.html">Contact</a></nav>
             </div>
         </div>
     </header>
-
-    <!-- Hero -->
-    <section class="help-hero">
+    <section class="page-hero">
         <div class="container">
-            <h1>Tech <span class="highlight">Help Center</span></h1>
-            <p>Instant solutions for common tech problems — mobile, laptop, software, and more</p>
-            <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" id="helpSearch"
-                    placeholder="Describe your problem (e.g., phone not charging, slow laptop...)">
+            <h1>Help <span style="color: var(--ctm-primary)">Center</span></h1>
+            <p>Got questions? We've got answers!</p>
+        </div>
+    </section>
+    <section class="faq-section">
+        <div class="faq-item active">
+            <div class="faq-question">What is WhatsApp Automation? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">WhatsApp Automation sends instant replies to your customers 24/7. When someone
+                messages your business, they get an immediate response even when you're busy or asleep.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">How much does it cost? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">Setup: ₹3,000-5,000 (one-time). Monthly: ₹500/month. Just one extra customer per
+                month covers the entire cost!</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Will my WhatsApp number get banned? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">No! We use the official WhatsApp Business API which is fully approved by Meta. It's
+                safe and won't get your number banned.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Do I need technical knowledge? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">Not at all! We set up everything for you and provide training. You just need to know
+                how to use WhatsApp on your phone.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">How long does setup take? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">Usually 3-7 days depending on complexity. We'll have you up and running quickly!
             </div>
         </div>
     </section>
-
-    <!-- Categories -->
-    <section class="category-section">
+    <section class="cta-section">
         <div class="container">
-            <div class="section-header">
-                <h2>What Do You Need Help With?</h2>
-                <p>Choose a category to find solutions</p>
-            </div>
-            <div class="category-grid">
-                <div class="category-card" onclick="filterHelp('mobile')">
-                    <div class="category-icon mobile"><i class="fas fa-mobile-alt"></i></div>
-                    <h3>Mobile Issues</h3>
-                    <p>Battery, charging, screen</p>
-                </div>
-                <div class="category-card" onclick="filterHelp('laptop')">
-                    <div class="category-icon laptop"><i class="fas fa-laptop"></i></div>
-                    <h3>Laptop/PC Issues</h3>
-                    <p>Slow, Windows errors</p>
-                </div>
-                <div class="category-card" onclick="filterHelp('software')">
-                    <div class="category-icon software"><i class="fas fa-cog"></i></div>
-                    <h3>Software Help</h3>
-                    <p>Installation, activation</p>
-                </div>
-                <div class="category-card" onclick="filterHelp('network')">
-                    <div class="category-icon network"><i class="fas fa-wifi"></i></div>
-                    <h3>Network Issues</h3>
-                    <p>WiFi, internet problems</p>
-                </div>
-                <div class="category-card" onclick="filterHelp('data')">
-                    <div class="category-icon data"><i class="fas fa-database"></i></div>
-                    <h3>Data Recovery</h3>
-                    <p>Lost files, backup</p>
-                </div>
-                <div class="category-card" onclick="filterHelp('whatsapp')">
-                    <div class="category-icon whatsapp"><i class="fab fa-whatsapp"></i></div>
-                    <h3>WhatsApp Help</h3>
-                    <p>Business API, automation</p>
-                </div>
+            <div class="cta-content">
+                <h2>Still have questions?</h2>
+                <p>Chat with us on WhatsApp - we're happy to help!</p>
+                <a href="https://wa.me/919962003738" class="btn-white" target="_blank"><i class="fab fa-whatsapp"></i>
+                    Chat Now</a>
             </div>
         </div>
     </section>
-
-    <!-- Troubleshooting -->
-    <section class="troubleshoot-section">
+    <footer class="ubona-footer">
         <div class="container">
-            <div class="section-header">
-                <h2>Common Problems & Solutions</h2>
-                <p>Step-by-step guides to fix issues yourself</p>
-            </div>
-            <div class="accordion-container" id="troubleshootingAccordion">
-                <!-- Mobile Issues -->
-                <div class="accordion-item" data-category="mobile">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <div class="accordion-title"><i class="fas fa-battery-quarter"></i>
-                            <h3>Phone Not Charging / Battery Draining Fast</h3>
-                        </div>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <div class="solution-steps">
-                            <h4>Quick Fixes:</h4>
-                            <ol>
-                                <li><strong>Clean charging port:</strong> Use a toothpick to remove lint/dust carefully
-                                </li>
-                                <li><strong>Try different cable/charger:</strong> Test with original or certified
-                                    charger</li>
-                                <li><strong>Restart phone:</strong> Force restart to clear software glitches</li>
-                                <li><strong>Check for background apps:</strong> Close apps draining battery (Settings >
-                                    Battery)</li>
-                                <li><strong>Update software:</strong> Install latest OS updates</li>
-                            </ol>
-                            <div class="solution-note"><strong>Still not working?</strong> Battery may need replacement
-                                (₹500-₹2000 depending on model).</div>
-                            <button class="btn-primary" onclick="requestHelp('Phone Charging Issue')"><i
-                                    class="fab fa-whatsapp"></i> Get Expert Help</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item" data-category="mobile">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <div class="accordion-title"><i class="fas fa-mobile-screen"></i>
-                            <h3>Phone Hanging / Freezing / Slow Performance</h3>
-                        </div>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <div class="solution-steps">
-                            <h4>Step-by-Step Solution:</h4>
-                            <ol>
-                                <li><strong>Clear cache:</strong> Settings > Storage > Cached Data > Clear</li>
-                                <li><strong>Uninstall unused apps:</strong> Remove apps you don't use</li>
-                                <li><strong>Free up storage:</strong> Keep at least 15% storage free</li>
-                                <li><strong>Disable animations:</strong> Developer Options > Reduce animations</li>
-                                <li><strong>Factory reset (last resort):</strong> Backup data first, then Settings >
-                                    Reset</li>
-                            </ol>
-                            <div class="solution-note"><strong>Prevention tip:</strong> Avoid installing too many apps.
-                                Use lite versions when possible.</div>
-                            <button class="btn-primary" onclick="requestHelp('Phone Hanging Issue')"><i
-                                    class="fab fa-whatsapp"></i> Need Remote Assistance?</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Laptop Issues -->
-                <div class="accordion-item" data-category="laptop">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <div class="accordion-title"><i class="fas fa-laptop-medical"></i>
-                            <h3>Laptop Running Slow / Hanging</h3>
-                        </div>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <div class="solution-steps">
-                            <h4>Quick Fixes:</h4>
-                            <ol>
-                                <li><strong>Check RAM usage:</strong> Task Manager (Ctrl+Shift+Esc) > Performance</li>
-                                <li><strong>Close startup programs:</strong> Task Manager > Startup > Disable unwanted
-                                </li>
-                                <li><strong>Run Disk Cleanup:</strong> Search "Disk Cleanup" > Clean system files</li>
-                                <li><strong>Update drivers:</strong> Device Manager > Update all drivers</li>
-                                <li><strong>Scan for malware:</strong> Run Windows Defender or Malwarebytes</li>
-                                <li><strong>Consider SSD upgrade:</strong> Biggest speed boost (₹2000-₹5000)</li>
-                            </ol>
-                            <div class="solution-note"><strong>Pro Tip:</strong> 8GB RAM + SSD = Instant 5x speed boost
-                                on old laptops!</div>
-                            <button class="btn-primary" onclick="requestHelp('Slow Laptop')"><i
-                                    class="fas fa-wrench"></i> Book Laptop Servicing</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item" data-category="laptop">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <div class="accordion-title"><i class="fas fa-exclamation-triangle"></i>
-                            <h3>Windows 10/11 Not Booting / Blue Screen Error</h3>
-                        </div>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <div class="solution-steps">
-                            <h4>Emergency Steps:</h4>
-                            <ol>
-                                <li><strong>Safe Mode:</strong> Restart > F8 repeatedly > Safe Mode</li>
-                                <li><strong>Startup Repair:</strong> Boot from USB > Repair your computer</li>
-                                <li><strong>System Restore:</strong> Restore to previous working state</li>
-                                <li><strong>Check hardware:</strong> Remove external devices and try again</li>
-                                <li><strong>Last resort - Reinstall Windows:</strong> Backup data via live USB first
-                                </li>
-                            </ol>
-                            <div class="solution-note warning"><strong>⚠️ Critical:</strong> Don't panic! Most issues
-                                are fixable. Contact us before formatting.</div>
-                            <button class="btn-primary urgent" onclick="requestHelp('Windows Boot Error')"><i
-                                    class="fas fa-ambulance"></i> Emergency Support (24/7)</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Software Issues -->
-                <div class="accordion-item" data-category="software">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <div class="accordion-title"><i class="fas fa-file-excel"></i>
-                            <h3>Microsoft Office Not Activating / Trial Expired</h3>
-                        </div>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <div class="solution-steps">
-                            <h4>Activation Solutions:</h4>
-                            <ol>
-                                <li><strong>Use genuine key:</strong> Enter 25-digit product key (File > Account)</li>
-                                <li><strong>Online activation:</strong> Connect to internet and activate</li>
-                                <li><strong>Phone activation:</strong> Call Microsoft if internet fails</li>
-                                <li><strong>Remove previous activation:</strong> Uninstall completely, clean registry,
-                                    reinstall</li>
-                            </ol>
-                            <div class="solution-note"><strong>Need a license?</strong> We provide genuine Office 2021
-                                licenses at ₹4,899 (lifetime).</div>
-                            <button class="btn-primary" onclick="requestHelp('Office Activation')"><i
-                                    class="fas fa-key"></i> Get Activation Help</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Network Issues -->
-                <div class="accordion-item" data-category="network">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <div class="accordion-title"><i class="fas fa-wifi"></i>
-                            <h3>WiFi Connected But No Internet Access</h3>
-                        </div>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <div class="solution-steps">
-                            <h4>Troubleshooting Steps:</h4>
-                            <ol>
-                                <li><strong>Restart router:</strong> Unplug for 30 seconds, plug back</li>
-                                <li><strong>Forget & reconnect WiFi:</strong> Forget network, re-enter password</li>
-                                <li><strong>Flush DNS:</strong> CMD > Type "ipconfig /flushdns"</li>
-                                <li><strong>Reset network settings:</strong> Settings > Network Reset</li>
-                                <li><strong>Update WiFi driver:</strong> Device Manager > Network Adapters</li>
-                            </ol>
-                            <div class="solution-note"><strong>Check:</strong> Is the issue on all devices? Contact ISP
-                                if yes.</div>
-                            <button class="btn-primary" onclick="requestHelp('WiFi Issue')"><i
-                                    class="fas fa-headset"></i> Get Network Support</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Data Recovery -->
-                <div class="accordion-item" data-category="data">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <div class="accordion-title"><i class="fas fa-trash-restore"></i>
-                            <h3>Recover Deleted Photos / Files / WhatsApp Chats</h3>
-                        </div>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <div class="solution-steps">
-                            <h4>Recovery Methods:</h4>
-                            <ol>
-                                <li><strong>Check Recycle Bin / Recently Deleted:</strong> First place to look</li>
-                                <li><strong>Google Photos / Cloud backup:</strong> Check auto-backup</li>
-                                <li><strong>Use Recuva (PC):</strong> Free software for deleted file recovery</li>
-                                <li><strong>WhatsApp local backup:</strong> Internal Storage > WhatsApp > Databases</li>
-                                <li><strong>Professional recovery:</strong> For formatted drives / physical damage</li>
-                            </ol>
-                            <div class="solution-note warning"><strong>⚠️ Important:</strong> Stop using device
-                                immediately to prevent overwriting!</div>
-                            <button class="btn-primary urgent" onclick="requestHelp('Data Recovery')"><i
-                                    class="fas fa-ambulance"></i> Emergency Data Recovery</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- WhatsApp Issues -->
-                <div class="accordion-item" data-category="whatsapp">
-                    <div class="accordion-header" onclick="toggleAccordion(this)">
-                        <div class="accordion-title"><i class="fab fa-whatsapp"></i>
-                            <h3>WhatsApp Business Setup & Automation</h3>
-                        </div>
-                        <i class="fas fa-chevron-down accordion-icon"></i>
-                    </div>
-                    <div class="accordion-content">
-                        <div class="solution-steps">
-                            <h4>Setup Guide:</h4>
-                            <ol>
-                                <li><strong>Download WhatsApp Business:</strong> Separate from personal WhatsApp</li>
-                                <li><strong>Create business profile:</strong> Add business name, category, description
-                                </li>
-                                <li><strong>Set up catalog:</strong> Add products with prices and photos</li>
-                                <li><strong>Quick replies:</strong> Save common messages (/shortcut)</li>
-                                <li><strong>Auto-reply messages:</strong> Greeting, away message setup</li>
-                                <li><strong>WhatsApp API (advanced):</strong> For chatbots and bulk messaging</li>
-                            </ol>
-                            <div class="solution-note"><strong>Pro Service:</strong> We set up complete WhatsApp
-                                Business automation (₹3,999).</div>
-                            <button class="btn-primary" onclick="requestHelp('WhatsApp Business Setup')"><i
-                                    class="fab fa-whatsapp"></i> Get WhatsApp Setup Service</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="show-all-btn" onclick="showAllHelp()"><i class="fas fa-list"></i> Show All Issues</button>
-        </div>
-    </section>
-
-    <!-- Live Support -->
-    <section class="live-support">
-        <div class="container">
-            <div class="support-card">
-                <div class="support-card-icon"><i class="fas fa-headset"></i></div>
-                <h2>Can't Find a Solution?</h2>
-                <p>Our tech experts are available 24/7 to help you via WhatsApp, phone, or remote desktop support</p>
-                <div class="support-options">
-                    <a href="https://wa.me/919962003738" class="support-method" target="_blank"><i
-                            class="fab fa-whatsapp"></i>
-                        <div><strong>WhatsApp Support</strong><span>Instant replies</span></div>
-                    </a>
-                    <a href="tel:+919962003738" class="support-method"><i class="fas fa-phone"></i>
-                        <div><strong>Call Support</strong><span>9962003738</span></div>
-                    </a>
-                    <button class="support-method" onclick="requestRemoteSupport()"><i class="fas fa-desktop"></i>
-                        <div><strong>Remote Support</strong><span>TeamViewer/AnyDesk</span></div>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="nptel-cta">
-        <div class="container">
-            <h2>Still Need Help?</h2>
-            <p>Our tech team is ready to solve your problem — remote support available 24/7</p>
-            <div class="cta-buttons">
-                <a href="https://wa.me/919962003738" class="btn btn-whatsapp" target="_blank"><i
-                        class="fab fa-whatsapp"></i> Contact Support</a>
-                <a href="services.html" class="btn btn-secondary"><i class="fas fa-tools"></i> View Repair Services</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="nptel-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h3>CareTech<span>Mobile</span></h3>
-                    <p>Your trusted partner for device repair, WhatsApp automation, AI tools, and digital growth
-                        strategies.</p>
-                    <div class="footer-social"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i
-                                class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a
-                            href="#"><i class="fab fa-linkedin-in"></i></a><a href="https://wa.me/919962003738"><i
-                                class="fab fa-whatsapp"></i></a></div>
-                </div>
-                <div class="footer-col">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="services.html">Device Repair</a></li>
-                        <li><a href="services.html#automation">WhatsApp Automation</a></li>
-                        <li><a href="services.html#digital">Mini Websites</a></li>
-                        <li><a href="membership.html">Membership</a></li>
-                        <li><a href="payment.html"><i class="fas fa-credit-card"></i> Payment</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="ai-tools.html">AI Tools Hub</a></li>
-                        <li><a href="earning-hub.html">Online Earning</a></li>
-                        <li><a href="software.html">Software Directory</a></li>
-                        <li><a href="help-center.html">Tech Help</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><a href="tel:+919495253265"><i class="fas fa-phone"></i> 9495253265</a></li>
-                        <li><a href="https://wa.me/919962003738"><i class="fab fa-whatsapp"></i> 9962003738</a></li>
-                        <li><a href="mailto:info@caretechmobile.com"><i class="fas fa-envelope"></i>
-                                info@caretechmobile.com</a></li>
-                    </ul>
-                </div>
-            </div>
             <div class="footer-bottom">
-                <p>© 2026 CareTechMobile. All rights reserved. Built by <strong>Shihab Rajendran</strong></p>
-                <div class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a><a
-                        href="terms.html">Terms</a><a href="refund.html">Refund</a><a href="sitemap.html">Sitemap</a>
-                </div>
+                <p>© 2026 CareTechMobile</p>
             </div>
         </div>
     </footer>
-
     <script>
-        // Dark Mode
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        if (localStorage.getItem('darkMode') === 'true') { document.body.classList.add('dark-mode'); darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; }
-        darkModeToggle.addEventListener('click', () => { document.body.classList.toggle('dark-mode'); const isDark = document.body.classList.contains('dark-mode'); localStorage.setItem('darkMode', isDark); darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>'; });
-
-        // Mobile Menu
-        document.getElementById('mobileMenuBtn').addEventListener('click', function () { const nav = document.querySelector('.nptel-nav'); nav.classList.toggle('active'); this.classList.toggle('active'); });
-
-        // Search
-        document.getElementById('helpSearch').addEventListener('input', function (e) { const term = e.target.value.toLowerCase(); document.querySelectorAll('.accordion-item').forEach(item => { const title = item.querySelector('h3').textContent.toLowerCase(); const content = item.querySelector('.accordion-content').textContent.toLowerCase(); item.style.display = (title.includes(term) || content.includes(term)) ? 'block' : 'none'; }); });
-
-        // Filter by Category
-        function filterHelp(category) { document.querySelectorAll('.accordion-item').forEach(item => { item.style.display = item.getAttribute('data-category') === category ? 'block' : 'none'; }); document.querySelector('.troubleshoot-section').scrollIntoView({ behavior: 'smooth' }); }
-
-        // Show All
-        function showAllHelp() { document.querySelectorAll('.accordion-item').forEach(item => { item.style.display = 'block'; }); }
-
-        // Accordion Toggle
-        function toggleAccordion(header) { const item = header.parentElement; document.querySelectorAll('.accordion-item').forEach(other => { if (other !== item) other.classList.remove('active'); }); item.classList.toggle('active'); }
-
-        // Request Help
-        function requestHelp(issue) { window.open(`https://wa.me/919962003738?text=*Tech Support Request*%0A%0AIssue: ${issue}%0A%0APlease help me resolve this.`, '_blank'); }
-
-        // Remote Support
-        function requestRemoteSupport() { window.open(`https://wa.me/919962003738?text=*Remote Support Request*%0A%0AI need remote desktop assistance for my tech issue.`, '_blank'); }
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => {
+                q.parentElement.classList.toggle('active');
+            });
+        });
     </script>
 
-    <!-- Global Auth Helper - Shows Logout on all pages when logged in -->
-    <script src="auth-helper.js"></script>
+    <script src="chat-widget.js"></script>
 </body>
 
 </html>

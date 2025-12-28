@@ -1,8 +1,8 @@
 // ============================================
 // SUPABASE CONFIGURATION - FIXED
 // ============================================
-const SUPABASE_URL = 'https://oleuggrzmdtcorlvlapp.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9sZXVnZ3J6bWR0Y29ybHZsYXBwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU0NTI3MDMsImV4cCI6MjA4MTAyODcwM30.dVAunvwATOX1_WMD4KU-O1hgCx0iqa1KGAxHC-n1ndM';
+const SUPABASE_URL = CONFIG.SUPABASE_URL;
+const SUPABASE_ANON_KEY = CONFIG.SUPABASE_KEY;
 
 // Validate URL before creating client
 console.log('🔍 Supabase URL:', SUPABASE_URL);
@@ -462,8 +462,8 @@ function renderUsersTable() {
     tbody.innerHTML = allUsers.map(user => {
         // Check if user is admin
         const userIsAdmin = isAdmin(user.email);
-        const planDisplay = userIsAdmin ? 'Admin' : (user.membership_tier || 'Free');
-        const planClass = userIsAdmin ? 'admin' : (user.membership_tier || 'free');
+        const planDisplay = userIsAdmin ? 'Admin' : (user.plan || 'Free');
+        const planClass = userIsAdmin ? 'admin' : (user.plan || 'free');
 
         return `
         <tr>

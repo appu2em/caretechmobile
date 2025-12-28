@@ -1,807 +1,402 @@
 <!DOCTYPE html>
 <html lang="en">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWEBGP5V40"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-NWEBGP5V40');
-</script>
+<script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-NWEBGP5V40');</script>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Automation for Business | Auto Reply & Follow-up | CareTechMobile</title>
+    <title>WhatsApp Automation | 24/7 Auto-Reply | CareTechMobile</title>
     <meta name="description"
-        content="Never miss a WhatsApp customer. Auto-reply instantly, follow-up automatically, convert more leads. Perfect for small business owners.">
-
+        content="Never miss a customer message. WhatsApp auto-reply for small businesses. Works 24/7 even when you're busy.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="nptel-theme.css">
-
+    <link rel="stylesheet" href="ubona-style.css">
+    <link rel="stylesheet" href="chat-widget.css">    
     <style>
-        /* Hero */
-        .whatsapp-hero {
-            margin-top: 70px;
-            padding: 80px 0 60px;
-            background: linear-gradient(135deg, #DCF8C6 0%, #E8F5E9 50%, #C8E6C9 100%);
-            position: relative;
-            overflow: hidden;
+        .page-hero {
+            padding: 120px 0 60px;
+            background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+            text-align: center;
         }
 
-        body.dark-mode .whatsapp-hero {
-            background: linear-gradient(135deg, #0a1f1a 0%, #1a2f1a 50%, #0f1f0f 100%);
+        .page-hero h1 {
+            margin-bottom: 15px;
+            font-size: 2.5rem;
         }
 
-        .hero-content {
+        .feature-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #25D366;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-
-        .hero-title {
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .hero-title .highlight {
-            color: #25D366;
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--gray-600);
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-
-        body.dark-mode .hero-subtitle {
-            color: var(--gray-400);
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        /* Flow Diagram */
-        .flow-section {
-            padding: 80px 0;
-            background: var(--white);
-        }
-
-        body.dark-mode .flow-section {
-            background: var(--dark-surface);
-        }
-
-        .flow-diagram {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .flow-step {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            padding: 30px;
-            background: white;
-            border-radius: 16px;
-            box-shadow: var(--shadow-sm);
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        body.dark-mode .flow-step {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .flow-step:hover {
-            transform: translateX(10px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .flow-connector {
-            display: flex;
-            justify-content: center;
-            padding: 10px 0;
-        }
-
-        .flow-connector i {
-            font-size: 2rem;
-            color: #25D366;
-            animation: bounce 1s infinite;
-        }
-
-        @keyframes bounce {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(5px);
-            }
-        }
-
-        .flow-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: white;
-            flex-shrink: 0;
-        }
-
-        .flow-step:nth-child(1) .flow-icon {
-            background: linear-gradient(135deg, #64B5F6, #2196F3);
-        }
-
-        .flow-step:nth-child(3) .flow-icon {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-        }
-
-        .flow-step:nth-child(5) .flow-icon {
-            background: linear-gradient(135deg, #FFB74D, #FF9800);
-        }
-
-        .flow-step:nth-child(7) .flow-icon {
-            background: linear-gradient(135deg, #BA68C8, #9C27B0);
-        }
-
-        .flow-step:nth-child(9) .flow-icon {
-            background: linear-gradient(135deg, #81C784, #4CAF50);
-        }
-
-        .flow-content h3 {
-            font-size: 1.2rem;
-            margin-bottom: 6px;
-        }
-
-        .flow-content p {
-            color: var(--gray-600);
-            font-size: 0.95rem;
-        }
-
-        body.dark-mode .flow-content p {
-            color: var(--gray-400);
-        }
-
-        /* Features Grid */
-        .features-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #E8F5E9, #F1F8E9);
-        }
-
-        body.dark-mode .features-section {
-            background: var(--dark-bg);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            padding: 60px 0;
         }
 
         .feature-card {
             background: white;
+            border-radius: 20px;
             padding: 35px;
-            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
             text-align: center;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
         }
 
-        body.dark-mode .feature-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            border-color: #25D366;
-            box-shadow: 0 20px 40px rgba(37, 211, 102, 0.2);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
+        .feature-card i {
+            font-size: 50px;
             background: linear-gradient(135deg, #25D366, #128C7E);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2rem;
-            color: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
         }
 
         .feature-card h3 {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .feature-card p {
             color: var(--gray-600);
-            font-size: 0.95rem;
+            line-height: 1.7;
         }
 
-        body.dark-mode .feature-card p {
-            color: var(--gray-400);
-        }
-
-        /* Demo Chat */
-        .demo-section {
-            padding: 80px 0;
-            background: var(--white);
-        }
-
-        body.dark-mode .demo-section {
-            background: var(--dark-surface);
-        }
-
-        .demo-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .demo-phone {
-            background: linear-gradient(135deg, #1a1a2e, #2d2d44);
-            border-radius: 40px;
-            padding: 20px;
-            max-width: 350px;
-            margin: 0 auto;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .demo-phone-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 15px;
-            background: #128C7E;
-            border-radius: 20px 20px 0 0;
-            color: white;
-        }
-
-        .demo-phone-header .avatar {
-            width: 40px;
-            height: 40px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #128C7E;
-            font-weight: 700;
-        }
-
-        .demo-phone-header .name {
-            font-weight: 600;
-        }
-
-        .demo-phone-header .status {
-            font-size: 0.8rem;
-            opacity: 0.8;
-        }
-
-        .demo-chat-area {
-            background: linear-gradient(135deg, #E5DDD5, #ECE5DD);
-            padding: 20px 15px;
-            min-height: 350px;
-            border-radius: 0 0 20px 20px;
-        }
-
-        body.dark-mode .demo-chat-area {
-            background: linear-gradient(135deg, #1a2f1a, #0f1f0f);
-        }
-
-        .chat-msg {
-            max-width: 85%;
-            padding: 10px 14px;
-            border-radius: 12px;
-            margin-bottom: 10px;
-            font-size: 0.9rem;
-            position: relative;
-            animation: fadeIn 0.5s ease forwards;
-        }
-
-        .chat-msg.user {
-            background: white;
-            border-bottom-left-radius: 4px;
-        }
-
-        .chat-msg.bot {
-            background: #DCF8C6;
-            margin-left: auto;
-            border-bottom-right-radius: 4px;
-        }
-
-        body.dark-mode .chat-msg.user {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-        }
-
-        body.dark-mode .chat-msg.bot {
-            background: #128C7E;
-            color: white;
-        }
-
-        .chat-msg .auto-badge {
-            position: absolute;
-            top: -8px;
-            right: 10px;
-            background: #25D366;
-            color: white;
-            font-size: 0.65rem;
-            padding: 2px 8px;
-            border-radius: 50px;
-        }
-
-        .chat-msg .time {
-            font-size: 0.7rem;
-            color: #999;
-            text-align: right;
-            margin-top: 4px;
-        }
-
-        .demo-content h2 {
-            margin-bottom: 20px;
-        }
-
-        .demo-content p {
-            color: var(--gray-600);
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-
-        body.dark-mode .demo-content p {
-            color: var(--gray-400);
-        }
-
-        .demo-features {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        .demo-features li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-            font-size: 1rem;
-            color: var(--gray-700);
-        }
-
-        body.dark-mode .demo-features li {
-            color: var(--gray-300);
-        }
-
-        .demo-features li i {
-            color: #25D366;
-        }
-
-        /* CTA */
-        .cta-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            text-align: center;
-            color: white;
-        }
-
-        .cta-section h2 {
-            color: white;
-            margin-bottom: 15px;
-        }
-
-        .cta-section p {
-            opacity: 0.9;
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .btn-white {
-            background: white;
-            color: #128C7E;
-            padding: 16px 32px;
-            border-radius: 12px;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-white:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 992px) {
-
-            .hero-content,
-            .demo-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-cta {
-                justify-content: center;
+        @media (max-width: 768px) {
+            .page-hero {
+                padding: 100px 20px 40px;
             }
         }
     </style>
 </head>
 
 <body>
-    <a href="https://wa.me/919962003738" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    
+    <!-- ===== HEADER WITH MEGA MENU ===== -->
+<header class="ubona-header" id="mainHeader">
+    <div class="container">
+        <div class="header-container">
+            <!-- Mobile Hamburger -->
+            <button class="mobile-hamburger" id="mobileHamburger" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-    <!-- Header -->
-    <header class="nptel-header">
-        <div class="container">
-            <div class="nptel-header-content">
-                <a href="payment.html" class="payment-link">
-                    <i class="fas fa-credit-card"></i> Payment
-                </a>
+            <!-- Logo -->
+            <a href="business-home.html" class="ubona-logo">
+                <h1>CareTech<span>Mobile</span></h1>
+                <small style="font-size: 0.55rem; opacity: 0.7; display: block; margin-top: -5px;">the complete business solution</small>
+            </a>
 
-                <a href="business-home.html" class="nptel-logo">
-                    <h1>CareTech<span>Mobile</span></h1>
-                </a>
+            <!-- Main Navigation -->
+            <nav class="ubona-nav">
+                <a href="business-home.html">Home</a>
 
-                <nav class="nptel-nav">
-                    <a href="business-home.html">Home</a>
-                    <a href="business-services.html">Services</a>
-                    <a href="whatsapp-automation.html" class="active">WhatsApp Automation</a>
-                    <a href="ai-assist.html">AI Assist</a>
-                    <a href="mini-crm.html">Mini CRM</a>
-                    <a href="how-it-works.html">How It Works</a>
-                    <a href="business-pricing.html">Pricing</a>
-                    <a href="demo.html">Free Demo</a>
-                    <a href="contact.html">Contact</a>
-                </nav>
-
-                <div class="nptel-header-actions">
-                    <button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button>
-                    <a href="dashboard.html" class="btn-nptel-login" id="loginBtn"><i class="fas fa-user"></i> Login</a>
-                    <a href="#" class="btn-nptel-login" id="logoutBtn" style="display: none;"><i
-                            class="fas fa-sign-out-alt"></i> Logout</a>
+                <!-- Solutions Dropdown -->
+                <div class="nav-dropdown">
+                    <a href="#">Solutions <i class="fas fa-chevron-down"></i></a>
+                    <div class="mega-menu" style="width: 700px;">
+                        <div class="mega-menu-header">
+                            <h4>Our Solutions</h4>
+                            <p>Transform customer interactions through smart automation</p>
+                        </div>
+                        <div class="mega-menu-grid" style="grid-template-columns: repeat(3, 1fr);">
+                            <a href="whatsapp-automation.html" class="mega-item">
+                                <div class="mega-item-icon green">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="mega-item-content">
+                                    <h5>WhatsApp Bot <i class="fas fa-arrow-right"></i></h5>
+                                    <p>Smart auto-replies</p>
+                                </div>
+                            </a>
+                            <a href="mini-crm.html" class="mega-item">
+                                <div class="mega-item-icon blue">
+                                    <i class="fas fa-users-cog"></i>
+                                </div>
+                                <div class="mega-item-content">
+                                    <h5>Mini CRM <i class="fas fa-arrow-right"></i></h5>
+                                    <p>Manage leads</p>
+                                </div>
+                            </a>
+                            <a href="ai-assist.html" class="mega-item">
+                                <div class="mega-item-icon purple">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="mega-item-content">
+                                    <h5>AI Assist <i class="fas fa-arrow-right"></i></h5>
+                                    <p>AI responses</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="mega-menu-header"
+                            style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
+                            <h4><i class="fas fa-building" style="margin-right: 8px; color: #15C39A;"></i> Industry
+                                Solutions</h4>
+                        </div>
+                        <div class="mega-menu-grid" style="grid-template-columns: repeat(5, 1fr); gap: 10px;">
+                            <a href="shop.html" class="mega-item" style="padding: 10px;">
+                                <div class="mega-item-content" style="text-align: center;">
+                                    <i class="fas fa-store" style="font-size: 1.5rem; color: #15C39A;"></i>
+                                    <h5 style="font-size: 0.8rem; margin-top: 5px;">Shop</h5>
+                                </div>
+                            </a>
+                            <a href="restaurant.html" class="mega-item" style="padding: 10px;">
+                                <div class="mega-item-content" style="text-align: center;">
+                                    <i class="fas fa-utensils" style="font-size: 1.5rem; color: #F59E0B;"></i>
+                                    <h5 style="font-size: 0.8rem; margin-top: 5px;">Restaurant</h5>
+                                </div>
+                            </a>
+                            <a href="healthcare.html" class="mega-item" style="padding: 10px;">
+                                <div class="mega-item-content" style="text-align: center;">
+                                    <i class="fas fa-clinic-medical" style="font-size: 1.5rem; color: #EF4444;"></i>
+                                    <h5 style="font-size: 0.8rem; margin-top: 5px;">Healthcare</h5>
+                                </div>
+                            </a>
+                            <a href="education.html" class="mega-item" style="padding: 10px;">
+                                <div class="mega-item-content" style="text-align: center;">
+                                    <i class="fas fa-graduation-cap" style="font-size: 1.5rem; color: #3B82F6;"></i>
+                                    <h5 style="font-size: 0.8rem; margin-top: 5px;">Education</h5>
+                                </div>
+                            </a>
+                            <a href="real-estate.html" class="mega-item" style="padding: 10px;">
+                                <div class="mega-item-content" style="text-align: center;">
+                                    <i class="fas fa-home" style="font-size: 1.5rem; color: #8B5CF6;"></i>
+                                    <h5 style="font-size: 0.8rem; margin-top: 5px;">Real Estate</h5>
+                                </div>
+                            </a>
+                            <a href="automobile.html" class="mega-item" style="padding: 10px;">
+                                <div class="mega-item-content" style="text-align: center;">
+                                    <i class="fas fa-car" style="font-size: 1.5rem; color: #6366F1;"></i>
+                                    <h5 style="font-size: 0.8rem; margin-top: 5px;">Automobile</h5>
+                                </div>
+                            </a>
+                            <a href="salon.html" class="mega-item" style="padding: 10px;">
+                                <div class="mega-item-content" style="text-align: center;">
+                                    <i class="fas fa-cut" style="font-size: 1.5rem; color: #EC4899;"></i>
+                                    <h5 style="font-size: 0.8rem; margin-top: 5px;">Salon</h5>
+                                </div>
+                            </a>
+                            <a href="logistics.html" class="mega-item" style="padding: 10px;">
+                                <div class="mega-item-content" style="text-align: center;">
+                                    <i class="fas fa-truck" style="font-size: 1.5rem; color: #14B8A6;"></i>
+                                    <h5 style="font-size: 0.8rem; margin-top: 5px;">Logistics</h5>
+                                </div>
+                            </a>
+                            <a href="agency.html" class="mega-item" style="padding: 10px;">
+                                <div class="mega-item-content" style="text-align: center;">
+                                    <i class="fas fa-briefcase" style="font-size: 1.5rem; color: #0EA5E9;"></i>
+                                    <h5 style="font-size: 0.8rem; margin-top: 5px;">Agency</h5>
+                                </div>
+                            </a>
+                            <a href="service.html" class="mega-item" style="padding: 10px;">
+                                <div class="mega-item-content" style="text-align: center;">
+                                    <i class="fas fa-tools" style="font-size: 1.5rem; color: #64748B;"></i>
+                                    <h5 style="font-size: 0.8rem; margin-top: 5px;">Service</h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <span></span><span></span><span></span>
+                <a href="business-pricing.html">Pricing</a>
+                <a href="payment.html" style="color: #F59E0B; font-weight: 600;">ðŸ’³ Payment</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <button class="dark-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
                 </button>
+                <a href="dashboard.html" class="btn-demo">
+                    <i class="fas fa-user"></i> Login
+                </a>
             </div>
         </div>
-    </header>
+    </div>
+</header>
 
-    <!-- Hero -->
-    <section class="whatsapp-hero">
+<!-- ===== MOBILE SIDEBAR ===== -->
+<div class="mobile-sidebar-overlay" id="sidebarOverlay"></div>
+<aside class="mobile-sidebar" id="mobileSidebar">
+    <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">
+        <i class="fas fa-times"></i>
+    </button>
+    <div class="sidebar-header">
+        <div class="sidebar-user">
+            <div class="sidebar-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="sidebar-user-info">
+                <h4 id="sidebarUserName">Guest</h4>
+                <p>Welcome!</p>
+            </div>
+        </div>
+    </div>
+    <nav class="sidebar-nav">
+        <a href="business-home.html"><i class="fas fa-home"></i> Home</a>
+        <a href="dashboard.html" style="background: linear-gradient(135deg, #15C39A, #0D9488); color: white;"><i
+                class="fas fa-user"></i> Dashboard / Login</a>
+        <a href="payment.html" style="background: linear-gradient(135deg, #F59E0B, #D97706); color: white;"><i
+                class="fas fa-credit-card"></i> Payment</a>
+        <a href="whatsapp-automation.html"><i class="fab fa-whatsapp"></i> WhatsApp Bot</a>
+        <a href="mini-crm.html"><i class="fas fa-users-cog"></i> Mini CRM</a>
+        <a href="ai-assist.html"><i class="fas fa-robot"></i> AI Assist</a>
+        <a href="business-services.html"><i class="fas fa-concierge-bell"></i> Services</a>
+        <a href="how-it-works.html"><i class="fas fa-cogs"></i> How It Works</a>
+        <a href="business-pricing.html"><i class="fas fa-tags"></i> Pricing</a>
+        <a href="demo.html"><i class="fas fa-play-circle"></i> Free Demo</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+</aside>
+    <div class="mobile-sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="mobile-sidebar" id="mobileSidebar">
+        <button class="sidebar-close" id="sidebarClose"><i class="fas fa-times"></i></button>
+        <div class="sidebar-header">
+            <div class="sidebar-user">
+                <div class="sidebar-avatar"><i class="fas fa-user"></i></div>
+                <div class="sidebar-user-info">
+                    <h4>Guest</h4>
+                    <p>Welcome!</p>
+                </div>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="business-home.html"><i class="fas fa-home"></i> Home</a>
+            <a href="whatsapp-automation.html" class="active"><i class="fab fa-whatsapp"></i> WhatsApp Bot</a>
+            <a href="business-services.html"><i class="fas fa-cogs"></i> Services</a>
+            <a href="demo.html"><i class="fas fa-play-circle"></i> Demo</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+        </nav>
+    </aside>
+    <section class="page-hero">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <div class="hero-badge">
-                        <i class="fab fa-whatsapp"></i>
-                        WhatsApp Business Automation
-                    </div>
-                    <h1 class="hero-title">
-                        Never Miss a <span class="highlight">WhatsApp</span> Customer Again
-                    </h1>
-                    <p class="hero-subtitle">
-                        Auto-reply instantly when you're busy. Follow-up automatically.
-                        Convert more enquiries into paying customers - without any extra effort.
-                    </p>
-                    <div class="hero-cta">
-                        <a href="demo.html" class="btn btn-whatsapp">
-                            <i class="fab fa-whatsapp"></i> Get Free Demo
-                        </a>
-                        <a href="#how-it-works" class="btn btn-secondary">
-                            See How It Works
-                        </a>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <img src="https://placehold.co/450x400/25D366/ffffff?text=WhatsApp+Auto+Reply"
-                        alt="WhatsApp Automation"
-                        style="border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.15);">
-                </div>
+            <h1><span style="color: #25D366;">WhatsApp</span> Automation</h1>
+            <p>Never miss a customer message. Reply instantly, 24/7.</p>
+        </div>
+    </section>
+    <section class="container">
+        <div class="feature-grid">
+            <div class="feature-card"><i class="fas fa-clock"></i>
+                <h3>24/7 Auto-Reply</h3>
+                <p>Customers get instant response even at midnight. No more "I'll reply later" and losing the customer
+                    to competitors.</p>
+            </div>
+            <div class="feature-card"><i class="fas fa-magic"></i>
+                <h3>Smart Responses</h3>
+                <p>Pre-set answers for common questions like pricing, location, timings. Feels personal, not robotic.
+                </p>
+            </div>
+            <div class="feature-card"><i class="fas fa-user-check"></i>
+                <h3>Lead Capture</h3>
+                <p>Every customer who messages is automatically saved with name and phone. Build your customer database.
+                </p>
+            </div>
+            <div class="feature-card"><i class="fas fa-redo"></i>
+                <h3>Follow-up Automation</h3>
+                <p>Automatic follow-up messages on Day 1, 3, 7. Convert more enquiries into paying customers.</p>
+            </div>
+            <div class="feature-card"><i class="fas fa-shield-alt"></i>
+                <h3>WhatsApp Business API</h3>
+                <p>Uses official WhatsApp Business API. Safe, secure, and won't get your number banned.</p>
+            </div>
+            <div class="feature-card"><i class="fas fa-sliders-h"></i>
+                <h3>Easy to Customize</h3>
+                <p>Change messages, add new responses anytime. We help you set it up perfectly for your business.</p>
             </div>
         </div>
     </section>
-
-    <!-- Flow Diagram -->
-    <section class="flow-section" id="how-it-works">
-        <div class="container">
-            <div class="section-header">
-                <h2>How WhatsApp Automation Works</h2>
-                <p>Simple 5-step process that works 24/7 for your business</p>
-            </div>
-
-            <div class="flow-diagram">
-                <div class="flow-step">
-                    <div class="flow-icon"><i class="fas fa-user"></i></div>
-                    <div class="flow-content">
-                        <h3>Customer Messages You</h3>
-                        <p>Someone sends a WhatsApp message to your business number</p>
-                    </div>
-                </div>
-
-                <div class="flow-connector"><i class="fas fa-arrow-down"></i></div>
-
-                <div class="flow-step">
-                    <div class="flow-icon"><i class="fas fa-bolt"></i></div>
-                    <div class="flow-content">
-                        <h3>Instant Auto-Reply</h3>
-                        <p>They receive helpful reply in seconds - even when you're busy or sleeping</p>
-                    </div>
-                </div>
-
-                <div class="flow-connector"><i class="fas fa-arrow-down"></i></div>
-
-                <div class="flow-step">
-                    <div class="flow-icon"><i class="fas fa-database"></i></div>
-                    <div class="flow-content">
-                        <h3>Lead Saved Automatically</h3>
-                        <p>Customer's name, phone, and message saved in your CRM - no manual entry</p>
-                    </div>
-                </div>
-
-                <div class="flow-connector"><i class="fas fa-arrow-down"></i></div>
-
-                <div class="flow-step">
-                    <div class="flow-icon"><i class="fas fa-bell"></i></div>
-                    <div class="flow-content">
-                        <h3>You Get Notified</h3>
-                        <p>You receive alert about new enquiry - respond when you're free</p>
-                    </div>
-                </div>
-
-                <div class="flow-connector"><i class="fas fa-arrow-down"></i></div>
-
-                <div class="flow-step">
-                    <div class="flow-icon"><i class="fas fa-check-circle"></i></div>
-                    <div class="flow-content">
-                        <h3>Automatic Follow-up</h3>
-                        <p>If customer doesn't respond, follow-up messages sent on Day 1, 3, 7</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features -->
-    <section class="features-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Why Business Owners Love This</h2>
-                <p>Real benefits that help you save time and earn more</p>
-            </div>
-
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-clock"></i></div>
-                    <h3>Save 3+ Hours Daily</h3>
-                    <p>No more typing same reply again and again. Auto-reply handles it for you.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-user-check"></i></div>
-                    <h3>Never Lose a Customer</h3>
-                    <p>Even late night enquiries get instant response. No customer goes to competitor.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
-                    <h3>Convert More Leads</h3>
-                    <p>Automatic follow-up increases conversion by 30%. No lead forgotten.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Demo Chat -->
-    <section class="demo-section">
-        <div class="container">
-            <div class="demo-container">
-                <div class="demo-phone">
-                    <div class="demo-phone-header">
-                        <div class="avatar">CB</div>
-                        <div>
-                            <div class="name">CareTech Business</div>
-                            <div class="status">Online</div>
-                        </div>
-                    </div>
-                    <div class="demo-chat-area">
-                        <div class="chat-msg user">
-                            Hi, I want to repair my mobile screen
-                            <div class="time">10:30 AM</div>
-                        </div>
-                        <div class="chat-msg bot">
-                            <span class="auto-badge">⚡ Auto</span>
-                            Hello! 👋 Thanks for messaging CareTech Mobile.
-                            <br><br>
-                            We're available today 10 AM - 8 PM.<br>
-                            Please share your phone model for a quote.
-                            <div class="time">10:30 AM ✓✓</div>
-                        </div>
-                        <div class="chat-msg user">
-                            Samsung S21 Ultra
-                            <div class="time">10:31 AM</div>
-                        </div>
-                        <div class="chat-msg bot">
-                            <span class="auto-badge">⚡ Auto</span>
-                            Great choice! Samsung S21 Ultra screen repair:
-                            <br><br>
-                            💰 Price: ₹5,500 - ₹7,000<br>
-                            ⏱️ Time: 2-3 hours<br>
-                            ✅ Warranty: 30 days
-                            <br><br>
-                            Visit our shop or we'll collect! 🛵
-                            <div class="time">10:31 AM ✓✓</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="demo-content">
-                    <h2>See It In Action</h2>
-                    <p>
-                        This is exactly what your customers will experience.
-                        Instant, helpful replies that make them feel valued.
-                    </p>
-                    <ul class="demo-features">
-                        <li><i class="fas fa-check-circle"></i> Replies in 3 seconds - not 3 hours</li>
-                        <li><i class="fas fa-check-circle"></i> Custom messages for your business</li>
-                        <li><i class="fas fa-check-circle"></i> Works with official WhatsApp Business API</li>
-                        <li><i class="fas fa-check-circle"></i> No app installation needed</li>
-                        <li><i class="fas fa-check-circle"></i> Works 24/7, even holidays</li>
-                    </ul>
-                    <a href="https://wa.me/919962003738?text=Hi,%20I%20want%20to%20see%20WhatsApp%20automation%20demo"
-                        class="btn btn-whatsapp" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Try Demo Now
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
     <section class="cta-section">
         <div class="container">
-            <h2>Ready to Automate Your WhatsApp?</h2>
-            <p>Setup takes just 1 day. Start converting more customers tomorrow.</p>
-            <div class="cta-buttons">
-                <a href="demo.html" class="btn-white">
-                    <i class="fas fa-play"></i> Get Free Demo
-                </a>
-                <a href="tel:+919495253265" class="btn btn-secondary" style="border-color: white; color: white;">
-                    <i class="fas fa-phone"></i> Call 9495253265
-                </a>
+            <div class="cta-content">
+                <h2>Stop Missing Customer Messages</h2>
+                <p>Start at just â‚¹500/month and watch your leads grow</p>
+                <div class="cta-buttons">
+                    <a href="demo.html" class="btn-white"><i class="fas fa-play-circle"></i> See Demo</a>
+                    <a href="https://wa.me/919962003738" class="btn-white-outline" target="_blank"><i
+                            class="fab fa-whatsapp"></i> Get Started</a>
+                </div>
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="nptel-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h3>CareTech<span>Mobile</span></h3>
-                    <p>Helping small businesses grow with WhatsApp automation.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="business-home.html">Home</a></li>
-                        <li><a href="business-services.html">Services</a></li>
-                        <li><a href="business-pricing.html">Pricing</a></li>
-                        <li><a href="demo.html">Free Demo</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><a href="tel:+919495253265"><i class="fas fa-phone"></i> 9495253265</a></li>
-                        <li><a href="https://wa.me/919962003738"><i class="fab fa-whatsapp"></i> 9962003738</a></li>
-                        <li><a href="mailto:info@caretechmobile.com"><i class="fas fa-envelope"></i>
-                                info@caretechmobile.com</a></li>
-                    </ul>
+    <!-- ===== FOOTER ===== -->
+<!-- ===== FOOTER ===== -->
+<!-- ===== FOOTER ===== -->
+<!-- ===== FOOTER ===== -->
+<footer class="ubona-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>CareTech<span>Mobile</span></h3>
+                <p>Helping small businesses stay connected with their customers. WhatsApp automation, Mini CRM, and
+                    AI-powered engagement.</p>
+                <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 10px;"><i class="fas fa-globe"
+                        style="margin-right: 5px;"></i> Service available worldwide</p>
+                <div class="footer-social">
+                    <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://wa.me/919962003738" target="_blank" aria-label="WhatsApp"><i
+                            class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>© 2026 CareTechMobile. Built by <strong>Shihab Rajendran</strong></p>
+
+            <div class="footer-col">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="whatsapp-automation.html">WhatsApp Bot</a></li>
+                    <li><a href="mini-crm.html">Mini CRM</a></li>
+                    <li><a href="ai-assist.html">AI Assist</a></li>
+                    <li><a href="business-services.html">All Services</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="how-it-works.html">How It Works</a></li>
+                    <li><a href="business-pricing.html">Pricing</a></li>
+                    <li><a href="demo.html">Free Demo</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:+919495253265"><i class="fas fa-phone"></i> 9495253265</a></li>
+                    <li><a href="https://wa.me/919962003738"><i class="fab fa-whatsapp"></i> 9962003738</a></li>
+                    <li><a href="mailto:info@caretechmobile.com"><i class="fas fa-envelope"></i> Email</a></li>
+                    <li><a href="payment.html"><i class="fas fa-credit-card"></i> Payment</a></li>
+                    <li style="opacity: 0.8; font-size: 0.85rem;"><i class="fas fa-map-marker-alt"></i> Mannarkkad,
+                        Kerala</li>
+                </ul>
             </div>
         </div>
-    </footer>
 
+        <div class="footer-bottom">
+            <p>Â© 2026 CareTechMobile. All rights reserved. | Secured by Cloudflare</p>
+            <div class="footer-bottom-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="refund.html">Refund Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
     <script>
-        // Dark Mode
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const body = document.body;
-        if (localStorage.getItem('darkMode') === 'true') {
-            body.classList.add('dark-mode');
-            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        }
-        darkModeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            const isDark = body.classList.contains('dark-mode');
-            localStorage.setItem('darkMode', isDark);
-            darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-        });
-
-        // Mobile Menu
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const nptelNav = document.querySelector('.nptel-nav');
-        mobileMenuBtn.addEventListener('click', () => {
-            nptelNav.classList.toggle('active');
-            mobileMenuBtn.classList.toggle('active');
-        });
-
-        // Scroll Animation
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.flow-step, .feature-card').forEach((el, i) => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = `all 0.5s ease ${i * 0.1}s`;
-            observer.observe(el);
-        });
+        const darkToggle = document.getElementById('darkModeToggle'); if (localStorage.getItem('darkMode') === 'true') { document.body.classList.add('dark-mode'); darkToggle.innerHTML = '<i class="fas fa-sun"></i>'; }
+        darkToggle.addEventListener('click', () => { document.body.classList.toggle('dark-mode'); localStorage.setItem('darkMode', document.body.classList.contains('dark-mode')); darkToggle.innerHTML = document.body.classList.contains('dark-mode') ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>'; });
+        const hamburger = document.getElementById('mobileHamburger'); const sidebar = document.getElementById('mobileSidebar'); const overlay = document.getElementById('sidebarOverlay'); const closeBtn = document.getElementById('sidebarClose');
+        function openSidebar() { sidebar.classList.add('active'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeSidebar() { sidebar.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
+        hamburger.addEventListener('click', openSidebar); closeBtn.addEventListener('click', closeSidebar); overlay.addEventListener('click', closeSidebar);
+        window.addEventListener('scroll', () => { document.getElementById('mainHeader').classList.toggle('scrolled', window.scrollY > 50); });
     </script>
-    <!-- Auth Header Script -->
-    <script src="auth-header.js"></script>
+    
+    <script src="chat-widget.js"></script>
 </body>
 
 </html>

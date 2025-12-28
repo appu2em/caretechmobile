@@ -1,0 +1,35 @@
+/* Base Styles and Variables */
+:root {
+    --accent-color: #ec5b5b;
+    --accent-hover: #e01a1a;
+    --text-color: #282c3f;
+    --heading-color: #222222;
+    --secondary-color: #4a5157;
+    --link-color: #8c8c8c;
+    --border-color: #dddddd;
+    --bg-white: #ffffff;
+    --bg-light: #f5f5f5;
+    --bg-gray: #f2f2f2;
+    --whatsapp: #25D366;
+    --font: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: var(--bg-white);
+}
+
+/* Region specific overrides */
+.region-glf {
+    /* Example: Force English font for Gulf if needed */
+}

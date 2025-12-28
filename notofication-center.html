@@ -1,509 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notification Center — CareTechMobile</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <title>Notifications | CareTechMobile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    
+    <link rel="stylesheet" href="ubona-style.css">
+    <link rel="stylesheet" href="chat-widget.css">
     <style>
-        :root {
-            --primary: #15C39A;
-            --dark: #1a1a2e;
-            --success: #25D366;
-            --danger: #e74c3c;
-            --warning: #f39c12;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--dark);
-            color: #fff;
-            min-height: 100vh;
-            padding: 30px;
-        }
-
-        .container { max-width: 700px; margin: 0 auto; }
-
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 20px;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.3s;
-        }
-
-        .back-link:hover { transform: translateX(-5px); }
-
-        h1 {
+        .page-hero {
+            padding: 120px 0 40px;
+            background: linear-gradient(135deg, #FEE2E2, #FECACA);
             text-align: center;
-            margin-bottom: 40px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 2rem;
+        }
+
+        .notifications-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .notification-item {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             display: flex;
-            align-items: center;
-            justify-content: center;
             gap: 15px;
         }
 
-        .notification-card {
-            background: rgba(255,255,255,0.05);
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 25px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: 0.3s;
+        .notification-item i {
+            font-size: 1.5rem;
+            color: var(--ctm-primary);
         }
 
-        .notification-card:hover {
-            border-color: rgba(21,195,154,0.3);
-            box-shadow: 0 5px 20px rgba(21,195,154,0.1);
+        .notification-item h4 {
+            margin-bottom: 5px;
         }
 
-        .notification-card h3 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .form-group { margin-bottom: 18px; }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #aaa;
+        .notification-item p {
+            color: var(--gray-600);
             font-size: 0.9rem;
         }
 
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 14px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 10px;
-            color: #fff;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .form-group textarea { min-height: 100px; resize: vertical; }
-
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: rgba(255,255,255,0.12);
-        }
-
-        .form-group select option { background: var(--dark); }
-
-        .notification-preview {
-            background: rgba(0,0,0,0.4);
-            padding: 20px;
-            border-radius: 12px;
-            font-family: monospace;
-            font-size: 0.85rem;
-            white-space: pre-wrap;
-            color: #ddd;
-            margin-bottom: 18px;
-            max-height: 250px;
-            overflow-y: auto;
-            border: 1px solid rgba(255,255,255,0.08);
-        }
-
-        .btn-send {
-            background: var(--success);
-            color: #fff;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.3s;
-        }
-
-        .btn-send:hover:not(:disabled) {
-            background: #20bd5a;
-            transform: translateY(-2px);
-        }
-
-        .btn-send:disabled { opacity: 0.5; cursor: not-allowed; }
-
-        .btn-primary { background: var(--primary); }
-        .btn-primary:hover:not(:disabled) { background: #12a885; }
-
-        .status-message {
-            padding: 12px;
-            border-radius: 8px;
-            margin-top: 15px;
-            display: none;
-        }
-
-        .status-message.success {
-            background: rgba(37, 211, 102, 0.1);
-            color: var(--success);
-            border: 1px solid rgba(37, 211, 102, 0.3);
-        }
-
-        .status-message.error {
-            background: rgba(231, 76, 60, 0.1);
-            color: var(--danger);
-            border: 1px solid rgba(231, 76, 60, 0.3);
-        }
-
-        .db-status {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            z-index: 1000;
-        }
-
-        .db-status.connected {
-            background: rgba(37, 211, 102, 0.1);
-            color: var(--success);
-            border: 1px solid rgba(37, 211, 102, 0.3);
-        }
-
-        .db-status.disconnected {
-            background: rgba(231, 76, 60, 0.1);
-            color: var(--danger);
-            border: 1px solid rgba(231, 76, 60, 0.3);
-        }
-
-        .spinner {
-            display: none;
-            width: 16px;
-            height: 16px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-top-color: #fff;
-            border-radius: 50%;
-            animation: spin 0.6s linear infinite;
-        }
-
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        .btn-send.loading .spinner { display: inline-block; }
-
-        @media (max-width: 768px) {
-            body { padding: 20px; }
-            .btn-send { width: 100%; justify-content: center; }
-            .db-status { position: static; margin-bottom: 20px; }
+        .notification-item .time {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+            margin-top: 5px;
         }
     </style>
 </head>
+
 <body>
-
-    <div class="db-status disconnected" id="dbStatus">
-        <i class="fas fa-circle"></i>
-        <span>Checking...</span>
-    </div>
-
-    <div class="container">
-        <a href="admin.html" class="back-link">
-            <i class="fas fa-arrow-left"></i> Back to Admin
-        </a>
-        
-        <h1>
-            <i class="fas fa-mobile-alt"></i>
-            Notification Center
-        </h1>
-
-        <div class="notification-card">
-            <h3>
-                <i class="fas fa-plus-circle"></i> 
-                Create New Service Request
-            </h3>
-            
-            <div class="form-group">
-                <label>Customer Name *</label>
-                <input type="text" id="customerName" placeholder="John Doe">
+    <header class="ubona-header" id="mainHeader">
+        <div class="container">
+            <div class="header-container">
+                <a href="business-home.html" class="ubona-logo">
+                    <h1>CareTech<span>Mobile</span></h1>
+                    <small style="font-size: 0.5rem; opacity: 0.7; display: block; margin-top: -5px;">the complete business solution</small>
+                </a>
+                <nav class="ubona-nav"><a href="business-home.html">Home</a><a href="dashboard.html">Dashboard</a></nav>
             </div>
-
-            <div class="form-group">
-                <label>Phone Number *</label>
-                <input type="text" id="customerPhone" placeholder="9876543210">
-            </div>
-
-            <div class="form-group">
-                <label>Service Type *</label>
-                <select id="serviceType">
-                    <option value="">Select Service</option>
-                    <option value="Mobile Screen Repair">Mobile Screen Repair</option>
-                    <option value="Battery Replacement">Battery Replacement</option>
-                    <option value="Water Damage Repair">Water Damage Repair</option>
-                    <option value="Software Issues">Software Issues</option>
-                    <option value="Charging Port Repair">Charging Port Repair</option>
-                    <option value="Other">Other</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Issue Description *</label>
-                <textarea id="issueDescription" placeholder="Describe the problem..."></textarea>
-            </div>
-
-            <div class="form-group">
-                <label>Priority</label>
-                <select id="priority">
-                    <option value="Normal">Normal</option>
-                    <option value="High">High</option>
-                    <option value="Urgent">Urgent</option>
-                </select>
-            </div>
-
-            <button class="btn-send btn-primary" id="btnCreate">
-                <i class="fas fa-save"></i>
-                <span>Create Request</span>
-                <div class="spinner"></div>
-            </button>
-
-            <div class="status-message" id="createStatus"></div>
         </div>
-
-        <div class="notification-card">
-            <h3>
-                <i class="fas fa-flask"></i> 
-                Test WhatsApp
-            </h3>
-            
-            <div class="form-group">
-                <label>Phone Number</label>
-                <input type="text" id="testPhone" placeholder="919876543210">
-            </div>
-            
-            <div class="form-group">
-                <label>Message</label>
-                <input type="text" id="testMessage" placeholder="Test message">
-            </div>
-            
-            <button class="btn-send" id="btnTest">
-                <i class="fab fa-whatsapp"></i>
-                <span>Send Test</span>
-            </button>
+    </header>
+    <section class="page-hero">
+        <div class="container">
+            <h1>Notifications</h1>
         </div>
-
-        <div class="notification-card">
-            <h3>
-                <i class="fas fa-clipboard-list"></i> 
-                Sample Template
-            </h3>
-            <div class="notification-preview" id="sampleText">
-🔔 *New Service Request!*
-
-📋 *Service:* Mobile Screen Repair
-👤 *Customer:* John Doe
-📱 *Phone:* 9876543210
-⚡ *Priority:* Normal
-
-📝 *Issue:*
-Screen is cracked
-
-🕐 *Time:* 12/12/2026, 10:30 AM
+    </section>
+    <section class="notifications-container">
+        <div class="notification-item"><i class="fas fa-bell"></i>
+            <div>
+                <h4>Welcome to CareTechMobile!</h4>
+                <p>Get started by exploring our services and features.</p><span class="time">Just now</span>
             </div>
-            <button class="btn-send" id="btnSample">
-                <i class="fab fa-whatsapp"></i>
-                Preview Sample
-            </button>
         </div>
+        <div class="notification-item"><i class="fas fa-info-circle"></i>
+            <div>
+                <h4>No new notifications</h4>
+                <p>You're all caught up! Check back later for updates.</p><span class="time">-</span>
+            </div>
+        </div>
+    </section>
+    <footer class="ubona-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2026 CareTechMobile</p>
+            </div>
+        </div>
+    </footer>
 
-    </div>
-
-    <script>
-        (function() {
-            'use strict';
-
-            // ✅ CORRECT CONFIG - Updated with your actual credentials
-            const CONFIG = {
-                url: 'https://oleuggrzmdtcorlvlapp.supabase.co',
-                key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9sZXVnZ3J6bWR0Y29ybHZsYXBwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU0NTI3MDMsImV4cCI6MjA4MTAyODcwM30.dVAunvwATOX1_WMD4KU-O1hgCx0iqa1KGAxHC-n1ndM',
-                adminPhone: '919495253265'
-            };
-
-            let db = null;
-            let connected = false;
-
-            // Init database
-            async function initDB() {
-                const status = document.getElementById('dbStatus');
-                
-                console.log('🔧 Initializing database...');
-                console.log('📍 URL:', CONFIG.url);
-                
-                try {
-                    db = window.supabase.createClient(CONFIG.url, CONFIG.key);
-                    console.log('✅ Client created');
-                    
-                    const { data, error } = await db.from('service_requests').select('count').limit(1);
-                    
-                    if (error) {
-                        console.error('❌ Query error:', error);
-                        throw error;
-                    }
-                    
-                    connected = true;
-                    status.className = 'db-status connected';
-                    status.innerHTML = '<i class="fas fa-check-circle"></i><span>Database Connected</span>';
-                    console.log('✅ DB connected successfully!');
-                    
-                } catch (e) {
-                    connected = false;
-                    status.className = 'db-status disconnected';
-                    status.innerHTML = '<i class="fas fa-times-circle"></i><span>WhatsApp Mode</span>';
-                    console.warn('⚠️ DB offline:', e.message);
-                }
-            }
-
-            // WhatsApp helper
-            function sendWA(phone, msg) {
-                const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-                window.open(url, '_blank');
-                console.log('📲 WhatsApp sent to:', phone);
-            }
-
-            // Show status
-            function showMsg(el, type, text) {
-                el.className = `status-message ${type}`;
-                el.textContent = text;
-                el.style.display = 'block';
-                setTimeout(() => el.style.display = 'none', 5000);
-            }
-
-            // Create request
-            async function handleCreate() {
-                const btn = document.getElementById('btnCreate');
-                const status = document.getElementById('createStatus');
-                
-                const name = document.getElementById('customerName').value.trim();
-                const phone = document.getElementById('customerPhone').value.trim();
-                const service = document.getElementById('serviceType').value;
-                const issue = document.getElementById('issueDescription').value.trim();
-                const priority = document.getElementById('priority').value;
-
-                if (!name || !phone || !service || !issue) {
-                    showMsg(status, 'error', '⚠️ Fill all required fields');
-                    return;
-                }
-
-                if (!/^\d{10}$/.test(phone)) {
-                    showMsg(status, 'error', '⚠️ Invalid phone (10 digits required)');
-                    return;
-                }
-
-                btn.disabled = true;
-                btn.classList.add('loading');
-
-                try {
-                    const data = {
-                        customer_name: name,
-                        customer_phone: phone,
-                        service_type: service,
-                        issue_description: issue,
-                        priority: priority,
-                        status: 'Pending',
-                        created_at: new Date().toISOString()
-                    };
-
-                    console.log('💾 Saving to database:', data);
-
-                    if (connected && db) {
-                        const { error } = await db.from('service_requests').insert([data]);
-                        
-                        if (error) {
-                            console.error('❌ DB error:', error);
-                            showMsg(status, 'error', '⚠️ Database save failed');
-                        } else {
-                            showMsg(status, 'success', '✅ Saved to database successfully!');
-                            console.log('✅ Data saved to database');
-                        }
-                    } else {
-                        showMsg(status, 'error', '⚠️ Database offline - WhatsApp only');
-                    }
-
-                    const msg = `🔔 *New Service Request!*
-
-📋 *Service:* ${service}
-👤 *Customer:* ${name}
-📱 *Phone:* ${phone}
-⚡ *Priority:* ${priority}
-
-📝 *Issue:*
-${issue}
-
-🕐 *Time:* ${new Date().toLocaleString('en-IN')}`;
-
-                    sendWA(CONFIG.adminPhone, msg);
-
-                    // Clear form
-                    document.getElementById('customerName').value = '';
-                    document.getElementById('customerPhone').value = '';
-                    document.getElementById('serviceType').value = '';
-                    document.getElementById('issueDescription').value = '';
-                    document.getElementById('priority').value = 'Normal';
-
-                } catch (e) {
-                    console.error('❌ Error:', e);
-                    showMsg(status, 'error', '❌ ' + e.message);
-                } finally {
-                    btn.disabled = false;
-                    btn.classList.remove('loading');
-                }
-            }
-
-            // Test message
-            function handleTest() {
-                const phone = document.getElementById('testPhone').value.trim();
-                const msg = document.getElementById('testMessage').value.trim();
-
-                if (!phone || !msg) {
-                    alert('⚠️ Fill both fields');
-                    return;
-                }
-
-                const clean = phone.replace(/\D/g, '');
-                if (!/^\d{10,15}$/.test(clean)) {
-                    alert('⚠️ Invalid phone');
-                    return;
-                }
-
-                sendWA(clean, msg);
-            }
-
-            // Sample
-            function handleSample() {
-                const msg = document.getElementById('sampleText').textContent.trim();
-                sendWA(CONFIG.adminPhone, msg);
-            }
-
-            // Init
-            document.addEventListener('DOMContentLoaded', () => {
-                console.log('📱 CareTechMobile Notification Center');
-                initDB();
-
-                document.getElementById('btnCreate').addEventListener('click', handleCreate);
-                document.getElementById('btnTest').addEventListener('click', handleTest);
-                document.getElementById('btnSample').addEventListener('click', handleSample);
-            });
-
-        })();
-    </script>
-
+    <script src="chat-widget.js"></script>
 </body>
+
 </html>

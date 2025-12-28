@@ -1,1335 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWEBGP5V40"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-NWEBGP5V40');
-</script>
+<script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-NWEBGP5V40');</script>
 
 <head>
-    <script data-cfasync="false">
-        const CONFIG = {
-            SUPABASE_URL: 'https://oleuggrzmdtcorlvlapp.supabase.co',
-            SUPABASE_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9sZXVnZ3J6bWR0Y29ybHZsYXBwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU0NTI3MDMsImV4cCI6MjA4MTAyODcwM30.dVAunvwATOX-O1hgCx0iqa1KGAxHC-n1ndM'
-        };
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services — CareTechMobile | Device Repair, WhatsApp Automation & Digital Services</title>
-    <meta name="description"
-        content="Professional device repair, WhatsApp automation, mini websites & AI consulting services.">
-
+    <title>Services | CareTechMobile</title>
+    <meta name="description" content="All services offered by CareTechMobile for small businesses.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="nptel-theme.css">
-
+    <link rel="stylesheet" href="ubona-style.css">
+    <link rel="stylesheet" href="chat-widget.css">
     <style>
-        /* Services Page Specific Styles */
-        .services-hero {
-            margin-top: 70px;
-            padding: 80px 0 60px;
-            background: linear-gradient(135deg, var(--pastel-blue), var(--pastel-green));
+        .page-hero {
+            padding: 120px 0 60px;
+            background: linear-gradient(135deg, var(--ctm-primary-light), #E0F2FE);
             text-align: center;
         }
 
-        body.dark-mode .services-hero {
-            background: linear-gradient(135deg, #0f1a2e, #0a1f1a);
-        }
-
-        .services-hero h1 .highlight {
-            background: linear-gradient(135deg, var(--ctm-primary), var(--nptel-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .services-hero p {
-            font-size: 1.15rem;
-            color: var(--gray-600);
-            max-width: 600px;
-            margin: 0 auto 30px;
-        }
-
-        body.dark-mode .services-hero p {
-            color: var(--gray-400);
-        }
-
-        /* Currency Toggle */
-        .currency-toggle {
-            display: inline-flex;
-            background: var(--white);
-            border-radius: var(--radius-xl);
-            padding: 5px;
-            margin-bottom: 25px;
-            box-shadow: var(--shadow-md);
-        }
-
-        body.dark-mode .currency-toggle {
-            background: var(--dark-card);
-        }
-
-        .currency-btn {
-            padding: 12px 30px;
-            border: none;
-            background: transparent;
-            color: var(--gray-600);
-            font-weight: 700;
-            cursor: pointer;
-            border-radius: var(--radius-xl);
-            transition: var(--transition-fast);
-        }
-
-        .currency-btn.active {
-            background: var(--ctm-primary);
-            color: var(--white);
-        }
-
-        /* Service Nav Pills */
-        .service-nav {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .nav-pill {
-            padding: 14px 28px;
-            background: var(--white);
-            border: 2px solid var(--gray-200);
-            border-radius: var(--radius-xl);
-            color: var(--gray-700);
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition-fast);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        body.dark-mode .nav-pill {
-            background: var(--dark-card);
-            border-color: var(--dark-border);
-            color: var(--gray-300);
-        }
-
-        .nav-pill:hover,
-        .nav-pill.active {
-            background: var(--ctm-primary);
-            border-color: var(--ctm-primary);
-            color: var(--white);
-            transform: translateY(-3px);
-        }
-
-        /* Sections */
-        .services-section {
-            padding: 80px 0;
-        }
-
-        .services-section.alt-bg {
-            background: var(--gray-50);
-        }
-
-        body.dark-mode .services-section.alt-bg {
-            background: var(--dark-bg);
-        }
-
-        /* Repair Tabs Container */
-        .repair-container {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 40px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--gray-200);
-        }
-
-        body.dark-mode .repair-container {
-            background: var(--dark-card);
-            border-color: var(--dark-border);
-        }
-
-        .repair-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .repair-tab {
-            padding: 14px 30px;
-            background: var(--gray-100);
-            border: none;
-            border-radius: var(--radius-md);
-            color: var(--gray-700);
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition-fast);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        body.dark-mode .repair-tab {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--gray-300);
-        }
-
-        .repair-tab:hover {
-            background: var(--pastel-green);
-            color: var(--ctm-primary-dark);
-        }
-
-        .repair-tab.active {
-            background: var(--ctm-primary);
-            color: var(--white);
-        }
-
-        .repair-tab i {
-            font-size: 1.2rem;
-        }
-
-        .repair-content {
-            display: none;
-        }
-
-        .repair-content.active {
-            display: block;
-        }
-
-        .repair-grid {
+        .services-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            padding: 60px 0;
         }
 
-        @media (max-width: 768px) {
-            .repair-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Services List */
-        .services-list {
-            background: var(--pastel-blue);
-            border-radius: var(--radius-md);
-            padding: 30px;
-        }
-
-        body.dark-mode .services-list {
-            background: rgba(25, 118, 210, 0.1);
-        }
-
-        .services-list h3 {
-            font-size: 1.3rem;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .services-list h3 i {
-            color: var(--nptel-blue);
-        }
-
-        .service-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-        }
-
-        body.dark-mode .service-item {
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .service-item:last-child {
-            border: none;
-        }
-
-        .service-name {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .service-name i {
-            color: var(--ctm-primary);
-            font-size: 0.8rem;
-        }
-
-        .service-price {
-            font-weight: 700;
-            color: var(--ctm-primary);
-        }
-
-        .price-inr,
-        .price-usd {
-            display: none;
-        }
-
-        .price-inr.show,
-        .price-usd.show {
-            display: inline;
-        }
-
-        .brands-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .brand-tag {
-            padding: 8px 16px;
-            background: var(--white);
-            border-radius: var(--radius-xl);
-            font-size: 0.85rem;
-            font-weight: 600;
-            border: 1px solid var(--gray-200);
-        }
-
-        body.dark-mode .brand-tag {
-            background: var(--dark-card);
-            border-color: var(--dark-border);
-        }
-
-        /* Repair Info */
-        .repair-info {
-            background: var(--pastel-green);
-            border-radius: var(--radius-md);
-            padding: 30px;
-        }
-
-        body.dark-mode .repair-info {
-            background: rgba(21, 195, 154, 0.1);
-        }
-
-        .repair-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 25px;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .info-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--ctm-primary);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            flex-shrink: 0;
-        }
-
-        .info-text h4 {
-            margin-bottom: 5px;
-            font-size: 1rem;
-        }
-
-        .info-text p {
-            color: var(--gray-600);
-            font-size: 0.9rem;
-        }
-
-        body.dark-mode .info-text p {
-            color: var(--gray-400);
-        }
-
-        .btn-book {
-            width: 100%;
-            padding: 16px;
-            background: var(--ctm-primary);
-            color: var(--white);
-            border: none;
-            border-radius: var(--radius-md);
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            transition: var(--transition-fast);
-        }
-
-        .btn-book:hover {
-            background: var(--ctm-primary-dark);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-glow);
-        }
-
-        /* Plans Grid */
-        .plans-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        @media (max-width: 1024px) {
-            .plans-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .plans-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .plan-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
+        .service-card {
+            background: white;
+            border-radius: 20px;
             padding: 35px;
-            border: 2px solid var(--gray-200);
-            transition: var(--transition-normal);
-            position: relative;
-        }
-
-        body.dark-mode .plan-card {
-            background: var(--dark-card);
-            border-color: var(--dark-border);
-        }
-
-        .plan-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--ctm-primary);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .plan-card.featured {
-            border-color: var(--nptel-accent);
-            transform: scale(1.02);
-        }
-
-        .plan-card.featured:hover {
-            transform: scale(1.02) translateY(-10px);
-        }
-
-        .plan-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--nptel-accent);
-            color: var(--white);
-            padding: 8px 20px;
-            border-radius: var(--radius-xl);
-            font-size: 0.8rem;
-            font-weight: 700;
-        }
-
-        .plan-name {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
             text-align: center;
-            margin-bottom: 25px;
-            padding-top: 15px;
+            transition: all 0.3s;
         }
 
-        .plan-name h3 {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
+        .service-card:hover {
+            transform: translateY(-5px);
         }
 
-        .plan-name p {
-            color: var(--gray-500);
-        }
-
-        .plan-price {
-            text-align: center;
-            padding: 25px 0;
-            border-top: 1px solid var(--gray-200);
-            border-bottom: 1px solid var(--gray-200);
-            margin-bottom: 25px;
-        }
-
-        body.dark-mode .plan-price {
-            border-color: var(--dark-border);
-        }
-
-        .plan-price .amount {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--ctm-primary), var(--nptel-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .plan-price .period {
-            display: block;
-            color: var(--gray-500);
-            margin-top: 5px;
-        }
-
-        .plan-features {
-            list-style: none;
-            margin-bottom: 25px;
-        }
-
-        .plan-features li {
-            padding: 10px 0;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--gray-700);
-        }
-
-        body.dark-mode .plan-features li {
-            color: var(--gray-300);
-        }
-
-        .plan-features li i {
+        .service-card i {
+            font-size: 3rem;
             color: var(--ctm-primary);
-            font-size: 0.8rem;
-        }
-
-        .btn-plan {
-            width: 100%;
-            padding: 14px;
-            border-radius: var(--radius-md);
-            font-weight: 700;
-            cursor: pointer;
-            transition: var(--transition-fast);
-        }
-
-        .plan-card:nth-child(1) .btn-plan {
-            background: transparent;
-            border: 2px solid var(--nptel-blue);
-            color: var(--nptel-blue);
-        }
-
-        .plan-card:nth-child(1) .btn-plan:hover {
-            background: var(--nptel-blue);
-            color: var(--white);
-        }
-
-        .plan-card:nth-child(2) .btn-plan {
-            background: var(--nptel-accent);
-            border: none;
-            color: var(--white);
-        }
-
-        .plan-card:nth-child(2) .btn-plan:hover {
-            background: var(--nptel-accent-dark);
-        }
-
-        .plan-card:nth-child(3) .btn-plan {
-            background: transparent;
-            border: 2px solid var(--nptel-orange);
-            color: var(--nptel-orange);
-        }
-
-        .plan-card:nth-child(3) .btn-plan:hover {
-            background: var(--nptel-orange);
-            color: var(--white);
-        }
-
-        /* Digital Grid */
-        .digital-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        @media (max-width: 768px) {
-            .digital-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .digital-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 40px;
-            border: 2px solid var(--gray-200);
-            transition: var(--transition-normal);
-        }
-
-        body.dark-mode .digital-card {
-            background: var(--dark-card);
-            border-color: var(--dark-border);
-        }
-
-        .digital-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .digital-card:nth-child(1) {
-            border-top: 4px solid var(--nptel-blue);
-        }
-
-        .digital-card:nth-child(2) {
-            border-top: 4px solid var(--nptel-accent);
-        }
-
-        .digital-card:nth-child(1):hover {
-            border-color: var(--nptel-blue);
-        }
-
-        .digital-card:nth-child(2):hover {
-            border-color: var(--nptel-accent);
-        }
-
-        .digital-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 25px;
-            font-size: 2rem;
-            color: var(--white);
-        }
-
-        .digital-card:nth-child(1) .digital-icon {
-            background: linear-gradient(135deg, var(--nptel-blue), #00BCD4);
-        }
-
-        .digital-card:nth-child(2) .digital-icon {
-            background: linear-gradient(135deg, var(--nptel-accent), var(--nptel-purple));
-        }
-
-        .digital-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-        }
-
-        .digital-card>p {
-            color: var(--gray-600);
-            margin-bottom: 25px;
-        }
-
-        body.dark-mode .digital-card>p {
-            color: var(--gray-400);
-        }
-
-        .digital-features {
-            list-style: none;
-            margin-bottom: 25px;
-        }
-
-        .digital-features li {
-            padding: 10px 0;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .digital-features li i {
-            color: var(--ctm-primary);
-        }
-
-        .digital-price {
-            padding: 20px;
-            background: var(--gray-50);
-            border-radius: var(--radius-md);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-
-        body.dark-mode .digital-price {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .digital-price strong {
-            font-size: 1.5rem;
-            color: var(--ctm-primary);
-        }
-
-        .digital-price span {
-            color: var(--gray-500);
-        }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .modal-content {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 40px;
-            max-width: 500px;
-            width: 100%;
-            position: relative;
-        }
-
-        body.dark-mode .modal-content {
-            background: var(--dark-surface);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 2rem;
-            cursor: pointer;
-            color: var(--gray-500);
-        }
-
-        .modal-close:hover {
-            color: var(--nptel-accent);
-        }
-
-        .modal-content h2 {
-            margin-bottom: 25px;
-        }
-
-        .form-group {
             margin-bottom: 20px;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--gray-700);
+        .service-card h3 {
+            margin-bottom: 15px;
         }
 
-        body.dark-mode .form-group label {
-            color: var(--gray-300);
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 14px;
-            border: 2px solid var(--gray-200);
-            border-radius: var(--radius-sm);
-            font-size: 1rem;
-            transition: var(--transition-fast);
-        }
-
-        body.dark-mode .form-group input,
-        body.dark-mode .form-group select,
-        body.dark-mode .form-group textarea {
-            background: var(--dark-card);
-            border-color: var(--dark-border);
-            color: var(--white);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--ctm-primary);
-        }
-
-        .form-actions {
-            display: flex;
-            gap: 15px;
-            margin-top: 25px;
-        }
-
-        .form-actions button {
-            flex: 1;
-            padding: 14px;
-            border-radius: var(--radius-sm);
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        .btn-cancel {
-            background: transparent;
-            border: 2px solid var(--gray-300);
+        .service-card p {
             color: var(--gray-600);
-        }
-
-        .btn-submit {
-            background: var(--ctm-primary);
-            border: none;
-            color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .btn-submit:hover {
-            background: var(--ctm-primary-dark);
-        }
-
-        @media (max-width: 1024px) {
-            .nptel-nav {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: flex;
-            }
+            line-height: 1.7;
         }
     </style>
 </head>
 
 <body>
-    <a href="https://wa.me/919962003738" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
-    <!-- NPTEL Header -->
-    <header class="nptel-header">
+    
+    <header class="ubona-header" id="mainHeader">
         <div class="container">
-            <div class="nptel-header-content">
-                <a href="index.html" class="nptel-logo">
+            <div class="header-container">
+                <button class="mobile-hamburger" id="mobileHamburger"><span></span><span></span><span></span></button>
+                <a href="business-home.html" class="ubona-logo">
                     <h1>CareTech<span>Mobile</span></h1>
+                    <small style="font-size: 0.5rem; opacity: 0.7; display: block; margin-top: -5px;">the complete business solution</small>
                 </a>
-                <nav class="nptel-nav">
-                    <a href="index.html">Home</a>
-                    <a href="services.html" class="active">Services</a>
-                    <a href="ai-tools.html">AI Tools</a>
-                    <a href="earning-hub.html">Earning Hub</a>
-                    <a href="software.html">Software</a>
-                    <a href="help-center.html">Tech Help</a>
-                    <a href="resources.html">Resources</a>
+                <nav class="ubona-nav">
+                    <a href="business-home.html">Home</a>
+                    <a href="business-services.html" class="active">Services</a>
+                    <a href="business-pricing.html">Pricing</a>
                     <a href="contact.html">Contact</a>
                 </nav>
-                <div class="nptel-header-actions">
-                    <button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button>
-                    <a href="dashboard.html" class="btn-nptel-login"><i class="fas fa-user"></i> Login</a>
-                </div>
-                <button class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></button>
+                <div class="header-actions"><button class="dark-toggle" id="darkModeToggle"><i
+                            class="fas fa-moon"></i></button><a href="demo.html" class="btn-demo"><i
+                            class="fas fa-play-circle"></i> Demo</a></div>
             </div>
         </div>
     </header>
-
-    <!-- Hero -->
-    <section class="services-hero">
+    <div class="mobile-sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="mobile-sidebar" id="mobileSidebar">
+        <button class="sidebar-close" id="sidebarClose"><i class="fas fa-times"></i></button>
+        <nav class="sidebar-nav">
+            <a href="business-home.html"><i class="fas fa-home"></i> Home</a>
+            <a href="business-services.html" class="active"><i class="fas fa-cogs"></i> Services</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+        </nav>
+    </aside>
+    <section class="page-hero">
         <div class="container">
-            <h1>Our <span class="highlight">Services</span></h1>
-            <p>Professional device repair, automation, and digital solutions to power your success</p>
-            <div class="currency-toggle">
-                <button class="currency-btn active" onclick="setCurrency('inr')">🇮🇳 INR</button>
-                <button class="currency-btn" onclick="setCurrency('usd')">🌍 USD</button>
+            <h1>All <span style="color: var(--ctm-primary)">Services</span></h1>
+            <p>Complete solutions for your business</p>
+        </div>
+    </section>
+    <section class="container">
+        <div class="services-grid">
+            <div class="service-card"><i class="fab fa-whatsapp"></i>
+                <h3>WhatsApp Automation</h3>
+                <p>24/7 auto-reply, lead capture, follow-up reminders.</p><a href="whatsapp-automation.html"
+                    class="btn-gradient" style="margin-top: 15px; display: inline-flex;">Learn More</a>
             </div>
-            <div class="service-nav">
-                <a href="#repairs" class="nav-pill active"><i class="fas fa-tools"></i> Device Repair</a>
-                <a href="#automation" class="nav-pill"><i class="fab fa-whatsapp"></i> WhatsApp Automation</a>
-                <a href="#digital" class="nav-pill"><i class="fas fa-globe"></i> Digital Services</a>
+            <div class="service-card"><i class="fas fa-users"></i>
+                <h3>Mini CRM</h3>
+                <p>Track customers, leads, and follow-ups in one place.</p><a href="mini-crm.html" class="btn-gradient"
+                    style="margin-top: 15px; display: inline-flex;">Learn More</a>
+            </div>
+            <div class="service-card"><i class="fas fa-robot"></i>
+                <h3>AI Assist</h3>
+                <p>Smart AI-powered responses for customer queries.</p><a href="ai-assist.html" class="btn-gradient"
+                    style="margin-top: 15px; display: inline-flex;">Learn More</a>
+            </div>
+            <div class="service-card"><i class="fas fa-globe"></i>
+                <h3>Mini Website</h3>
+                <p>Professional web presence with WhatsApp integration.</p><a href="business-services.html"
+                    class="btn-gradient" style="margin-top: 15px; display: inline-flex;">Learn More</a>
+            </div>
+            <div class="service-card"><i class="fas fa-laptop-medical"></i>
+                <h3>Laptop/PC Repair</h3>
+                <p>Hardware repair with GST billing.</p><a href="business-services.html" class="btn-gradient"
+                    style="margin-top: 15px; display: inline-flex;">Learn More</a>
+            </div>
+            <div class="service-card"><i class="fas fa-database"></i>
+                <h3>Data Recovery</h3>
+                <p>Recover deleted files and crashed drives.</p><a href="business-services.html" class="btn-gradient"
+                    style="margin-top: 15px; display: inline-flex;">Learn More</a>
             </div>
         </div>
     </section>
-
-    <!-- Device Repair Section -->
-    <section id="repairs" class="services-section">
+    <footer class="ubona-footer">
         <div class="container">
-            <div class="section-header">
-                <h2>Device Repair Services</h2>
-                <p>Expert repair with genuine parts & 90-day warranty</p>
-            </div>
-            <div class="repair-container">
-                <div class="repair-tabs">
-                    <button class="repair-tab active" onclick="showRepairTab('mobile')"><i
-                            class="fas fa-mobile-alt"></i> Mobile</button>
-                    <button class="repair-tab" onclick="showRepairTab('laptop')"><i class="fas fa-laptop"></i>
-                        Laptop</button>
-                    <button class="repair-tab" onclick="showRepairTab('pc')"><i class="fas fa-desktop"></i>
-                        PC/Desktop</button>
-                </div>
-
-                <!-- Mobile -->
-                <div id="mobile" class="repair-content active">
-                    <div class="repair-grid">
-                        <div class="services-list">
-                            <h3><i class="fas fa-wrench"></i> Mobile Repairs</h3>
-                            <div class="service-item">
-                                <div class="service-name"><i class="fas fa-check"></i><span>Screen Replacement</span>
-                                </div>
-                                <div class="service-price"><span class="price-inr show">₹1,500+</span><span
-                                        class="price-usd">$18+</span></div>
-                            </div>
-                            <div class="service-item">
-                                <div class="service-name"><i class="fas fa-check"></i><span>Battery Replacement</span>
-                                </div>
-                                <div class="service-price"><span class="price-inr show">₹800+</span><span
-                                        class="price-usd">$10+</span></div>
-                            </div>
-                            <div class="service-item">
-                                <div class="service-name"><i class="fas fa-check"></i><span>Charging Port Fix</span>
-                                </div>
-                                <div class="service-price"><span class="price-inr show">₹500+</span><span
-                                        class="price-usd">$6+</span></div>
-                            </div>
-                            <div class="service-item">
-                                <div class="service-name"><i class="fas fa-check"></i><span>Camera Repair</span></div>
-                                <div class="service-price"><span class="price-inr show">₹1,000+</span><span
-                                        class="price-usd">$12+</span></div>
-                            </div>
-                            <div class="service-item">
-                                <div class="service-name"><i class="fas fa-check"></i><span>Water Damage Recovery</span>
-                                </div>
-                                <div class="service-price"><span class="price-inr show">₹1,500+</span><span
-                                        class="price-usd">$18+</span></div>
-                            </div>
-                            <div class="service-item">
-                                <div class="service-name"><i class="fas fa-check"></i><span>Software Fix / Update</span>
-                                </div>
-                                <div class="service-price"><span class="price-inr show">₹400+</span><span
-                                        class="price-usd">$5+</span></div>
-                            </div>
-                            <div class="brands-row"><span class="brand-tag">iPhone</span><span
-                                    class="brand-tag">Samsung</span><span class="brand-tag">Xiaomi</span><span
-                                    class="brand-tag">OnePlus</span><span class="brand-tag">Oppo</span><span
-                                    class="brand-tag">Vivo</span></div>
-                        </div>
-                        <div class="repair-info">
-                            <h3>📱 Mobile Repair Info</h3>
-                            <div class="info-item">
-                                <div class="info-icon"><i class="fas fa-clock"></i></div>
-                                <div class="info-text">
-                                    <h4>Fast Turnaround</h4>
-                                    <p>Most repairs done in 2-4 hours</p>
-                                </div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-icon"><i class="fas fa-shield-alt"></i></div>
-                                <div class="info-text">
-                                    <h4>90-Day Warranty</h4>
-                                    <p>All parts covered under warranty</p>
-                                </div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-icon"><i class="fas fa-gem"></i></div>
-                                <div class="info-text">
-                                    <h4>Genuine Parts</h4>
-                                    <p>Original quality components only</p>
-                                </div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-icon"><i class="fas fa-truck"></i></div>
-                                <div class="info-text">
-                                    <h4>Free Pickup</h4>
-                                    <p>Within city limits (min order ₹1000)</p>
-                                </div>
-                            </div>
-                            <button class="btn-book" onclick="openBookingModal('Mobile Repair')"><i
-                                    class="fab fa-whatsapp"></i> Book Mobile Repair</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Laptop -->
-                <div id="laptop" class="repair-content">
-                    <div class="repair-grid">
-                        <div class="services-list">
-                            <h3><i class="fas fa-wrench"></i> Laptop Repairs</h3>
-                            <div class="service-item">
-                                <div class="service-name"><i class="fas fa-check"></i><span>Screen Replacement</span>
-                                </div>
-                                <div class="service-price"><span class="price-inr show">₹3,000+</span><span
-                                        class="price-usd">$36+</span></div>
-                            </div>
-                            <div class="service-item">
-                                <div class="service-name"><i class="fas fa-check"></i><span>Keyboard Replacement</span>
-                                </div>
-                                <div class="service-price"><span class="price-inr show">₹1,500+</span><span
-                                        class="price-usd">$18+</span></div>
-                            </div>
-                            <div class="service-item">
-                                <div class="service-name"><i class="fas fa-check"></i><span>SSD Upgrade (256GB)</span>
-                                </div>
-                                <div class="service-price"><span class="price-inr show">₹2,500+</span><span
-                                        class="price-usd">$30+</span></div>
-                            </div>
-                            <div class="service-item">
-                                <div class="service-name"><i class="fas fa-check"></i><span>RAM Upgrade (8GB)</span>
-                                </div>
-                                <div class="service-price"><span class="price-inr show">₹2,000+</span><span
-                                        class="price-usd">$24+</span></div>
-                            </div>
-                            <div class="service-item">
-                                <div class="service-name"><i class="fas fa-check"></i><span>Motherboard Repair</span>
-                                </div>
-                                <div class="service-price"><span class="price-inr show">₹2,500+</span><span
-                                        class="price-usd">$30+</span></div>
-                            </div>
-                            <div class="service-item">
-                                <div class="service-name"><i class="fas fa-check"></i><span>Windows Installation</span>
-                                </div>
-                                <div class="service-price"><span class="price-inr show">₹500+</span><span
-                                        class="price-usd">$6+</span></div>
-                            </div>
-                            <div class="brands-row"><span class="brand-tag">Dell</span><span
-                                    class="brand-tag">HP</span><span class="brand-tag">Lenovo</span><span
-                                    class="brand-tag">Asus</span><span class="brand-tag">Acer</span><span
-                                    class="brand-tag">MacBook</span></div>
-                        </div>
-                        <div class="repair-info">
-                            <h3>💻 Laptop Repair Info</h3>
-                            <div class="info-item">
-                                <div class="info-icon"><i class="fas fa-clock"></i></div>
-                                <div class="info-text">
-                                    <h4>Turnaround Time</h4>
-                                    <p>4-8 hours for most repairs</p>
-                                </div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-icon"><i class="fas fa-shield-alt"></i></div>
-                                <div class="info-text">
-                                    <h4>90-Day Warranty</h4>
-                                    <p>Parts and labor covered</p>
-                                </div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-icon"><i class="fas fa-search"></i></div>
-                                <div class="info-text">
-                                    <h4>Free Diagnosis</h4>
-                                    <p>No charge if you don't repair</p>
-                                </div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-icon"><i class="fas fa-hdd"></i></div>
-                                <div class="info-text">
-                                    <h4>Data Safe</h4>
-                                    <p>Your data remains untouched</p>
-                                </div>
-                            </div>
-                            <button class="btn-book" onclick="openBookingModal('Laptop Repair')"><i
-                                    class="fab fa-whatsapp"></i> Book Laptop Repair</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PC -->
-                <div id="pc" class="repair-content">
-                    <div class="repair-grid">
-                        <div class="services-list">
-                            <h3><i class="fas fa-wrench"></i> PC/Desktop Services</h3>
-                            <div class="service-item">
-                                <div class="service-name"><i class="fas fa-check"></i><span>Diagnosis & Cleaning</span>
-                                </div>
-                                <div class="service-price"><span class="price-inr show">₹500+</span><span
-                                        class="price-usd">$6+</span></div>
-                            </div>
-                            <div class="service-item">
-                                <div class="service-name"><i class="fas fa-check"></i><span>Virus Removal</span></div>
-                                <div class="service-price"><span class="price-inr show">₹600+</span><span
-                                        class="price-usd">$7+</span></div>
-                            </div>
-                            <div class="service-item">
-                                <div class="service-name"><i class="fas fa-check"></i><span>Hardware Upgrade</span>
-                                </div>
-                                <div class="service-price"><span class="price-inr show">₹1,000+</span><span
-                                        class="price-usd">$12+</span></div>
-                            </div>
-                            <div class="service-item">
-                                <div class="service-name"><i class="fas fa-check"></i><span>Data Recovery</span></div>
-                                <div class="service-price"><span class="price-inr show">₹1,500+</span><span
-                                        class="price-usd">$18+</span></div>
-                            </div>
-                            <div class="service-item">
-                                <div class="service-name"><i class="fas fa-check"></i><span>Custom PC Build</span></div>
-                                <div class="service-price"><span class="price-inr show">₹2,000+</span><span
-                                        class="price-usd">$24+</span></div>
-                            </div>
-                            <div class="service-item">
-                                <div class="service-name"><i class="fas fa-check"></i><span>Network Setup</span></div>
-                                <div class="service-price"><span class="price-inr show">₹800+</span><span
-                                        class="price-usd">$10+</span></div>
-                            </div>
-                            <div class="brands-row"><span class="brand-tag">Custom Build</span><span
-                                    class="brand-tag">Gaming PC</span><span class="brand-tag">Workstation</span><span
-                                    class="brand-tag">All Brands</span></div>
-                        </div>
-                        <div class="repair-info">
-                            <h3>🖥️ PC Repair Info</h3>
-                            <div class="info-item">
-                                <div class="info-icon"><i class="fas fa-clock"></i></div>
-                                <div class="info-text">
-                                    <h4>Same Day Service</h4>
-                                    <p>Most issues fixed same day</p>
-                                </div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-icon"><i class="fas fa-home"></i></div>
-                                <div class="info-text">
-                                    <h4>On-Site Support</h4>
-                                    <p>We come to your location</p>
-                                </div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-icon"><i class="fas fa-gamepad"></i></div>
-                                <div class="info-text">
-                                    <h4>Gaming Specialist</h4>
-                                    <p>Custom gaming PC builds</p>
-                                </div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-icon"><i class="fas fa-server"></i></div>
-                                <div class="info-text">
-                                    <h4>Business Solutions</h4>
-                                    <p>Office network & server setup</p>
-                                </div>
-                            </div>
-                            <button class="btn-book" onclick="openBookingModal('PC Repair')"><i
-                                    class="fab fa-whatsapp"></i> Book PC Repair</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- WhatsApp Automation -->
-    <section id="automation" class="services-section alt-bg">
-        <div class="container">
-            <div class="section-header">
-                <h2>WhatsApp Automation</h2>
-                <p>Automate customer service, sales & marketing</p>
-            </div>
-            <div class="plans-grid">
-                <div class="plan-card">
-                    <div class="plan-name">
-                        <h3>Basic</h3>
-                        <p>For small businesses</p>
-                    </div>
-                    <div class="plan-price"><span class="amount"><span class="price-inr show">₹2,999</span><span
-                                class="price-usd">$36</span></span><span class="period">/ month</span></div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> 5 Auto-Reply Templates</li>
-                        <li><i class="fas fa-check"></i> Welcome Message</li>
-                        <li><i class="fas fa-check"></i> Away Message</li>
-                        <li><i class="fas fa-check"></i> Quick Reply Buttons</li>
-                        <li><i class="fas fa-check"></i> 1 WhatsApp Number</li>
-                        <li><i class="fas fa-check"></i> 2 Hours Setup Support</li>
-                    </ul>
-                    <button class="btn-plan" onclick="openBookingModal('Basic Automation')">Get Started</button>
-                </div>
-                <div class="plan-card featured">
-                    <span class="plan-badge">🔥 Most Popular</span>
-                    <div class="plan-name">
-                        <h3>Pro</h3>
-                        <p>For growing businesses</p>
-                    </div>
-                    <div class="plan-price"><span class="amount"><span class="price-inr show">₹5,999</span><span
-                                class="price-usd">$72</span></span><span class="period">/ month</span></div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> Unlimited Templates</li>
-                        <li><i class="fas fa-check"></i> Broadcast (500 contacts)</li>
-                        <li><i class="fas fa-check"></i> Order Tracking</li>
-                        <li><i class="fas fa-check"></i> Lead Forms</li>
-                        <li><i class="fas fa-check"></i> Google Sheets Sync</li>
-                        <li><i class="fas fa-check"></i> 3 Team Members</li>
-                        <li><i class="fas fa-check"></i> 5 Hours Support</li>
-                    </ul>
-                    <button class="btn-plan" onclick="openBookingModal('Pro Automation')">Get Started</button>
-                </div>
-                <div class="plan-card">
-                    <div class="plan-name">
-                        <h3>Business</h3>
-                        <p>For enterprises</p>
-                    </div>
-                    <div class="plan-price"><span class="amount"><span class="price-inr show">₹12,999</span><span
-                                class="price-usd">$156</span></span><span class="period">/ month</span></div>
-                    <ul class="plan-features">
-                        <li><i class="fas fa-check"></i> Everything in Pro</li>
-                        <li><i class="fas fa-check"></i> Unlimited Broadcasts</li>
-                        <li><i class="fas fa-check"></i> Payment Integration</li>
-                        <li><i class="fas fa-check"></i> CRM Integration</li>
-                        <li><i class="fas fa-check"></i> WhatsApp API</li>
-                        <li><i class="fas fa-check"></i> 5 Numbers</li>
-                        <li><i class="fas fa-check"></i> 10 Hours Support</li>
-                    </ul>
-                    <button class="btn-plan" onclick="openBookingModal('Business Automation')">Get Started</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Digital Services -->
-    <section id="digital" class="services-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Digital Services</h2>
-                <p>Websites & AI consulting for your business</p>
-            </div>
-            <div class="digital-grid">
-                <div class="digital-card">
-                    <div class="digital-icon"><i class="fas fa-globe"></i></div>
-                    <h3>Mini Website</h3>
-                    <p>Professional landing page for your business</p>
-                    <ul class="digital-features">
-                        <li><i class="fas fa-check"></i> Responsive Design</li>
-                        <li><i class="fas fa-check"></i> Contact Form</li>
-                        <li><i class="fas fa-check"></i> WhatsApp Integration</li>
-                        <li><i class="fas fa-check"></i> Google Maps</li>
-                        <li><i class="fas fa-check"></i> SEO Optimized</li>
-                        <li><i class="fas fa-check"></i> 1 Year Free Hosting</li>
-                    </ul>
-                    <div class="digital-price"><strong><span class="price-inr show">₹4,999</span><span
-                                class="price-usd">$60</span></strong><span>3-5 days delivery</span></div>
-                    <button class="btn-book" onclick="openBookingModal('Mini Website')"><i class="fas fa-rocket"></i>
-                        Get Started</button>
-                </div>
-                <div class="digital-card">
-                    <div class="digital-icon"><i class="fas fa-brain"></i></div>
-                    <h3>AI Consulting</h3>
-                    <p>Leverage AI to boost your productivity</p>
-                    <ul class="digital-features">
-                        <li><i class="fas fa-check"></i> AI Tool Selection</li>
-                        <li><i class="fas fa-check"></i> ChatGPT Workflows</li>
-                        <li><i class="fas fa-check"></i> Content Automation</li>
-                        <li><i class="fas fa-check"></i> Design with AI</li>
-                        <li><i class="fas fa-check"></i> Process Automation</li>
-                        <li><i class="fas fa-check"></i> 3 Training Sessions</li>
-                    </ul>
-                    <div class="digital-price"><strong><span class="price-inr show">₹3,999+</span><span
-                                class="price-usd">$48+</span></strong><span>Based on needs</span></div>
-                    <button class="btn-book" onclick="openBookingModal('AI Consulting')"><i class="fas fa-calendar"></i>
-                        Book Consultation</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="nptel-cta">
-        <div class="container">
-            <h2>Ready to Get Started?</h2>
-            <p>Chat with us on WhatsApp for instant support</p>
-            <div class="cta-buttons">
-                <a href="https://wa.me/919962003738" class="btn btn-whatsapp" target="_blank"><i
-                        class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
-                <a href="tel:+919495253265" class="btn btn-secondary"><i class="fas fa-phone"></i> Call Now</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="nptel-footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <h3>CareTech<span>Mobile</span></h3>
-                    <p>Your trusted partner for device repair, WhatsApp automation, AI tools, and digital growth
-                        strategies.</p>
-                    <div class="footer-social"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i
-                                class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a
-                            href="#"><i class="fab fa-linkedin-in"></i></a><a href="https://wa.me/919962003738"><i
-                                class="fab fa-whatsapp"></i></a></div>
-                </div>
-                <div class="footer-col">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="services.html">Device Repair</a></li>
-                        <li><a href="services.html#automation">WhatsApp Automation</a></li>
-                        <li><a href="services.html#digital">Mini Websites</a></li>
-                        <li><a href="membership.html">Membership Plans</a></li>
-                        <li><a href="payment.html"><i class="fas fa-credit-card"></i> Payment</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="ai-tools.html">AI Tools Hub</a></li>
-                        <li><a href="earning-hub.html">Online Earning</a></li>
-                        <li><a href="software.html">Software Directory</a></li>
-                        <li><a href="help-center.html">Tech Help Center</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><a href="tel:+919495253265"><i class="fas fa-phone"></i> 9495253265</a></li>
-                        <li><a href="https://wa.me/919962003738"><i class="fab fa-whatsapp"></i> 9962003738</a></li>
-                        <li><a href="mailto:info@caretechmobile.com"><i class="fas fa-envelope"></i>
-                                info@caretechmobile.com</a></li>
-                        <li><a href="contact.html"><i class="fas fa-map-marker-alt"></i> Contact Us</a></li>
-                    </ul>
-                </div>
-            </div>
             <div class="footer-bottom">
-                <p>© 2026 CareTechMobile. All rights reserved. Built by <strong>Shihab Rajendran</strong></p>
-                <div class="footer-bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of
-                        Service</a><a href="refund.html">Refund Policy</a><a href="sitemap.html">Sitemap</a></div>
+                <p>© 2026 CareTechMobile. All rights reserved.</p>
             </div>
         </div>
     </footer>
-
-    <!-- Booking Modal -->
-    <div id="bookingModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeModal()">&times;</span>
-            <h2>📋 Book Service</h2>
-            <form id="bookingForm">
-                <input type="hidden" id="serviceType">
-                <div class="form-group"><label>Your Name *</label><input type="text" id="customerName" required
-                        placeholder="Enter your full name"></div>
-                <div class="form-group"><label>Phone Number *</label><input type="tel" id="customerPhone" required
-                        placeholder="10-digit mobile number"></div>
-                <div class="form-group"><label>Service</label><input type="text" id="displayService" readonly></div>
-                <div class="form-group"><label>Device / Details</label><input type="text" id="deviceDetails"
-                        placeholder="e.g., iPhone 14, Dell Laptop"></div>
-                <div class="form-group"><label>Issue Description</label><textarea id="issueDesc" rows="3"
-                        placeholder="Describe your problem"></textarea></div>
-                <div class="form-actions"><button type="button" class="btn-cancel"
-                        onclick="closeModal()">Cancel</button><button type="submit" class="btn-submit"><i
-                            class="fab fa-whatsapp"></i> Submit via WhatsApp</button></div>
-            </form>
-        </div>
-    </div>
-
     <script>
-        // Dark Mode
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        if (localStorage.getItem('darkMode') === 'true') { document.body.classList.add('dark-mode'); darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; }
-        darkModeToggle.addEventListener('click', () => { document.body.classList.toggle('dark-mode'); const isDark = document.body.classList.contains('dark-mode'); localStorage.setItem('darkMode', isDark); darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>'; });
-
-        // Mobile Menu
-        document.getElementById('mobileMenuBtn').addEventListener('click', function () { const nav = document.querySelector('.nptel-nav'); nav.classList.toggle('active'); this.classList.toggle('active'); });
-
-        // Currency Toggle
-        function setCurrency(currency) { const inr = document.querySelectorAll('.price-inr'); const usd = document.querySelectorAll('.price-usd'); const btns = document.querySelectorAll('.currency-btn'); btns.forEach(b => b.classList.remove('active')); event.target.classList.add('active'); if (currency === 'inr') { inr.forEach(el => el.classList.add('show')); usd.forEach(el => el.classList.remove('show')); } else { inr.forEach(el => el.classList.remove('show')); usd.forEach(el => el.classList.add('show')); } }
-
-        // Repair Tabs
-        function showRepairTab(tab) { document.querySelectorAll('.repair-content').forEach(el => el.classList.remove('active')); document.querySelectorAll('.repair-tab').forEach(el => el.classList.remove('active')); document.getElementById(tab).classList.add('active'); event.target.closest('.repair-tab').classList.add('active'); }
-
-        // Nav Pills
-        document.querySelectorAll('.nav-pill').forEach(pill => { pill.addEventListener('click', function () { document.querySelectorAll('.nav-pill').forEach(p => p.classList.remove('active')); this.classList.add('active'); }); });
-
-        // Modal
-        function openBookingModal(service) { document.getElementById('bookingModal').style.display = 'flex'; document.getElementById('serviceType').value = service; document.getElementById('displayService').value = service; document.body.style.overflow = 'hidden'; }
-        function closeModal() { document.getElementById('bookingModal').style.display = 'none'; document.body.style.overflow = 'auto'; }
-        window.onclick = function (e) { if (e.target === document.getElementById('bookingModal')) closeModal(); }
-        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
-
-        // Form Submit
-        document.getElementById('bookingForm').addEventListener('submit', function (e) { e.preventDefault(); const name = document.getElementById('customerName').value; const phone = document.getElementById('customerPhone').value; const service = document.getElementById('serviceType').value; const device = document.getElementById('deviceDetails').value; const issue = document.getElementById('issueDesc').value; let msg = `*🔧 New Booking Request*%0A%0A*Service:* ${service}%0A*Name:* ${name}%0A*Phone:* ${phone}%0A`; if (device) msg += `*Device:* ${device}%0A`; if (issue) msg += `*Issue:* ${issue}%0A`; msg += `%0A_Sent from CareTechMobile_`; window.open(`https://wa.me/919962003738?text=${msg}`, '_blank'); closeModal(); this.reset(); });
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function (e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if (target) { window.scrollTo({ top: target.offsetTop - 90, behavior: 'smooth' }); } }); });
+        const darkToggle = document.getElementById('darkModeToggle'); if (localStorage.getItem('darkMode') === 'true') { document.body.classList.add('dark-mode'); darkToggle.innerHTML = '<i class="fas fa-sun"></i>'; }
+        darkToggle.addEventListener('click', () => { document.body.classList.toggle('dark-mode'); localStorage.setItem('darkMode', document.body.classList.contains('dark-mode')); darkToggle.innerHTML = document.body.classList.contains('dark-mode') ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>'; });
+        const hamburger = document.getElementById('mobileHamburger'); const sidebar = document.getElementById('mobileSidebar'); const overlay = document.getElementById('sidebarOverlay'); const closeBtn = document.getElementById('sidebarClose');
+        function openSidebar() { sidebar.classList.add('active'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeSidebar() { sidebar.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
+        hamburger.addEventListener('click', openSidebar); closeBtn.addEventListener('click', closeSidebar); overlay.addEventListener('click', closeSidebar);
+        window.addEventListener('scroll', () => { document.getElementById('mainHeader').classList.toggle('scrolled', window.scrollY > 50); });
     </script>
 
-    <!-- Global Auth Helper - Shows Logout on all pages when logged in -->
-    <!-- WhatsApp Automation Integration -->
-    <script src="whatsapp-integration.js"></script>
-    <script src="auth-helper.js"></script>
+    <script src="chat-widget.js"></script>
 </body>
 
 </html>

@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NWEBGP5V40"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-NWEBGP5V40');
-</script>
 
 <head>
-    <!-- Config -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Automation for Small Business | CareTechMobile</title>
+    <meta name="description"
+        content="Helping small businesses stay connected with their customers through WhatsApp automation, Mini CRM, and AI-powered engagement.">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWEBGP5V40"></script>
+    <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-NWEBGP5V40');</script>
+
+    <!-- Supabase Config -->
     <script data-cfasync="false">
         const CONFIG = {
             SUPABASE_URL: 'https://oleuggrzmdtcorlvlapp.supabase.co',
@@ -19,195 +21,65 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Automation for Small Business | Never Miss a Customer | CareTechMobile</title>
-    <meta name="description"
-        content="We help small businesses who struggle to get customers - by automating leads and follow-ups via WhatsApp. Website to entry. Automation to value. Result is money.">
-
     <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
         rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- NPTEL Theme -->
-    <link rel="stylesheet" href="nptel-theme.css">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 
-    <!-- Business Page Styles -->
+    <!-- Ubona Style -->
+    <link rel="stylesheet" href="ubona-style.css">
+    <link rel="stylesheet" href="chat-widget.css">
+    
+
     <style>
-        /* ===== HEADER ADDITIONS ===== */
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 20px;
+        :root {
+            --primary: #15C39A;
+            --primary-dark: #0EA57F;
+            --dark: #1E293B;
+            --gray-100: #F8FAFC;
+            --gray-200: #E2E8F0;
+            --gray-500: #64748B;
+            --gray-600: #475569;
+            --gray-900: #0F172A;
         }
 
-        .payment-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: linear-gradient(135deg, #F59E0B, #EF4444);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .payment-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4);
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--gray-900);
         }
 
-        /* Services Dropdown */
-        .nav-dropdown {
-            position: relative;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .dropdown-trigger {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .dropdown-trigger i {
-            font-size: 0.7rem;
-            transition: transform 0.3s ease;
-        }
-
-        .nav-dropdown:hover .dropdown-trigger i {
-            transform: rotate(180deg);
-        }
-
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background: white;
-            min-width: 220px;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            padding: 10px 0;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        body.dark-mode .dropdown-menu {
-            background: var(--dark-surface);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .nav-dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-menu a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 20px;
-            color: var(--gray-700);
-            transition: all 0.2s ease;
-        }
-
-        body.dark-mode .dropdown-menu a {
-            color: var(--gray-300);
-        }
-
-        .dropdown-menu a:hover {
-            background: var(--pastel-green);
-            color: var(--ctm-primary);
-        }
-
-        body.dark-mode .dropdown-menu a:hover {
-            background: rgba(21, 195, 154, 0.1);
-        }
-
-        .dropdown-menu a i {
-            width: 20px;
-            color: var(--ctm-primary);
-        }
-
-        /* ===== SIMPLIFIED FOOTER ===== */
-        .footer-simple {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 40px;
-            padding: 40px 0;
-        }
-
-        .footer-contact h4 {
-            margin-bottom: 15px;
-            color: white;
-        }
-
-        .footer-contact p {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .footer-contact p i {
-            width: 20px;
-            color: var(--ctm-primary);
-        }
-
-        .footer-contact a {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .footer-contact a:hover {
-            color: var(--ctm-primary);
-        }
-
-        @media (max-width: 768px) {
-            .header-left {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .payment-link {
-                font-size: 0.75rem;
-                padding: 6px 12px;
-            }
-
-            .footer-simple {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .footer-contact p {
-                justify-content: center;
-            }
-        }
-
-        /* ===== BUSINESS HERO SECTION ===== */
-        .business-hero {
-            margin-top: 70px;
-            padding: 80px 0 60px;
-            background: linear-gradient(135deg, #e8f5e9 0%, #e3f2fd 50%, #fce4ec 100%);
+        /* ===== HERO SECTION ===== */
+        .hero-section {
+            padding: 120px 0 80px;
+            background: linear-gradient(180deg, #F0FDF9 0%, #ECFDF5 50%, #F0FDFA 100%);
             position: relative;
             overflow: hidden;
         }
 
-        body.dark-mode .business-hero {
-            background: linear-gradient(135deg, #0a1f1a 0%, #0f1a2e 50%, #1a0f1a 100%);
-        }
-
-        .hero-content {
+        .hero-grid {
             display: grid;
-            grid-template-columns: 1.2fr 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
         }
@@ -216,8 +88,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(21, 195, 154, 0.15);
-            color: var(--ctm-primary);
+            background: rgba(21, 195, 154, 0.1);
+            color: var(--primary);
             padding: 8px 16px;
             border-radius: 50px;
             font-size: 0.85rem;
@@ -226,223 +98,220 @@
         }
 
         .hero-title {
-            font-size: clamp(2rem, 5vw, 3rem);
+            font-size: 2.8rem;
             line-height: 1.2;
             margin-bottom: 20px;
-            color: var(--gray-900);
-        }
-
-        body.dark-mode .hero-title {
-            color: var(--white);
+            font-family: 'Poppins', sans-serif;
         }
 
         .hero-title .highlight {
-            background: linear-gradient(135deg, var(--ctm-primary), #3B82F6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--primary);
         }
 
         .hero-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--gray-600);
-            line-height: 1.8;
+            line-height: 1.7;
             margin-bottom: 30px;
         }
 
-        body.dark-mode .hero-subtitle {
-            color: var(--gray-400);
-        }
-
-        .hero-cta-group {
+        .hero-buttons {
             display: flex;
             gap: 16px;
             flex-wrap: wrap;
         }
 
-        .btn-whatsapp-large {
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            padding: 18px 36px;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s ease;
+            gap: 8px;
+            transition: all 0.3s;
         }
 
-        .btn-whatsapp-large:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.5);
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
         }
 
-        .btn-whatsapp-large i {
-            font-size: 1.4rem;
-        }
-
-        /* Hero Visual */
-        .hero-visual-card {
+        .btn-outline {
             background: white;
-            border-radius: 24px;
-            padding: 30px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            color: var(--gray-900);
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid var(--gray-200);
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Hero Chat Mockup */
+        .hero-visual {
             position: relative;
         }
 
-        body.dark-mode .hero-visual-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .phone-mockup {
-            background: linear-gradient(135deg, #DCF8C6 0%, #E8F5E9 100%);
-            border-radius: 20px;
-            padding: 20px;
-        }
-
-        body.dark-mode .phone-mockup {
-            background: linear-gradient(135deg, #1a2f1a 0%, #0f1f0f 100%);
+        .chat-mockup {
+            background: white;
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.1);
         }
 
         .chat-bubble {
-            background: white;
             padding: 12px 16px;
             border-radius: 18px;
-            border-bottom-left-radius: 4px;
             margin-bottom: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             font-size: 0.95rem;
-            animation: fadeInUp 0.5s ease forwards;
+            max-width: 85%;
         }
 
-        body.dark-mode .chat-bubble {
-            background: rgba(255, 255, 255, 0.1);
+        .chat-bubble.user {
+            background: #F1F5F9;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-bubble.bot {
+            background: linear-gradient(135deg, #15C39A, #0EA57F);
             color: white;
-        }
-
-        .chat-bubble.reply {
-            background: #DCF8C6;
-            border-radius: 18px;
-            border-bottom-right-radius: 4px;
             margin-left: auto;
-            max-width: 80%;
+            border-bottom-right-radius: 4px;
         }
 
-        body.dark-mode .chat-bubble.reply {
-            background: #128C7E;
-            color: white;
-        }
-
-        .chat-bubble.auto-reply {
-            border: 2px solid var(--ctm-primary);
-        }
-
-        .chat-bubble .auto-tag {
+        .chat-bubble .tag {
             display: inline-block;
-            background: var(--ctm-primary);
-            color: white;
-            font-size: 0.7rem;
+            background: rgba(255, 255, 255, 0.2);
             padding: 2px 8px;
             border-radius: 50px;
+            font-size: 0.7rem;
             margin-bottom: 6px;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Slider Dots */
+        .hero-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 40px;
         }
 
-        /* ===== PROBLEM SECTION ===== */
-        .problem-section {
-            padding: 80px 0;
-            background: var(--white);
+        .hero-dots span {
+            width: 10px;
+            height: 10px;
+            background: var(--gray-200);
+            border-radius: 50%;
+            cursor: pointer;
         }
 
-        body.dark-mode .problem-section {
-            background: var(--dark-surface);
+        .hero-dots span.active {
+            background: var(--primary);
         }
 
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+        /* ===== TRUSTED SECTION ===== */
+        .trusted-section {
+            padding: 50px 0;
+            background: white;
+        }
+
+        .trusted-title {
+            text-align: center;
+            color: var(--gray-500);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+        }
+
+        .trusted-carousel {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             gap: 30px;
         }
 
-        .problem-card {
-            background: var(--pastel-pink);
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .problem-card:nth-child(2) {
-            background: var(--pastel-orange);
-        }
-
-        .problem-card:nth-child(3) {
-            background: var(--pastel-purple);
-        }
-
-        body.dark-mode .problem-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .problem-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .problem-icon {
-            width: 70px;
-            height: 70px;
-            background: white;
-            border-radius: 50%;
+        .trusted-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 1.8rem;
-            color: var(--nptel-accent);
+            gap: 10px;
+            padding: 12px 20px;
+            background: var(--gray-100);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--gray-600);
         }
 
-        body.dark-mode .problem-icon {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .problem-card h3 {
+        .trusted-item i {
             font-size: 1.2rem;
+        }
+
+        /* ===== HOLISTIC SOLUTIONS ===== */
+        .solutions-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-family: 'Poppins', sans-serif;
             margin-bottom: 10px;
         }
 
-        .problem-card p {
-            color: var(--gray-600);
-            font-size: 0.95rem;
+        .section-title .highlight {
+            color: var(--primary);
         }
 
-        body.dark-mode .problem-card p {
-            color: var(--gray-400);
+        .section-subtitle {
+            color: var(--gray-500);
+            font-size: 1.05rem;
         }
 
-        /* ===== SOLUTION SECTION ===== */
-        .solution-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #E8F5E9, #E3F2FD);
+        .solution-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 50px;
         }
 
-        body.dark-mode .solution-section {
-            background: var(--dark-bg);
+        .solution-tab {
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid var(--gray-200);
+            background: white;
+            transition: all 0.3s;
         }
 
+        .solution-tab.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .solution-tab:hover:not(.active) {
+            border-color: var(--primary);
+        }
+
+        /* WhatsApp Bot Content */
         .solution-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -450,37 +319,134 @@
             align-items: center;
         }
 
-        .solution-steps {
+        .solution-content h3 {
+            font-size: 1.8rem;
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+
+        .solution-content h3 .highlight {
+            color: var(--primary);
+        }
+
+        .solution-content>div>p {
+            color: var(--gray-600);
+            margin-bottom: 30px;
+        }
+
+        .feature-list {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 16px;
         }
 
-        .solution-step {
+        .feature-item {
             display: flex;
-            gap: 20px;
-            align-items: flex-start;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: var(--gray-100);
+            border-radius: 12px;
+        }
+
+        .feature-item i {
+            width: 40px;
+            height: 40px;
             background: white;
-            padding: 24px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .feature-item span {
+            font-weight: 500;
+        }
+
+        .btn-explore {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 24px;
+        }
+
+        /* ===== WORKS FOR EVERY INDUSTRY ===== */
+        .industry-section {
+            padding: 80px 0;
+            background: var(--gray-100);
+        }
+
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+            margin-top: 50px;
+        }
+
+        .industry-card {
+            background: white;
+            padding: 30px 20px;
             border-radius: 16px;
-            box-shadow: var(--shadow-md);
-            transition: all 0.3s ease;
+            text-align: center;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+            color: inherit;
         }
 
-        body.dark-mode .solution-step {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .industry-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .solution-step:hover {
-            transform: translateX(10px);
-            border-left: 4px solid var(--ctm-primary);
+        .industry-card img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+        }
+
+        .industry-card h4 {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .industry-card p {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 30px;
+            background: var(--gray-100);
+            border-radius: 20px;
         }
 
         .step-number {
             width: 50px;
             height: 50px;
-            background: var(--ctm-primary);
+            background: linear-gradient(135deg, #06B6D4, #0891B2);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -488,199 +454,108 @@
             justify-content: center;
             font-size: 1.2rem;
             font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        .solution-step h4 {
-            font-size: 1.1rem;
-            margin-bottom: 6px;
-        }
-
-        .solution-step p {
-            color: var(--gray-600);
-            font-size: 0.9rem;
-        }
-
-        body.dark-mode .solution-step p {
-            color: var(--gray-400);
-        }
-
-        /* ===== SERVICES GRID ===== */
-        .services-section {
-            padding: 80px 0;
-            background: var(--white);
-        }
-
-        body.dark-mode .services-section {
-            background: var(--dark-surface);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .service-card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-sm);
-        }
-
-        body.dark-mode .service-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--ctm-primary);
-            box-shadow: 0 20px 40px rgba(21, 195, 154, 0.2);
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             margin: 0 auto 20px;
-            font-size: 2rem;
-            color: white;
         }
 
-        .service-card:nth-child(1) .service-icon {
-            background: linear-gradient(135deg, #E91E63, #FF5722);
-        }
-
-        .service-card:nth-child(2) .service-icon {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-        }
-
-        .service-card:nth-child(3) .service-icon {
-            background: linear-gradient(135deg, #3B82F6, #06B6D4);
-        }
-
-        .service-card:nth-child(4) .service-icon {
-            background: linear-gradient(135deg, #8B5CF6, #EC4899);
-        }
-
-        .service-card:nth-child(5) .service-icon {
-            background: linear-gradient(135deg, #F59E0B, #EF4444);
-        }
-
-        .service-card:nth-child(6) .service-icon {
-            background: linear-gradient(135deg, #10B981, #059669);
-        }
-
-        .service-card h3 {
-            font-size: 1.15rem;
+        .step-card h4 {
+            font-size: 1rem;
             margin-bottom: 10px;
-        }
-
-        .service-card p {
-            color: var(--gray-600);
-            font-size: 0.9rem;
-        }
-
-        body.dark-mode .service-card p {
-            color: var(--gray-400);
-        }
-
-        /* ===== TARGET CUSTOMERS ===== */
-        .target-section {
-            padding: 60px 0;
-            background: linear-gradient(135deg, var(--ctm-primary), #0EA57F);
-            color: white;
-        }
-
-        .target-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .target-title h2 {
-            color: white;
-            margin-bottom: 10px;
-        }
-
-        .target-title p {
-            opacity: 0.9;
-        }
-
-        .target-grid {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .target-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            background: rgba(255, 255, 255, 0.15);
-            padding: 16px 24px;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .step-card p {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        /* Lead Priority */
+        .priority-section {
+            padding: 40px 0;
+            background: white;
+            text-align: center;
+        }
+
+        .priority-title {
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .priority-badges {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .priority-badge {
+            padding: 10px 20px;
             border-radius: 50px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .target-item:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: scale(1.05);
-        }
-
-        .target-item i {
-            font-size: 1.3rem;
-        }
-
-        .target-item span {
+            font-size: 0.85rem;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .priority-badge.high {
+            background: #FEE2E2;
+            color: #DC2626;
+        }
+
+        .priority-badge.medium {
+            background: #FEF3C7;
+            color: #D97706;
+        }
+
+        .priority-badge.low {
+            background: #DBEAFE;
+            color: #2563EB;
+        }
+
+        .priority-badge::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .priority-badge.high::before {
+            background: #DC2626;
+        }
+
+        .priority-badge.medium::before {
+            background: #D97706;
+        }
+
+        .priority-badge.low::before {
+            background: #2563EB;
         }
 
         /* ===== CTA SECTION ===== */
         .cta-section {
-            padding: 80px 0;
-            background: var(--gray-50);
+            padding: 100px 0;
+            background: linear-gradient(135deg, #15C39A, #0D9488);
             text-align: center;
+            color: white;
         }
 
-        body.dark-mode .cta-section {
-            background: var(--dark-bg);
-        }
-
-        .cta-box {
-            background: white;
-            padding: 60px 40px;
-            border-radius: 30px;
-            box-shadow: var(--shadow-lg);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        body.dark-mode .cta-box {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .cta-box h2 {
+        .cta-section h2 {
+            font-size: 2.5rem;
             margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
         }
 
-        .cta-box p {
-            color: var(--gray-600);
+        .cta-section p {
             font-size: 1.1rem;
+            opacity: 0.9;
             margin-bottom: 30px;
-        }
-
-        body.dark-mode .cta-box p {
-            color: var(--gray-400);
         }
 
         .cta-buttons {
@@ -690,325 +565,627 @@
             flex-wrap: wrap;
         }
 
-        /* ===== MOBILE RESPONSIVE ===== */
-        @media (max-width: 992px) {
-            .hero-content {
+        .cta-buttons .btn-white {
+            background: white;
+            color: var(--primary);
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cta-buttons .btn-outline-white {
+            background: transparent;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid white;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand h3 span {
+            color: var(--primary);
+        }
+
+        .footer-brand p {
+            color: #94A3B8;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--primary);
+        }
+
+        .footer-col h4 {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: #94A3B8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-bottom p {
+            color: #94A3B8;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom-links a {
+            color: #94A3B8;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--primary);
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+
+            .hero-grid,
+            .solution-content {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
 
-            .hero-visual-card {
-                max-width: 400px;
-                margin: 0 auto;
+            .industry-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
 
-            .hero-cta-group {
-                justify-content: center;
-            }
-
-            .problem-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .solution-content {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
+            .steps-grid {
                 grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
 
-        @media (max-width: 576px) {
-            .services-grid {
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .industry-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps-grid {
                 grid-template-columns: 1fr;
             }
 
-            .target-grid {
-                flex-direction: column;
-                align-items: center;
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .solution-tabs {
+                flex-wrap: wrap;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Floating WhatsApp -->
-    <a href="https://wa.me/919962003738" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    
 
     <!-- ===== HEADER ===== -->
-    <header class="nptel-header">
+    <header class="ubona-header" id="mainHeader">
         <div class="container">
-            <div class="nptel-header-content">
-                <!-- Payment Link First -->
-                <a href="payment.html" class="payment-link">
-                    <i class="fas fa-credit-card"></i> Payment
-                </a>
-
-                <!-- Logo -->
-                <a href="business-home.html" class="nptel-logo">
+            <div class="header-container">
+                <button class="mobile-hamburger" id="mobileHamburger" aria-label="Open menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <a href="business-home.html" class="ubona-logo">
                     <h1>CareTech<span>Mobile</span></h1>
+                    <small>the complete solution</small>
                 </a>
-
-                <!-- Navigation - 9 items (Payment removed) -->
-                <nav class="nptel-nav">
+                <nav class="ubona-nav">
                     <a href="business-home.html" class="active">Home</a>
-                    <a href="business-services.html">Services</a>
-                    <a href="whatsapp-automation.html">WhatsApp Automation</a>
-                    <a href="ai-assist.html">AI Assist</a>
-                    <a href="mini-crm.html">Mini CRM</a>
-                    <a href="how-it-works.html">How It Works</a>
+                    <div class="nav-dropdown">
+                        <a href="#">Solutions <i class="fas fa-chevron-down"></i></a>
+                        <div class="mega-menu" style="width: 700px;">
+                            <div class="mega-menu-header">
+                                <h4>Our Solutions</h4>
+                                <p>Transform customer interactions through smart automation</p>
+                            </div>
+                            <div class="mega-menu-grid" style="grid-template-columns: repeat(3, 1fr);">
+                                <a href="whatsapp-automation.html" class="mega-item">
+                                    <div class="mega-item-icon green"><i class="fab fa-whatsapp"></i></div>
+                                    <div class="mega-item-content">
+                                        <h5>WhatsApp Bot <i class="fas fa-arrow-right"></i></h5>
+                                        <p>Smart auto-replies</p>
+                                    </div>
+                                </a>
+                                <a href="mini-crm.html" class="mega-item">
+                                    <div class="mega-item-icon blue"><i class="fas fa-users-cog"></i></div>
+                                    <div class="mega-item-content">
+                                        <h5>Mini CRM <i class="fas fa-arrow-right"></i></h5>
+                                        <p>Manage leads</p>
+                                    </div>
+                                </a>
+                                <a href="ai-assist.html" class="mega-item">
+                                    <div class="mega-item-icon purple"><i class="fas fa-robot"></i></div>
+                                    <div class="mega-item-content">
+                                        <h5>AI Assist <i class="fas fa-arrow-right"></i></h5>
+                                        <p>AI responses</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <!-- Industry Solutions -->
+                            <div class="mega-menu-header"
+                                style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
+                                <h4><i class="fas fa-building" style="margin-right: 8px; color: #15C39A;"></i> Industry
+                                    Solutions</h4>
+                            </div>
+                            <div class="mega-menu-grid" style="grid-template-columns: repeat(5, 1fr); gap: 10px;">
+                                <a href="shop.html" class="mega-item" style="padding: 10px;">
+                                    <div class="mega-item-content" style="text-align: center;">
+                                        <i class="fas fa-store" style="font-size: 1.5rem; color: #15C39A;"></i>
+                                        <h5 style="font-size: 0.8rem; margin-top: 5px;">Shop</h5>
+                                    </div>
+                                </a>
+                                <a href="restaurant.html" class="mega-item" style="padding: 10px;">
+                                    <div class="mega-item-content" style="text-align: center;">
+                                        <i class="fas fa-utensils" style="font-size: 1.5rem; color: #F59E0B;"></i>
+                                        <h5 style="font-size: 0.8rem; margin-top: 5px;">Restaurant</h5>
+                                    </div>
+                                </a>
+                                <a href="healthcare.html" class="mega-item" style="padding: 10px;">
+                                    <div class="mega-item-content" style="text-align: center;">
+                                        <i class="fas fa-clinic-medical" style="font-size: 1.5rem; color: #EF4444;"></i>
+                                        <h5 style="font-size: 0.8rem; margin-top: 5px;">Healthcare</h5>
+                                    </div>
+                                </a>
+                                <a href="education.html" class="mega-item" style="padding: 10px;">
+                                    <div class="mega-item-content" style="text-align: center;">
+                                        <i class="fas fa-graduation-cap" style="font-size: 1.5rem; color: #3B82F6;"></i>
+                                        <h5 style="font-size: 0.8rem; margin-top: 5px;">Education</h5>
+                                    </div>
+                                </a>
+                                <a href="real-estate.html" class="mega-item" style="padding: 10px;">
+                                    <div class="mega-item-content" style="text-align: center;">
+                                        <i class="fas fa-home" style="font-size: 1.5rem; color: #8B5CF6;"></i>
+                                        <h5 style="font-size: 0.8rem; margin-top: 5px;">Real Estate</h5>
+                                    </div>
+                                </a>
+                                <a href="automobile.html" class="mega-item" style="padding: 10px;">
+                                    <div class="mega-item-content" style="text-align: center;">
+                                        <i class="fas fa-car" style="font-size: 1.5rem; color: #6366F1;"></i>
+                                        <h5 style="font-size: 0.8rem; margin-top: 5px;">Automobile</h5>
+                                    </div>
+                                </a>
+                                <a href="salon.html" class="mega-item" style="padding: 10px;">
+                                    <div class="mega-item-content" style="text-align: center;">
+                                        <i class="fas fa-cut" style="font-size: 1.5rem; color: #EC4899;"></i>
+                                        <h5 style="font-size: 0.8rem; margin-top: 5px;">Salon</h5>
+                                    </div>
+                                </a>
+                                <a href="logistics.html" class="mega-item" style="padding: 10px;">
+                                    <div class="mega-item-content" style="text-align: center;">
+                                        <i class="fas fa-truck" style="font-size: 1.5rem; color: #14B8A6;"></i>
+                                        <h5 style="font-size: 0.8rem; margin-top: 5px;">Logistics</h5>
+                                    </div>
+                                </a>
+                                <a href="agency.html" class="mega-item" style="padding: 10px;">
+                                    <div class="mega-item-content" style="text-align: center;">
+                                        <i class="fas fa-briefcase" style="font-size: 1.5rem; color: #0EA5E9;"></i>
+                                        <h5 style="font-size: 0.8rem; margin-top: 5px;">Agency</h5>
+                                    </div>
+                                </a>
+                                <a href="service.html" class="mega-item" style="padding: 10px;">
+                                    <div class="mega-item-content" style="text-align: center;">
+                                        <i class="fas fa-tools" style="font-size: 1.5rem; color: #64748B;"></i>
+                                        <h5 style="font-size: 0.8rem; margin-top: 5px;">Service</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     <a href="business-pricing.html">Pricing</a>
-                    <a href="demo.html">Free Demo</a>
+                    <a href="payment.html" style="color: #F59E0B; font-weight: 600;"><i class="fas fa-credit-card"></i>
+                        Payment</a>
                     <a href="contact.html">Contact</a>
                 </nav>
-
-                <div class="nptel-header-actions">
-                    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                <div class="header-actions">
+                    <button class="dark-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
                         <i class="fas fa-moon"></i>
                     </button>
-                    <a href="dashboard.html" class="btn-nptel-login" id="loginBtn">
+                    <a href="dashboard.html" class="btn-demo">
                         <i class="fas fa-user"></i> Login
                     </a>
-                    <a href="#" class="btn-nptel-login" id="logoutBtn" style="display: none;">
-                        <i class="fas fa-sign-out-alt"></i> Logout
-                    </a>
                 </div>
-
-                <!-- Mobile Menu Button -->
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
             </div>
         </div>
     </header>
 
+    <!-- Mobile Sidebar -->
+    <div class="mobile-sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="mobile-sidebar" id="mobileSidebar">
+        <button class="sidebar-close" id="sidebarClose" aria-label="Close menu"><i class="fas fa-times"></i></button>
+        <div class="sidebar-header">
+            <div class="sidebar-user">
+                <div class="sidebar-avatar"><i class="fas fa-user"></i></div>
+                <div class="sidebar-user-info">
+                    <h4 id="sidebarUserName">Guest</h4>
+                    <p>Welcome!</p>
+                </div>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="business-home.html" class="active"><i class="fas fa-home"></i> Home</a>
+            <a href="dashboard.html" style="background: linear-gradient(135deg, #15C39A, #0D9488); color: white;"><i
+                    class="fas fa-user"></i> Dashboard / Login</a>
+            <a href="payment.html" style="background: linear-gradient(135deg, #F59E0B, #D97706); color: white;"><i
+                    class="fas fa-credit-card"></i> Payment</a>
+            <a href="whatsapp-automation.html"><i class="fab fa-whatsapp"></i> WhatsApp Bot</a>
+            <a href="mini-crm.html"><i class="fas fa-users-cog"></i> Mini CRM</a>
+            <a href="ai-assist.html"><i class="fas fa-robot"></i> AI Assist</a>
+            <a href="business-pricing.html"><i class="fas fa-tags"></i> Pricing</a>
+            <a href="payment.html" style="background: linear-gradient(135deg, #F59E0B, #D97706); color: white;"><i
+                    class="fas fa-credit-card"></i> Payment</a>
+            <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+        </nav>
+    </aside>
+
     <!-- ===== HERO SECTION ===== -->
-    <section class="business-hero">
+    <section class="hero-section">
         <div class="container">
-            <div class="hero-content">
+            <div class="hero-grid">
                 <div class="hero-text">
                     <div class="hero-badge">
-                        <i class="fas fa-rocket"></i>
-                        Small Business Automation
+                        <i class="fas fa-bolt"></i> Business Solutions
                     </div>
                     <h1 class="hero-title">
-                        Struggling to <span class="highlight">Get Customers?</span><br>
-                        We Automate Your <span class="highlight">Leads & Follow-ups.</span>
+                        <span class="highlight">Helping Small<br>Businesses</span> Stay<br>Connected with<br>Their
+                        Customers
                     </h1>
                     <p class="hero-subtitle">
-                        Never miss a WhatsApp enquiry again. Auto-reply instantly,
-                        follow-up automatically, and convert more leads to paying customers.
+                        Our Bot replies to your customers 24/7. Lead capture, auto-reply,<br>
+                        follow-up — everything automatic!
                     </p>
-                    <div class="hero-cta-group">
-                        <a href="https://wa.me/919962003738?text=Hi,%20I%20want%20to%20know%20about%20WhatsApp%20automation%20for%20my%20business"
-                            class="btn-whatsapp-large" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                            Get Free Demo
+                    <div class="hero-buttons">
+                        <a href="https://wa.me/919962003738" class="btn-primary" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Chat Now
                         </a>
-                        <a href="how-it-works.html" class="btn btn-secondary">
-                            How It Works
+                        <a href="how-it-works.html" class="btn-outline">
+                            Learn More <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
-
-                <div class="hero-visual-card">
-                    <div class="phone-mockup">
-                        <div class="chat-bubble">
-                            Hi, I want to repair my mobile screen. Available today?
+                <div class="hero-visual">
+                    <div class="chat-mockup">
+                        <div class="chat-bubble user">
+                            Hi, I want to know about your services
                         </div>
-                        <div class="chat-bubble reply auto-reply">
-                            <span class="auto-tag">⚡ Auto Reply</span><br>
-                            Hello! Thanks for messaging. Yes, we're available today 10 AM - 8 PM. Please share your
-                            phone model for quote. 📱
+                        <div class="chat-bubble bot">
+                            <span class="tag">🤖 AUTO-REPLY</span><br>
+                            Welcome to CareTech! 👋 How can we help you today?
                         </div>
-                        <div class="chat-bubble">
-                            iPhone 13 Pro Max
+                        <div class="chat-bubble user">
+                            What's the price for automation?
                         </div>
-                        <div class="chat-bubble reply auto-reply">
-                            <span class="auto-tag">⚡ Auto Reply</span><br>
-                            Great! iPhone 13 Pro Max screen repair: ₹4,500 - ₹6,000. Come to our shop or we'll collect
-                            from your location. 🛵
+                        <div class="chat-bubble bot">
+                            <span class="tag">🤖 AUTO-REPLY</span><br>
+                            Our plans start from ₹999/month. Would you like a free demo?
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="hero-dots">
+                <span class="active"></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </section>
 
-    <!-- ===== PROBLEM SECTION ===== -->
-    <section class="problem-section">
+    <!-- ===== TRUSTED SECTION ===== -->
+    <section class="trusted-section">
+        <div class="container">
+            <p class="trusted-title">TRUSTED BY BUSINESSES ACROSS INDIA</p>
+            <div class="trusted-carousel owl-carousel" id="trustedCarousel">
+                <div class="trusted-item"><i class="fas fa-store" style="color: #15C39A;"></i> Retail Shops</div>
+                <div class="trusted-item"><i class="fas fa-stethoscope" style="color: #EF4444;"></i> Clinics</div>
+                <div class="trusted-item"><i class="fas fa-cut" style="color: #EC4899;"></i> Salons</div>
+                <div class="trusted-item"><i class="fas fa-utensils" style="color: #F59E0B;"></i> Restaurants</div>
+                <div class="trusted-item"><i class="fas fa-home" style="color: #8B5CF6;"></i> Real Estate</div>
+                <div class="trusted-item"><i class="fas fa-graduation-cap" style="color: #3B82F6;"></i> Coaching</div>
+                <div class="trusted-item"><i class="fas fa-car" style="color: #6366F1;"></i> Automobile</div>
+                <div class="trusted-item"><i class="fas fa-user-tie" style="color: #0EA5E9;"></i> Freelancers</div>
+                <div class="trusted-item"><i class="fas fa-shopping-cart" style="color: #10B981;"></i> E-commerce</div>
+                <div class="trusted-item"><i class="fas fa-camera" style="color: #F97316;"></i> Photographers</div>
+                <div class="trusted-item"><i class="fas fa-truck" style="color: #14B8A6;"></i> Logistics</div>
+                <div class="trusted-item"><i class="fas fa-briefcase" style="color: #6366F1;"></i> Agencies</div>
+                <div class="trusted-item"><i class="fas fa-tools" style="color: #64748B;"></i> Service Centers</div>
+                <div class="trusted-item"><i class="fas fa-spa" style="color: #EC4899;"></i> Wellness</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HOLISTIC SOLUTIONS ===== -->
+    <section class="solutions-section">
         <div class="container">
             <div class="section-header">
-                <h2>Is This Happening in Your Business?</h2>
-                <p>Most small business owners face these problems every single day</p>
+                <h2 class="section-title">Holistic <span class="highlight">Solutions</span></h2>
+                <p class="section-subtitle">Our powerful platform — tailored to meet the diverse communication needs of
+                    your modern business.</p>
             </div>
 
-            <div class="problem-grid">
-                <div class="problem-card">
-                    <div class="problem-icon">
-                        <i class="fas fa-comment-slash"></i>
+            <div class="solution-tabs">
+                <button class="solution-tab active" data-tab="whatsapp">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Bot
+                </button>
+                <button class="solution-tab" data-tab="crm">
+                    <i class="fas fa-users"></i> Mini CRM
+                </button>
+                <button class="solution-tab" data-tab="ai">
+                    <i class="fas fa-robot"></i> AI Assist
+                </button>
+            </div>
+
+            <div class="solution-content" id="whatsapp-content">
+                <div>
+                    <h3>Transform Customer<br>Experience with <span class="highlight">WhatsApp Bot</span></h3>
+                    <p>Automate customer communications with our state-of-the-art WhatsApp automation for zero-touch
+                        interactions.</p>
+
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <i class="fas fa-comments"></i>
+                            <span>Automated Customer Communication</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-clock"></i>
+                            <span>24/7 Customer Support</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-language"></i>
+                            <span>Multi-language Support (Tamil, Hindi, English)</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-bolt"></i>
+                            <span>Instant Auto-Replies</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Lead Capture & Tracking</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-user-friends"></i>
+                            <span>Seamless Handoff to Live Agents</span>
+                        </div>
                     </div>
-                    <h3>Missing WhatsApp Messages</h3>
-                    <p>When you're busy, customer messages go unanswered and you lose business</p>
+
+                    <a href="whatsapp-automation.html" class="btn-explore">
+                        Explore More <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <div class="problem-card">
-                    <div class="problem-icon">
-                        <i class="fas fa-user-clock"></i>
+                <div class="hero-visual">
+                    <div class="chat-mockup">
+                        <div class="chat-bubble user">
+                            Hi, what products do you have?
+                        </div>
+                        <div class="chat-bubble bot">
+                            <span class="tag">🤖 AUTO-REPLY</span><br>
+                            Welcome! 🎉 We have:<br>
+                            1️⃣ Product A - ₹500<br>
+                            2️⃣ Product B - ₹800<br>
+                            Reply with number to know more!
+                        </div>
+                        <div class="chat-bubble user">1</div>
+                        <div class="chat-bubble bot">
+                            <span class="tag">🤖 AUTO-REPLY</span><br>
+                            Product A is our bestseller! 🌟<br>
+                            Want to order? Share your address.
+                        </div>
                     </div>
-                    <h3>Forgetting to Follow-up</h3>
-                    <p>No time to follow-up with customers who enquired - leads go cold</p>
-                </div>
-                <div class="problem-card">
-                    <div class="problem-icon">
-                        <i class="fas fa-user-minus"></i>
-                    </div>
-                    <h3>Losing Customers to Competitors</h3>
-                    <p>When you reply late, customers go to your competitor instead</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== SOLUTION SECTION ===== -->
-    <section class="solution-section">
+    <!-- ===== WORKS FOR EVERY INDUSTRY ===== -->
+    <section class="industry-section">
         <div class="container">
             <div class="section-header">
-                <h2>Our Solution - Simple & Automatic</h2>
-                <p>How we help you never miss a customer</p>
+                <h2 class="section-title">Works for <span class="highlight">Every Industry</span></h2>
+                <p class="section-subtitle">Our smart bot adapts to your business type automatically</p>
             </div>
 
-            <div class="solution-content">
-                <div class="solution-visual">
-                    <img src="https://placehold.co/500x400/15C39A/ffffff?text=WhatsApp+Auto+System"
-                        alt="WhatsApp Automation System" style="border-radius: 20px; width: 100%;">
-                </div>
-                <div class="solution-steps">
-                    <div class="solution-step">
-                        <div class="step-number">1</div>
-                        <div>
-                            <h4>Customer Messages You</h4>
-                            <p>Anyone sends WhatsApp message to your business number</p>
-                        </div>
-                    </div>
-                    <div class="solution-step">
-                        <div class="step-number">2</div>
-                        <div>
-                            <h4>Auto Reply Goes Instantly</h4>
-                            <p>They get helpful reply immediately - even when you're busy</p>
-                        </div>
-                    </div>
-                    <div class="solution-step">
-                        <div class="step-number">3</div>
-                        <div>
-                            <h4>Lead Saved Automatically</h4>
-                            <p>Customer details saved in your CRM - no manual entry</p>
-                        </div>
-                    </div>
-                    <div class="solution-step">
-                        <div class="step-number">4</div>
-                        <div>
-                            <h4>Follow-up Reminders</h4>
-                            <p>System reminds you to follow-up on Day 1, 3, 7</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="industry-grid">
+                <a href="shop.html" class="industry-card">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3081/3081559.png" alt="Shop">
+                    <h4>Shop / Retail</h4>
+                    <p>Billing & Online Store</p>
+                </a>
+                <a href="service.html" class="industry-card">
+                    <img src="https://cdn-icons-png.flaticon.com/128/681/681494.png" alt="Service">
+                    <h4>Service Business</h4>
+                    <p>Booking & Enquiry</p>
+                </a>
+                <a href="agency.html" class="industry-card">
+                    <img src="https://cdn-icons-png.flaticon.com/128/1329/1329416.png" alt="Agency">
+                    <h4>Agency / Company</h4>
+                    <p>Client Management</p>
+                </a>
+                <a href="restaurant.html" class="industry-card">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3075/3075977.png" alt="Restaurant">
+                    <h4>Restaurant / Cafe</h4>
+                    <p>Orders & Reservations</p>
+                </a>
+                <a href="healthcare.html" class="industry-card">
+                    <img src="https://cdn-icons-png.flaticon.com/128/2376/2376100.png" alt="Healthcare">
+                    <h4>Healthcare / Clinic</h4>
+                    <p>Appointments</p>
+                </a>
+                <a href="education.html" class="industry-card">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3135/3135755.png" alt="Education">
+                    <h4>Education / Training</h4>
+                    <p>Admissions & Fees</p>
+                </a>
+                <a href="real-estate.html" class="industry-card">
+                    <img src="https://cdn-icons-png.flaticon.com/128/1670/1670080.png" alt="Real Estate">
+                    <h4>Real Estate</h4>
+                    <p>Leads & Site Visits</p>
+                </a>
+                <a href="automobile.html" class="industry-card">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3774/3774278.png" alt="Automobile">
+                    <h4>Automobile</h4>
+                    <p>Service & Test Drives</p>
+                </a>
+                <a href="salon.html" class="industry-card">
+                    <img src="https://cdn-icons-png.flaticon.com/128/1005/1005767.png" alt="Salon">
+                    <h4>Salon / Spa</h4>
+                    <p>Appointments & Offers</p>
+                </a>
+                <a href="logistics.html" class="industry-card">
+                    <img src="https://cdn-icons-png.flaticon.com/128/2830/2830312.png" alt="Logistics">
+                    <h4>Logistics / Transport</h4>
+                    <p>Tracking & Requests</p>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- ===== SERVICES SECTION ===== -->
-    <section class="services-section">
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="how-section">
         <div class="container">
             <div class="section-header">
-                <h2>Our Services</h2>
-                <p>Everything your small business needs to grow</p>
+                <h2 class="section-title">How Our <span class="highlight">Smart Bot</span> Works</h2>
+                <p class="section-subtitle">Automated lead qualification in 4 simple steps</p>
             </div>
 
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <h3>Mini Website</h3>
-                    <p>Simple shop page with WhatsApp button. Customer can see your services & contact easily.</p>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h4>👋 Greet & Capture</h4>
+                    <p>Bot asks name, mobile, email & business details</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <h3>WhatsApp Auto-Reply</h3>
-                    <p>Never miss a message. Auto-reply to customers 24/7, even when you're busy.</p>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h4>🏢 Industry Selection</h4>
+                    <p>Customer selects their business type from 10 options</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-bell"></i>
-                    </div>
-                    <h3>Lead Follow-up</h3>
-                    <p>Automatic reminder messages sent to customers. Convert more enquiries to sales.</p>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h4>🎯 Smart Qualification</h4>
+                    <p>Bot asks "When do you want to start?" to qualify urgency</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Simple CRM</h3>
-                    <p>Track all customers in one place. No more lost phone numbers or missed follow-ups.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-medical"></i>
-                    </div>
-                    <h3>Laptop & PC Repair + GST</h3>
-                    <p>Hardware repair services with proper GST billing. Professional service for businesses.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>Data Recovery</h3>
-                    <p>Lost data from hard disk, SSD, or mobile? We recover it. Don't panic, contact us.</p>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h4>🤝 Human Handoff</h4>
+                    <p>Hot leads get connected to your team instantly</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== TARGET CUSTOMERS ===== -->
-    <section class="target-section">
+    <!-- ===== LEAD PRIORITY ===== -->
+    <section class="priority-section">
         <div class="container">
-            <div class="target-title">
-                <h2>Who Is This For?</h2>
-                <p>We help these local businesses grow with automation</p>
-            </div>
-
-            <div class="target-grid">
-                <div class="target-item">
-                    <i class="fas fa-mobile-alt"></i>
-                    <span>Mobile Repair Shops</span>
-                </div>
-                <div class="target-item">
-                    <i class="fas fa-laptop"></i>
-                    <span>Laptop Service Centers</span>
-                </div>
-                <div class="target-item">
-                    <i class="fas fa-stethoscope"></i>
-                    <span>Clinics & Doctors</span>
-                </div>
-                <div class="target-item">
-                    <i class="fas fa-chalkboard-teacher"></i>
-                    <span>Tuition Centers</span>
-                </div>
-                <div class="target-item">
-                    <i class="fas fa-wrench"></i>
-                    <span>AC / Plumber / Electrician</span>
-                </div>
-                <div class="target-item">
-                    <i class="fas fa-store"></i>
-                    <span>Local Service Shops</span>
-                </div>
+            <h4 class="priority-title"><i class="fas fa-star"></i> Lead Priority System</h4>
+            <div class="priority-badges">
+                <span class="priority-badge high">HIGH - Immediate/This Week</span>
+                <span class="priority-badge medium">MEDIUM - This Month</span>
+                <span class="priority-badge low">LOW - Exploring</span>
             </div>
         </div>
     </section>
@@ -1016,166 +1193,142 @@
     <!-- ===== CTA SECTION ===== -->
     <section class="cta-section">
         <div class="container">
-            <div class="cta-box">
-                <h2>Ready to Never Miss a Customer?</h2>
-                <p>
-                    Get a free demo in just 10 minutes.
-                    See how our system can help your business grow.
-                </p>
-                <div class="cta-buttons">
-                    <a href="https://wa.me/919962003738?text=Hi,%20I%20want%20a%20free%20demo%20for%20WhatsApp%20automation"
-                        class="btn btn-whatsapp" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Get Free Demo
-                    </a>
-                    <a href="tel:+919495253265" class="btn btn-secondary">
-                        <i class="fas fa-phone"></i> Call 9495253265
-                    </a>
-                </div>
+            <h2>Ready to Automate Your Business?</h2>
+            <p>Start today with a free demo and never miss a customer again!</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/919962003738" class="btn-outline-white" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+                <a href="demo.html" class="btn-white">
+                    <i class="fas fa-play-circle"></i> Get Free Demo
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- ===== FOOTER (Simplified) ===== -->
-    <footer class="nptel-footer">
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
         <div class="container">
-            <div class="footer-simple">
+            <div class="footer-grid">
                 <div class="footer-brand">
                     <h3>CareTech<span>Mobile</span></h3>
-                    <p>Helping small businesses automate leads & follow-ups.</p>
+                    <p>Helping small businesses stay connected with their customers. WhatsApp automation, Mini CRM, and
+                        AI-powered engagement.</p>
+                    <p><i class="fas fa-globe"></i> Service available worldwide</p>
                     <div class="footer-social">
-                        <a href="https://wa.me/919962003738" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="mailto:info@caretechmobile.com"><i class="fas fa-envelope"></i></a>
-                        <a href="tel:+919495253265"><i class="fas fa-phone"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/919962003738"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-
-                <div class="footer-contact">
-                    <h4>Contact Us</h4>
-                    <p><i class="fas fa-phone"></i> <a href="tel:+919495253265">9495253265</a></p>
-                    <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/919962003738">9962003738</a></p>
-                    <p><i class="fas fa-envelope"></i> <a
-                            href="mailto:info@caretechmobile.com">info@caretechmobile.com</a></p>
+                <div class="footer-col">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="whatsapp-automation.html">WhatsApp Bot</a></li>
+                        <li><a href="mini-crm.html">Mini CRM</a></li>
+                        <li><a href="ai-assist.html">AI Assist</a></li>
+                        <li><a href="business-services.html">All Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="how-it-works.html">How It Works</a></li>
+                        <li><a href="business-pricing.html">Pricing</a></li>
+                        <li><a href="demo.html">Free Demo</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="tel:+919495253265"><i class="fas fa-phone"></i> 9495253265</a></li>
+                        <li><a href="https://wa.me/919962003738"><i class="fab fa-whatsapp"></i> 9962003738</a></li>
+                        <li><a href="mailto:info@caretechmobile.com"><i class="fas fa-envelope"></i> Email</a></li>
+                        <li><a href="payment.html"><i class="fas fa-credit-card"></i> Payment</a></li>
+                        <li style="color: #64748B;"><i class="fas fa-map-marker-alt"></i> Mannarkkad, Kerala</li>
+                    </ul>
                 </div>
             </div>
-
             <div class="footer-bottom">
-                <p>© 2026 CareTechMobile. Built by <strong>Shihab Rajendran</strong></p>
+                <p>© 2026 CareTechMobile. All rights reserved. | Secured by Cloudflare</p>
                 <div class="footer-bottom-links">
                     <a href="privacy.html">Privacy Policy</a>
                     <a href="terms.html">Terms of Service</a>
+                    <a href="refund.html">Refund Policy</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- ===== SCRIPTS ===== -->
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
     <script>
-        // ===== DARK MODE TOGGLE =====
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const body = document.body;
-
+        // Dark Mode
+        const darkToggle = document.getElementById('darkModeToggle');
         if (localStorage.getItem('darkMode') === 'true') {
-            body.classList.add('dark-mode');
-            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            document.body.classList.add('dark-mode');
+            darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
         }
-
-        darkModeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            const isDark = body.classList.contains('dark-mode');
+        darkToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
             localStorage.setItem('darkMode', isDark);
-            darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            darkToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         });
 
-        // ===== MOBILE MENU =====
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const nptelNav = document.querySelector('.nptel-nav');
+        // Mobile Sidebar
+        const hamburger = document.getElementById('mobileHamburger');
+        const sidebar = document.getElementById('mobileSidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const closeBtn = document.getElementById('sidebarClose');
 
-        if (mobileMenuBtn && nptelNav) {
-            mobileMenuBtn.addEventListener('click', () => {
-                nptelNav.classList.toggle('active');
-                mobileMenuBtn.classList.toggle('active');
-            });
+        function openSidebar() { sidebar.classList.add('active'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeSidebar() { sidebar.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
 
-            nptelNav.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    nptelNav.classList.remove('active');
-                    mobileMenuBtn.classList.remove('active');
-                });
-            });
+        hamburger.addEventListener('click', openSidebar);
+        closeBtn.addEventListener('click', closeSidebar);
+        overlay.addEventListener('click', closeSidebar);
 
-            document.addEventListener('click', (e) => {
-                if (!nptelNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                    nptelNav.classList.remove('active');
-                    mobileMenuBtn.classList.remove('active');
-                }
-            });
-        }
-
-        // ===== SCROLL ANIMATIONS =====
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.problem-card, .solution-step, .service-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'all 0.6s ease';
-            observer.observe(card);
-        });
-
-        // ===== HEADER SCROLL EFFECT =====
+        // Header scroll
         window.addEventListener('scroll', () => {
-            const header = document.querySelector('.nptel-header');
-            if (window.scrollY > 50) {
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
-            } else {
-                header.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.08)';
-            }
+            document.getElementById('mainHeader').classList.toggle('scrolled', window.scrollY > 50);
         });
-        // ===== AUTH STATE CHECK - Toggle Login/Logout =====
-        (async function checkAuthState() {
+
+        // Trusted Carousel
+        $(document).ready(function () {
+            $('#trustedCarousel').owlCarousel({
+                loop: true,
+                margin: 20,
+                autoplay: true,
+                autoplayTimeout: 2000,
+                autoplayHoverPause: true,
+                responsive: {
+                    0: { items: 2 },
+                    600: { items: 4 },
+                    1000: { items: 7 }
+                }
+            });
+        });
+
+        // Auth Check
+        (async function () {
             try {
                 const supabaseClient = window.supabase.createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_KEY);
                 const { data: { session } } = await supabaseClient.auth.getSession();
-
-                const loginBtn = document.getElementById('loginBtn');
-                const logoutBtn = document.getElementById('logoutBtn');
-
                 if (session && session.user) {
-                    // User is logged in - show Logout, hide Login
-                    if (loginBtn) loginBtn.style.display = 'none';
-                    if (logoutBtn) logoutBtn.style.display = 'flex';
-
-                    // Add logout handler
-                    if (logoutBtn) {
-                        logoutBtn.addEventListener('click', async (e) => {
-                            e.preventDefault();
-                            await supabaseClient.auth.signOut();
-                            sessionStorage.clear();
-                            localStorage.setItem('ctmLoggedOut', Date.now().toString());
-                            window.location.reload();
-                        });
-                    }
-                } else {
-                    // User is NOT logged in - show Login, hide Logout
-                    if (loginBtn) loginBtn.style.display = 'flex';
-                    if (logoutBtn) logoutBtn.style.display = 'none';
+                    document.getElementById('sidebarUserName').textContent = session.user.email.split('@')[0];
                 }
-            } catch (error) {
-                console.error('Auth check error:', error);
-            }
+            } catch (e) { console.log('Auth check:', e); }
         })();
     </script>
+    
+
+    <script src="chat-widget.js"></script>
 </body>
 
 </html>

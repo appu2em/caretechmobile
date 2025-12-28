@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>n8n Agency Architecture | CareTechMobile Automation</title>
+    <meta name="description"
+        content="Technical documentation for CareTechMobile's single-instance, multi-tenant n8n automation architecture for agencies.">
+
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="ubona-style.css">
+    <link rel="stylesheet" href="chat-widget.css">
+
+    <style>
+        :root {
+            --ctm-primary: #15C39A;
+            --ctm-secondary: #0F172A;
+            --ctm-accent: #25D366;
+            --code-bg: #1e1e1e;
+            --code-text: #d4d4d4;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .arch-hero {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .arch-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .arch-hero h1 span {
+            color: var(--ctm-primary);
+        }
+
+        .arch-hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Content Container */
+        .arch-container {
+            max-width: 900px;
+            margin: -40px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Cards & Sections */
+        .arch-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .arch-section-title {
+            font-size: 1.5rem;
+            color: var(--ctm-secondary);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 15px;
+        }
+
+        .arch-section-title i {
+            color: var(--ctm-primary);
+        }
+
+        /* Code Blocks */
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            margin: 15px 0;
+            border: 1px solid #333;
+        }
+
+        code {
+            font-family: 'Fira Code', monospace;
+        }
+
+        .inline-code {
+            background: #e2e8f0;
+            color: #d63384;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        /* Tables */
+        .arch-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .arch-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .arch-table th,
+        .arch-table td {
+            padding: 12px 15px;
+            border: 1px solid #e2e8f0;
+            text-align: left;
+        }
+
+        .arch-table th {
+            background: #f8fafc;
+            color: var(--ctm-secondary);
+            font-weight: 600;
+        }
+
+        /* Diagrams */
+        .arch-diagram {
+            background: #f1f5f9;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 20px 0;
+            border: 1px dashed #cbd5e1;
+        }
+
+        .arch-diagram img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Architecture Flow */
+        .flow-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .flow-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(21, 195, 154, 0.1);
+            color: var(--ctm-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+
+        .flow-content h4 {
+            margin: 0 0 5px 0;
+            color: var(--ctm-secondary);
+        }
+
+        .flow-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #64748b;
+        }
+
+        /* Navigation */
+        .arch-nav {
+            position: sticky;
+            top: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        .arch-nav a {
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #64748b;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .arch-nav a:hover,
+        .arch-nav a.active {
+            background: var(--ctm-primary);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="arch-hero">
+        <div class="container">
+            <h1>n8n Agency <span>Architecture</span></h1>
+            <p>Single VPS, Multi-Tenant WhatsApp Automation Infrastructure for Scaling Agencies</p>
+        </div>
+    </header>
+
+    <div class="arch-container">
+
+        <!-- Quick Nav -->
+        <nav class="arch-nav">
+            <a href="#overview" class="active">Overview</a>
+            <a href="#identification">Identification</a>
+            <a href="#workflows">Workflows</a>
+            <a href="#examples">Industry Examples</a>
+            <a href="#security">Security</a>
+            <a href="#scaling">Scaling</a>
+        </nav>
+
+        <!-- 1. Overall Architecture -->
+        <div id="overview" class="arch-card">
+            <h2 class="arch-section-title"><i class="fas fa-sitemap"></i> 1. Overall Architecture</h2>
+            <p>A production-ready architecture designed to host 50+ customers on a single low-cost VPS while maintaining
+                complete data isolation.</p>
+
+            <div class="arch-diagram">
+                <i class="fas fa-server fa-3x" style="color: #64748b;"></i>
+                <div style="margin: 15px 0; font-weight: 600;">Single VPS (₹400/mo)</div>
+                <div style="display: flex; justify-content: center; gap: 20px; align-items: center; margin-top: 20px;">
+                    <div style="text-align: center;">
+                        <i class="fab fa-whatsapp fa-2x" style="color: #25D366;"></i><br>
+                        <small>Customer A</small>
+                    </div>
+                    <div style="text-align: center;">
+                        <i class="fab fa-whatsapp fa-2x" style="color: #25D366;"></i><br>
+                        <small>Customer B</small>
+                    </div>
+                    <div style="text-align: center;">
+                        <i class="fab fa-whatsapp fa-2x" style="color: #25D366;"></i><br>
+                        <small>Customer C</small>
+                    </div>
+                    <i class="fas fa-arrow-right fa-2x" style="color: #cbd5e1;"></i>
+                    <div style="border: 2px solid #15C39A; padding: 10px; border-radius: 8px; background: white;">
+                        <strong>Single Webhook</strong><br>
+                        <small>/webhook/whatsapp</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-icon"><i class="fas fa-hdd"></i></div>
+                <div class="flow-content">
+                    <h4>Infrastructure Setup</h4>
+                    <p>One n8n instance hosting all workflows. One database (PostgreSQL/Supabase) or Google Sheets
+                        account for data.</p>
+                </div>
+            </div>
+
+            <div class="flow-step">
+                <div class="flow-icon"><i class="fas fa-project-diagram"></i></div>
+                <div class="flow-content">
+                    <h4>Single Webhook Entry Point</h4>
+                    <p>Meta sends all messages to <code>https://your-domain.com/webhook/whatsapp</code>. No need for
+                        separate n8n instances per client.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Message Identification -->
+        <div id="identification" class="arch-card">
+            <h2 class="arch-section-title"><i class="fas fa-filter"></i> 2. Message Identification Logic</h2>
+            <p>The core of this architecture is the <strong>Router Workflow</strong> that identifies which customer a
+                message belongs to using the <code>phone_number_id</code>.</p>
+
+            <h3>The Payload</h3>
+            <pre>
+{
+  "messages": [{
+    "from": "919876543210", 
+    "text": "Hello",
+    "timestamp": "1234567890"
+  }],
+  "metadata": {
+    "phone_number_id": "123456789012345", // UNIQUE ID PER CUSTOMER
+    "display_phone_number": "919876543210"
+  }
+}</pre>
+
+            <h3>Lookup Strategy</h3>
+            <p>We use a master table to map IDs to workflows:</p>
+            <div class="arch-table-wrapper">
+                <table class="arch-table">
+                    <thead>
+                        <tr>
+                            <th>phone_number_id</th>
+                            <th>customer_name</th>
+                            <th>industry</th>
+                            <th>workflow_name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>123456789012345</td>
+                            <td>ShopA</td>
+                            <td>shop</td>
+                            <td>SHOP_ShopA</td>
+                        </tr>
+                        <tr>
+                            <td>987654321098765</td>
+                            <td>RestaurantB</td>
+                            <td>restaurant</td>
+                            <td>RESTAURANT_RestaurantB</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Router Logic (Pseudo-code)</h3>
+            <pre>
+IF webhook.metadata.phone_number_id EXISTS
+  customer = LOOKUP_TABLE.find(phone_number_id)
+  IF customer found
+    EXECUTE_WORKFLOW(customer.workflow_name, {message, customer_id})
+  ELSE
+    SEND_ADMIN_ALERT("Unknown ID: " + phone_number_id)
+ELSE
+  LOG_ERROR("Invalid webhook")</pre>
+        </div>
+
+        <!-- 3. Workflow Structure -->
+        <div id="workflows" class="arch-card">
+            <h2 class="arch-section-title"><i class="fas fa-code-branch"></i> 3. Workflow Structure</h2>
+            <p>Maintain sanity by keeping the main router lightweight.</p>
+
+            <pre>
+MAIN_WABA_INBOUND (The Router)
+├── SHOP_CustomerA
+├── SHOP_CustomerB
+├── RESTAURANT_CustomerA
+├── HEALTHCARE_ClinicC
+└── SALON_StudioX</pre>
+
+            <p><strong>Why this works:</strong></p>
+            <ul>
+                <li><strong>Isolation:</strong> Editing Shop A's logic doesn't break Restaurant B.</li>
+                <li><strong>Templates:</strong> You create one "Master Shop Workflow" and duplicate it for new shop
+                    clients.</li>
+                <li><strong>Speed:</strong> The router only does one lookup, adding negligible latency.</li>
+            </ul>
+        </div>
+
+        <!-- 4. Industry Examples -->
+        <div id="examples" class="arch-card">
+            <h2 class="arch-section-title"><i class="fas fa-briefcase"></i> 4. Industry Examples</h2>
+
+            <div style="background: #f0fdf4; border-left: 4px solid #16a34a; padding: 20px; margin-bottom: 20px;">
+                <h3 style="color: #166534; margin-top: 0;"><i class="fas fa-shopping-cart"></i> Retail / Shop</h3>
+                <p><strong>Goal:</strong> Lead Capture & Product Interest</p>
+                <ul style="color: #15803d;">
+                    <li><strong>Trigger:</strong> First message</li>
+                    <li><strong>Bot:</strong> "Hi! Thanks for contacting [Shop]. What product are you interested in?"
+                    </li>
+                    <li><strong>Action:</strong> Save Name + Product to Google Sheet `SHOP_Leads_CustomerA`.</li>
+                    <li><strong>Follow-up:</strong> If no purchase in 24h -> Send coupon.</li>
+                </ul>
+            </div>
+
+            <div style="background: #fff7ed; border-left: 4px solid #ea580c; padding: 20px; margin-bottom: 20px;">
+                <h3 style="color: #9a3412; margin-top: 0;"><i class="fas fa-utensils"></i> Restaurant</h3>
+                <p><strong>Goal:</strong> Table Booking & Menu</p>
+                <ul style="color: #c2410c;">
+                    <li><strong>Trigger:</strong> Keyword "Book" or "Table"</li>
+                    <li><strong>Bot:</strong> "Welcome to [Restaurant]! How many people?"</li>
+                    <li><strong>Action:</strong> Alert Manager -> Manager confirms via WhatsApp button.</li>
+                    <li><strong>Storage:</strong> `RESTAURANT_Bookings_CustomerB`</li>
+                </ul>
+            </div>
+
+            <div style="background: #eff6ff; border-left: 4px solid #2563eb; padding: 20px;">
+                <h3 style="color: #1e40af; margin-top: 0;"><i class="fas fa-hospital-user"></i> Healthcare</h3>
+                <p><strong>Goal:</strong> Appointment Scheduling</p>
+                <ul style="color: #1d4ed8;">
+                    <li><strong>Trigger:</strong> New Inquiry</li>
+                    <li><strong>Bot:</strong> "Hello. For appointments, reply with your preferred date."</li>
+                    <li><strong>Priority:</strong> Detect "Urgent" keyword -> SMS alert to Doctor.</li>
+                    <li><strong>Storage:</strong> `HEALTHCARE_Patients_ClinicC`</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 5. Security -->
+        <div id="security" class="arch-card">
+            <h2 class="arch-section-title"><i class="fas fa-shield-alt"></i> 5. Security & Isolation</h2>
+            <p><strong>Zero-Trust Model for Tenants:</strong></p>
+            <ul>
+                <li><strong>No n8n Access:</strong> Customers NEVER get a login to your n8n instance. They only see the
+                    results (WhatsApp messages/Google Sheets).</li>
+                <li><strong>Nginx Reverse Proxy:</strong> Only expose the `/webhook/whatsapp` endpoint to the internet.
+                    Block `/workflow` UI access to your IP only.</li>
+                <li><strong>Data Separation:</strong>
+                    <ul>
+                        <li>Use <strong>Separate Google Sheets</strong> per customer.</li>
+                        <li>Do NOT use a single giant sheet for everyone.</li>
+                        <li>Share specific sheets only with the respective client's email.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 6. Scaling -->
+        <div id="scaling" class="arch-card">
+            <h2 class="arch-section-title"><i class="fas fa-chart-line"></i> 6. Scaling Strategy</h2>
+            <div class="arch-table-wrapper">
+                <table class="arch-table">
+                    <thead>
+                        <tr>
+                            <th>Customers</th>
+                            <th>Resource Need</th>
+                            <th>Infrastructure</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1 - 10</td>
+                            <td>Low</td>
+                            <td>1 CPU / 1GB RAM (₹400/mo)</td>
+                        </tr>
+                        <tr>
+                            <td>11 - 50</td>
+                            <td>Medium</td>
+                            <td>2 CPU / 4GB RAM (₹1500/mo)</td>
+                        </tr>
+                        <tr>
+                            <td>50+</td>
+                            <td>High</td>
+                            <td>Split into multiple VPS instances</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p><strong>Onboarding Speed:</strong> 15 Minutes per new client.</p>
+            <ol>
+                <li>Add Client to Master Lookup Sheet.</li>
+                <li>Duplicate Industry Template Workflow.</li>
+                <li>Duplicate Google Sheet Template.</li>
+                <li>Link WABA Webhook. <strong>Done.</strong></li>
+            </ol>
+        </div>
+
+    </div>
+
+    <!-- Back to Main -->
+    <div style="text-align: center; margin-bottom: 60px;">
+        <a href="business-home.html" class="btn btn-primary"
+            style="background: var(--ctm-primary); color: white; padding: 12px 30px; text-decoration: none; border-radius: 8px; font-weight: 600;">
+            <i class="fas fa-arrow-left"></i> Back to Business Home
+        </a>
+    </div>
+
+
+    <script src="chat-widget.js"></script>
+</body>
+
+</html>

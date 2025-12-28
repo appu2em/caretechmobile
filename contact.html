@@ -4,8 +4,7 @@
 <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-NWEBGP5V40');</script>
 
 <head>
-    <script
-        data-cfasync="false">const CONFIG = { SUPABASE_URL: 'https://oleuggrzmdtcorlvlapp.supabase.co', SUPABASE_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9sZXVnZ3J6bWR0Y29ybHZsYXBwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjU0NTI3MDMsImV4cCI6MjA4MTAyODcwM30.dVAunvwATOX-O1hgCx0iqa1KGAxHC-n1ndM' };</script>
+    <script src="config.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +15,9 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="ubona-style.css">
     <link rel="stylesheet" href="nptel-theme.css">
+    <link rel="stylesheet" href="chat-widget.css">
 
     <style>
         .contact-hero {
@@ -468,41 +469,418 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* ========== MOBILE SIDEBAR ========== */
+        .mobile-hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .mobile-hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary, #fff);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1050;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-sidebar-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .mobile-sidebar {
+            position: fixed;
+            top: 0;
+            left: -280px;
+            width: 280px;
+            height: 100%;
+            background: #fff;
+            z-index: 1100;
+            display: flex;
+            flex-direction: column;
+            transition: left 0.3s ease;
+            box-shadow: 4px 0 24px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark-mode .mobile-sidebar {
+            background: var(--dark-card);
+        }
+
+        .mobile-sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 16px;
+            border-bottom: 1px solid #e5e7eb;
+            background: #f8fafc;
+        }
+
+        body.dark-mode .sidebar-header {
+            background: var(--dark-surface);
+            border-color: var(--dark-border);
+        }
+
+        .sidebar-user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .sidebar-avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #15C39A, #0ea57f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar-avatar i {
+            font-size: 28px;
+            color: #fff;
+        }
+
+        .sidebar-user-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-username {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        body.dark-mode .sidebar-username {
+            color: var(--white);
+        }
+
+        .sidebar-profile-link {
+            font-size: 14px;
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .sidebar-close {
+            width: 36px;
+            height: 36px;
+            background: #f3f4f6;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #6b7280;
+            font-size: 18px;
+        }
+
+        body.dark-mode .sidebar-close {
+            background: var(--dark-border);
+            color: var(--gray-400);
+        }
+
+        .sidebar-brand {
+            padding: 16px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        body.dark-mode .sidebar-brand {
+            border-color: var(--dark-border);
+        }
+
+        .sidebar-brand h3 {
+            font-size: 16px;
+            color: #1f2937;
+            font-weight: 700;
+        }
+
+        body.dark-mode .sidebar-brand h3 {
+            color: var(--white);
+        }
+
+        .sidebar-brand h3 span {
+            color: #15C39A;
+        }
+
+        .sidebar-brand p {
+            font-size: 13px;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+
+        .sidebar-nav {
+            flex: 1;
+            overflow-y: auto;
+            padding: 12px 0;
+        }
+
+        .sidebar-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 20px;
+            color: #374151;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        body.dark-mode .sidebar-nav-item {
+            color: var(--gray-300);
+        }
+
+        .sidebar-nav-item:hover,
+        .sidebar-nav-item.active {
+            background: #f0fdf9;
+            color: #15C39A;
+            border-left-color: #15C39A;
+        }
+
+        body.dark-mode .sidebar-nav-item:hover,
+        body.dark-mode .sidebar-nav-item.active {
+            background: rgba(21, 195, 154, 0.1);
+        }
+
+        .sidebar-nav-item i {
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        .sidebar-nav-item:hover i,
+        .sidebar-nav-item.active i {
+            color: #15C39A;
+        }
+
+        .sidebar-footer {
+            padding: 16px;
+            border-top: 1px solid #e5e7eb;
+            background: #f8fafc;
+        }
+
+        body.dark-mode .sidebar-footer {
+            background: var(--dark-surface);
+            border-color: var(--dark-border);
+        }
+
+        .sidebar-logout {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: #dc2626;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            background: #fef2f2;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-logout:hover {
+            background: #fee2e2;
+        }
+
+        .sidebar-version {
+            font-size: 11px;
+            color: #9ca3af;
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-hamburger {
+                display: flex;
+            }
+
+            .nptel-header-actions {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <a href="https://wa.me/919962003738" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
-    <header class="nptel-header">
+    <!-- ===== HEADER WITH MEGA MENU ===== -->
+    <header class="ubona-header" id="mainHeader">
         <div class="container">
-            <div class="nptel-header-content">
-                <a href="business-home.html" class="nptel-logo">
+            <div class="header-container">
+                <!-- Mobile Hamburger -->
+                <button class="mobile-hamburger" id="mobileHamburger" aria-label="Open menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <!-- Logo -->
+                <a href="business-home.html" class="ubona-logo">
                     <h1>CareTech<span>Mobile</span></h1>
+                    <small style="font-size: 0.55rem; opacity: 0.7; display: block; margin-top: -5px;">the complete
+                        business solution</small>
                 </a>
 
-                <nav class="nptel-nav">
+                <!-- Main Navigation -->
+                <nav class="ubona-nav">
                     <a href="business-home.html">Home</a>
-                    <a href="payment.html">Payment</a>
-                    <a href="business-services.html">Services</a>
-                    <a href="whatsapp-automation.html">WhatsApp Automation</a>
-                    <a href="ai-assist.html">AI Assist</a>
-                    <a href="mini-crm.html">Mini CRM</a>
-                    <a href="how-it-works.html">How It Works</a>
+
+                    <!-- Solutions Dropdown -->
+                    <div class="nav-dropdown">
+                        <a href="#">Solutions <i class="fas fa-chevron-down"></i></a>
+                        <div class="mega-menu" style="width: 700px;">
+                            <div class="mega-menu-header">
+                                <h4>Our Solutions</h4>
+                                <p>Transform customer interactions through smart automation</p>
+                            </div>
+                            <div class="mega-menu-grid" style="grid-template-columns: repeat(3, 1fr);">
+                                <a href="whatsapp-automation.html" class="mega-item">
+                                    <div class="mega-item-icon green"><i class="fab fa-whatsapp"></i></div>
+                                    <div class="mega-item-content">
+                                        <h5>WhatsApp Bot <i class="fas fa-arrow-right"></i></h5>
+                                        <p>Smart auto-replies</p>
+                                    </div>
+                                </a>
+                                <a href="mini-crm.html" class="mega-item">
+                                    <div class="mega-item-icon blue"><i class="fas fa-users-cog"></i></div>
+                                    <div class="mega-item-content">
+                                        <h5>Mini CRM <i class="fas fa-arrow-right"></i></h5>
+                                        <p>Manage leads</p>
+                                    </div>
+                                </a>
+                                <a href="ai-assist.html" class="mega-item">
+                                    <div class="mega-item-icon purple"><i class="fas fa-robot"></i></div>
+                                    <div class="mega-item-content">
+                                        <h5>AI Assist <i class="fas fa-arrow-right"></i></h5>
+                                        <p>AI responses</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="mega-menu-header"
+                                style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
+                                <h4><i class="fas fa-building" style="margin-right: 8px; color: #15C39A;"></i> Industry
+                                    Solutions</h4>
+                            </div>
+                            <div class="mega-menu-grid" style="grid-template-columns: repeat(5, 1fr); gap: 10px;">
+                                <a href="shop.html" class="mega-item" style="padding: 10px;">
+                                    <div class="mega-item-content" style="text-align: center;">
+                                        <i class="fas fa-store" style="font-size: 1.5rem; color: #15C39A;"></i>
+                                        <h5 style="font-size: 0.8rem; margin-top: 5px;">Shop</h5>
+                                    </div>
+                                </a>
+                                <a href="restaurant.html" class="mega-item" style="padding: 10px;">
+                                    <div class="mega-item-content" style="text-align: center;">
+                                        <i class="fas fa-utensils" style="font-size: 1.5rem; color: #F59E0B;"></i>
+                                        <h5 style="font-size: 0.8rem; margin-top: 5px;">Restaurant</h5>
+                                    </div>
+                                </a>
+                                <a href="healthcare.html" class="mega-item" style="padding: 10px;">
+                                    <div class="mega-item-content" style="text-align: center;">
+                                        <i class="fas fa-clinic-medical" style="font-size: 1.5rem; color: #EF4444;"></i>
+                                        <h5 style="font-size: 0.8rem; margin-top: 5px;">Healthcare</h5>
+                                    </div>
+                                </a>
+                                <a href="education.html" class="mega-item" style="padding: 10px;">
+                                    <div class="mega-item-content" style="text-align: center;">
+                                        <i class="fas fa-graduation-cap" style="font-size: 1.5rem; color: #3B82F6;"></i>
+                                        <h5 style="font-size: 0.8rem; margin-top: 5px;">Education</h5>
+                                    </div>
+                                </a>
+                                <a href="service.html" class="mega-item" style="padding: 10px;">
+                                    <div class="mega-item-content" style="text-align: center;">
+                                        <i class="fas fa-tools" style="font-size: 1.5rem; color: #64748B;"></i>
+                                        <h5 style="font-size: 0.8rem; margin-top: 5px;">Service</h5>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                     <a href="business-pricing.html">Pricing</a>
-                    <a href="demo.html">Free Demo</a>
+                    <a href="payment.html" style="color: #F59E0B; font-weight: 600;">💳 Payment</a>
                     <a href="contact.html" class="active">Contact</a>
                 </nav>
 
-                <div class="nptel-header-actions">
-                    <button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button>
-                    <a href="dashboard.html" class="btn-nptel-login"><i class="fas fa-user"></i> Login</a>
+                <!-- Header Actions -->
+                <div class="header-actions">
+                    <button class="dark-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <a href="dashboard.html" class="btn-demo" id="loginBtn">
+                        <i class="fas fa-user"></i> Login
+                    </a>
                 </div>
-
-                <button class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></button>
             </div>
         </div>
     </header>
+
+    <!-- ===== MOBILE SIDEBAR ===== -->
+    <div class="mobile-sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="mobile-sidebar" id="mobileSidebar">
+        <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="sidebar-header">
+            <div class="sidebar-user">
+                <div class="sidebar-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="sidebar-user-info">
+                    <h4 id="sidebarUserName">Guest</h4>
+                    <p>Welcome!</p>
+                </div>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="business-home.html"><i class="fas fa-home"></i> Home</a>
+            <a href="dashboard.html" style="background: linear-gradient(135deg, #15C39A, #0D9488); color: white;"><i
+                    class="fas fa-user"></i> Dashboard / Login</a>
+            <a href="payment.html" style="background: linear-gradient(135deg, #F59E0B, #D97706); color: white;"><i
+                    class="fas fa-credit-card"></i> Payment</a>
+            <a href="whatsapp-automation.html"><i class="fab fa-whatsapp"></i> WhatsApp Bot</a>
+            <a href="mini-crm.html"><i class="fas fa-users-cog"></i> Mini CRM</a>
+            <a href="ai-assist.html"><i class="fas fa-robot"></i> AI Assist</a>
+            <a href="business-services.html"><i class="fas fa-concierge-bell"></i> Services</a>
+            <a href="how-it-works.html"><i class="fas fa-cogs"></i> How It Works</a>
+            <a href="business-pricing.html"><i class="fas fa-tags"></i> Pricing</a>
+            <a href="demo.html"><i class="fas fa-play-circle"></i> Free Demo</a>
+            <a href="contact.html" class="active"><i class="fas fa-envelope"></i> Contact</a>
+        </nav>
+    </aside>
 
     <section class="contact-hero">
         <div class="container">
@@ -537,7 +915,8 @@
                     <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
                     <h3>Email Us</h3>
                     <p>For detailed inquiries and partnerships</p>
-                    <a href="mailto:info@caretechmobile.com" class="contact-card-link"><i class="fas fa-envelope"></i>
+                    <a href="/cdn-cgi/l/email-protection#3f565159507f5c5e4d5a4b5a5c5752505d56535a115c5052"
+                        class="contact-card-link"><i class="fas fa-envelope"></i>
                         Send Email</a>
                 </div>
                 <div class="contact-card location">
@@ -606,7 +985,10 @@
                         <div class="info-icon"><i class="fas fa-envelope"></i></div>
                         <div class="info-content">
                             <h4>Email</h4>
-                            <p><a href="mailto:info@caretechmobile.com">info@caretechmobile.com</a></p>
+                            <p><a href="/cdn-cgi/l/email-protection#365f58505976555744534253555e5b59545f5a531855595b"><span
+                                        class="__cf_email__"
+                                        data-cfemail="442d2a222b04272536213021272c292b262d28216a272b29">[email&#160;protected]</span></a>
+                            </p>
 
                         </div>
                     </div>
@@ -694,8 +1076,11 @@
                     <ul>
                         <li><a href="tel:+919495253265"><i class="fas fa-phone"></i> 9495253265</a></li>
                         <li><a href="https://wa.me/919962003738"><i class="fab fa-whatsapp"></i> 9962003738</a></li>
-                        <li><a href="mailto:info@caretechmobile.com"><i class="fas fa-envelope"></i>
-                                info@caretechmobile.com</a></li>
+                        <li><a href="/cdn-cgi/l/email-protection#9cf5f2faf3dcfffdeef9e8f9fff4f1f3fef5f0f9b2fff3f1"><i
+                                    class="fas fa-envelope"></i>
+                                <span class="__cf_email__"
+                                    data-cfemail="127b7c747d52717360776677717a7f7d707b7e773c717d7f">[email&#160;protected]</span></a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -708,6 +1093,7 @@
         </div>
     </footer>
 
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         const darkModeToggle = document.getElementById('darkModeToggle');
         if (localStorage.getItem('darkMode') === 'true') { document.body.classList.add('dark-mode'); darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; }
@@ -721,8 +1107,96 @@
     <!-- WhatsApp Automation Integration -->
     <script src="whatsapp-integration.js"></script>
 
+    <!-- Mobile Sidebar Toggle -->
+    <script>
+        (function initMobileSidebar() {
+            const hamburger = document.getElementById('mobileHamburger');
+            const sidebar = document.getElementById('mobileSidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            const closeBtn = document.getElementById('sidebarClose');
+            const sidebarLogout = document.getElementById('sidebarLogout');
+            const sidebarLoginBtn = document.getElementById('sidebarLoginBtn');
+
+            function openSidebar() {
+                if (sidebar) sidebar.classList.add('active');
+                if (overlay) overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeSidebar() {
+                if (sidebar) sidebar.classList.remove('active');
+                if (overlay) overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            if (hamburger) {
+                hamburger.addEventListener('click', function () {
+                    if (sidebar && sidebar.classList.contains('active')) {
+                        closeSidebar();
+                    } else {
+                        openSidebar();
+                    }
+                });
+            }
+
+            if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+            if (overlay) overlay.addEventListener('click', closeSidebar);
+
+            if (sidebar) {
+                sidebar.querySelectorAll('.sidebar-nav-item').forEach(item => {
+                    item.addEventListener('click', closeSidebar);
+                });
+            }
+
+            // Sidebar Logout
+            if (sidebarLogout) {
+                sidebarLogout.addEventListener('click', async function (e) {
+                    e.preventDefault();
+                    closeSidebar();
+                    try {
+                        const supabaseClient = window.supabase.createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_KEY);
+                        await supabaseClient.auth.signOut();
+                        sessionStorage.clear();
+                        localStorage.setItem('ctmLoggedOut', Date.now().toString());
+                        window.location.reload();
+                    } catch (err) {
+                        console.error('Logout error:', err);
+                    }
+                });
+            }
+
+            // Check login state for sidebar
+            async function updateSidebarAuth() {
+                try {
+                    const supabaseClient = window.supabase.createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_KEY);
+                    const { data: { session } } = await supabaseClient.auth.getSession();
+
+                    if (session && session.user) {
+                        const userName = session.user.user_metadata?.full_name || session.user.email?.split('@')[0] || 'User';
+                        const sidebarUserName = document.getElementById('sidebarUserName');
+                        if (sidebarUserName) sidebarUserName.textContent = userName;
+                        if (sidebarLoginBtn) sidebarLoginBtn.style.display = 'none';
+                        if (sidebarLogout) sidebarLogout.style.display = 'flex';
+                    }
+                } catch (err) {
+                    console.log('Sidebar auth check:', err);
+                }
+            }
+
+            updateSidebarAuth();
+        })();
+    </script>
+
     <!-- Global Auth Helper - Shows Logout on all pages when logged in -->
     <script src="auth-helper.js"></script>
+    <script defer
+        src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+        integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+        data-cf-beacon='{"version":"2024.11.0","token":"1dd872a9276e491cbff10a3579a73ada","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}'
+        crossorigin="anonymous"></script>
+
+    <!-- Chat Widget -->
+    <script src="chat-widget.js"></script>
 </body>
 
 </html>

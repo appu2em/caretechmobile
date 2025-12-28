@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logistics Solutions | CareTechMobile Business Solutions</title>
+    <meta name="description"
+        content="WhatsApp automation for logistics and courier services. Tracking updates, delivery notifications, and customer communication.">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="ubona-style.css">
+    <link rel="stylesheet" href="chat-widget.css">
+</head>
+
+<body>
+    <!-- ===== HEADER WITH MEGA MENU ===== -->
+<header class="ubona-header" id="mainHeader">
+    <div class="container">
+        <div class="header-container">
+            <!-- Mobile Hamburger -->
+            <button class="mobile-hamburger" id="mobileHamburger" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Logo -->
+            <a href="business-home.html" class="ubona-logo">
+                <h1>CareTech<span>Mobile</span></h1>
+                <small style="font-size: 0.55rem; opacity: 0.7; display: block; margin-top: -5px;">the complete business solution</small>
+            </a>
+
+            <!-- Main Navigation -->
+            <nav class="ubona-nav">
+                <a href="business-home.html">Home</a>
+
+                <!-- Solutions Dropdown -->
+                <div class="nav-dropdown">
+                    <a href="#">Solutions <i class="fas fa-chevron-down"></i></a>
+                    <div class="mega-menu" style="width: 700px;">
+                        <div class="mega-menu-header">
+                            <h4>Our Solutions</h4>
+                            <p>Transform customer interactions through smart automation</p>
+                        </div>
+                        <div class="mega-menu-grid" style="grid-template-columns: repeat(3, 1fr);">
+                            <a href="whatsapp-automation.html" class="mega-item">
+                                <div class="mega-item-icon green">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="mega-item-content">
+                                    <h5>WhatsApp Bot <i class="fas fa-arrow-right"></i></h5>
+                                    <p>Smart auto-replies</p>
+                                </div>
+                            </a>
+                            <a href="mini-crm.html" class="mega-item">
+                                <div class="mega-item-icon blue">
+                                    <i class="fas fa-users-cog"></i>
+                                </div>
+                                <div class="mega-item-content">
+                                    <h5>Mini CRM <i class="fas fa-arrow-right"></i></h5>
+                                    <p>Manage leads</p>
+                                </div>
+                            </a>
+                            <a href="ai-assist.html" class="mega-item">
+                                <div class="mega-item-icon purple">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="mega-item-content">
+                                    <h5>AI Assist <i class="fas fa-arrow-right"></i></h5>
+                                    <p>AI responses</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="mega-menu-header"
+                            style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #eee;">
+                            <h4><i class="fas fa-building" style="margin-right: 8px; color: #15C39A;"></i> Industry
+                                Solutions</h4>
+                        </div>
+                        <div class="mega-menu-grid" style="grid-template-columns: repeat(5, 1fr); gap: 10px;">
+                            <a href="shop.html" class="mega-item" style="padding: 10px;">
+                                <div class="mega-item-content" style="text-align: center;">
+                                    <i class="fas fa-store" style="font-size: 1.5rem; color: #15C39A;"></i>
+                                    <h5 style="font-size: 0.8rem; margin-top: 5px;">Shop</h5>
+                                </div>
+                            </a>
+                            <a href="restaurant.html" class="mega-item" style="padding: 10px;">
+                                <div class="mega-item-content" style="text-align: center;">
+                                    <i class="fas fa-utensils" style="font-size: 1.5rem; color: #F59E0B;"></i>
+                                    <h5 style="font-size: 0.8rem; margin-top: 5px;">Restaurant</h5>
+                                </div>
+                            </a>
+                            <a href="healthcare.html" class="mega-item" style="padding: 10px;">
+                                <div class="mega-item-content" style="text-align: center;">
+                                    <i class="fas fa-clinic-medical" style="font-size: 1.5rem; color: #EF4444;"></i>
+                                    <h5 style="font-size: 0.8rem; margin-top: 5px;">Healthcare</h5>
+                                </div>
+                            </a>
+                            <a href="education.html" class="mega-item" style="padding: 10px;">
+                                <div class="mega-item-content" style="text-align: center;">
+                                    <i class="fas fa-graduation-cap" style="font-size: 1.5rem; color: #3B82F6;"></i>
+                                    <h5 style="font-size: 0.8rem; margin-top: 5px;">Education</h5>
+                                </div>
+                            </a>
+                            <a href="real-estate.html" class="mega-item" style="padding: 10px;">
+                                <div class="mega-item-content" style="text-align: center;">
+                                    <i class="fas fa-home" style="font-size: 1.5rem; color: #8B5CF6;"></i>
+                                    <h5 style="font-size: 0.8rem; margin-top: 5px;">Real Estate</h5>
+                                </div>
+                            </a>
+                            <a href="automobile.html" class="mega-item" style="padding: 10px;">
+                                <div class="mega-item-content" style="text-align: center;">
+                                    <i class="fas fa-car" style="font-size: 1.5rem; color: #6366F1;"></i>
+                                    <h5 style="font-size: 0.8rem; margin-top: 5px;">Automobile</h5>
+                                </div>
+                            </a>
+                            <a href="salon.html" class="mega-item" style="padding: 10px;">
+                                <div class="mega-item-content" style="text-align: center;">
+                                    <i class="fas fa-cut" style="font-size: 1.5rem; color: #EC4899;"></i>
+                                    <h5 style="font-size: 0.8rem; margin-top: 5px;">Salon</h5>
+                                </div>
+                            </a>
+                            <a href="logistics.html" class="mega-item" style="padding: 10px;">
+                                <div class="mega-item-content" style="text-align: center;">
+                                    <i class="fas fa-truck" style="font-size: 1.5rem; color: #14B8A6;"></i>
+                                    <h5 style="font-size: 0.8rem; margin-top: 5px;">Logistics</h5>
+                                </div>
+                            </a>
+                            <a href="agency.html" class="mega-item" style="padding: 10px;">
+                                <div class="mega-item-content" style="text-align: center;">
+                                    <i class="fas fa-briefcase" style="font-size: 1.5rem; color: #0EA5E9;"></i>
+                                    <h5 style="font-size: 0.8rem; margin-top: 5px;">Agency</h5>
+                                </div>
+                            </a>
+                            <a href="service.html" class="mega-item" style="padding: 10px;">
+                                <div class="mega-item-content" style="text-align: center;">
+                                    <i class="fas fa-tools" style="font-size: 1.5rem; color: #64748B;"></i>
+                                    <h5 style="font-size: 0.8rem; margin-top: 5px;">Service</h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="business-pricing.html">Pricing</a>
+                <a href="payment.html" style="color: #F59E0B; font-weight: 600;">💳 Payment</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <!-- Header Actions -->
+            <div class="header-actions">
+                <button class="dark-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="dashboard.html" class="btn-demo">
+                    <i class="fas fa-user"></i> Login
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ===== MOBILE SIDEBAR ===== -->
+<div class="mobile-sidebar-overlay" id="sidebarOverlay"></div>
+<aside class="mobile-sidebar" id="mobileSidebar">
+    <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">
+        <i class="fas fa-times"></i>
+    </button>
+    <div class="sidebar-header">
+        <div class="sidebar-user">
+            <div class="sidebar-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="sidebar-user-info">
+                <h4 id="sidebarUserName">Guest</h4>
+                <p>Welcome!</p>
+            </div>
+        </div>
+    </div>
+    <nav class="sidebar-nav">
+        <a href="business-home.html"><i class="fas fa-home"></i> Home</a>
+        <a href="dashboard.html" style="background: linear-gradient(135deg, #15C39A, #0D9488); color: white;"><i
+                class="fas fa-user"></i> Dashboard / Login</a>
+        <a href="payment.html" style="background: linear-gradient(135deg, #F59E0B, #D97706); color: white;"><i
+                class="fas fa-credit-card"></i> Payment</a>
+        <a href="whatsapp-automation.html"><i class="fab fa-whatsapp"></i> WhatsApp Bot</a>
+        <a href="mini-crm.html"><i class="fas fa-users-cog"></i> Mini CRM</a>
+        <a href="ai-assist.html"><i class="fas fa-robot"></i> AI Assist</a>
+        <a href="business-services.html"><i class="fas fa-concierge-bell"></i> Services</a>
+        <a href="how-it-works.html"><i class="fas fa-cogs"></i> How It Works</a>
+        <a href="business-pricing.html"><i class="fas fa-tags"></i> Pricing</a>
+        <a href="demo.html"><i class="fas fa-play-circle"></i> Free Demo</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+</aside>
+
+    <section class="banner-slider-wrap" style="padding: 100px 0 80px;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+                <div>
+                    <span class="hero-badge" style="display: inline-block; margin-bottom: 20px;"><i
+                            class="fas fa-truck"></i> Logistics Solutions</span>
+                    <h1 style="font-size: 3rem; line-height: 1.2; margin-bottom: 20px;">
+                        <span
+                            style="background: linear-gradient(135deg, #15C39A, #3B82F6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Delivery
+                            Updates</span> on WhatsApp
+                    </h1>
+                    <p style="font-size: 1.2rem; color: #666; margin-bottom: 30px; line-height: 1.8;">
+                        Send tracking updates, delivery notifications, and handle customer queries automatically!
+                    </p>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <a href="https://wa.me/919962003738" class="btn-gradient" target="_blank"><i
+                                class="fab fa-whatsapp"></i> Chat Now</a>
+                        <a href="demo.html" class="btn-outline">See Demo <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <div
+                        style="background: white; border-radius: 24px; padding: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.1);">
+                        <i class="fas fa-truck" style="font-size: 80px; color: #6366F1; margin-bottom: 20px;"></i>
+                        <h3 style="margin-bottom: 15px;">For Logistics & Courier</h3>
+                        <ul style="text-align: left; list-style: none; padding: 0;">
+                            <li style="padding: 10px 0; border-bottom: 1px solid #eee;"><i class="fas fa-check"
+                                    style="color: #15C39A; margin-right: 10px;"></i> Shipment tracking updates</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid #eee;"><i class="fas fa-check"
+                                    style="color: #15C39A; margin-right: 10px;"></i> Delivery confirmation</li>
+                            <li style="padding: 10px 0; border-bottom: 1px solid #eee;"><i class="fas fa-check"
+                                    style="color: #15C39A; margin-right: 10px;"></i> Pickup scheduling</li>
+                            <li style="padding: 10px 0;"><i class="fas fa-check"
+                                    style="color: #15C39A; margin-right: 10px;"></i> Customer feedback collection</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Automate Your Logistics?</h2>
+                <p>Get started today with a free demo!</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/919962003738" class="btn-white" target="_blank"><i
+                            class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+                    <a href="business-home.html" class="btn-white-outline"><i class="fas fa-home"></i> Back to
+                        Home</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+<!-- ===== FOOTER ===== -->
+<!-- ===== FOOTER ===== -->
+<!-- ===== FOOTER ===== -->
+<footer class="ubona-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>CareTech<span>Mobile</span></h3>
+                <p>Helping small businesses stay connected with their customers. WhatsApp automation, Mini CRM, and
+                    AI-powered engagement.</p>
+                <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 10px;"><i class="fas fa-globe"
+                        style="margin-right: 5px;"></i> Service available worldwide</p>
+                <div class="footer-social">
+                    <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://wa.me/919962003738" target="_blank" aria-label="WhatsApp"><i
+                            class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="whatsapp-automation.html">WhatsApp Bot</a></li>
+                    <li><a href="mini-crm.html">Mini CRM</a></li>
+                    <li><a href="ai-assist.html">AI Assist</a></li>
+                    <li><a href="business-services.html">All Services</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="how-it-works.html">How It Works</a></li>
+                    <li><a href="business-pricing.html">Pricing</a></li>
+                    <li><a href="demo.html">Free Demo</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="tel:+919495253265"><i class="fas fa-phone"></i> 9495253265</a></li>
+                    <li><a href="https://wa.me/919962003738"><i class="fab fa-whatsapp"></i> 9962003738</a></li>
+                    <li><a href="mailto:info@caretechmobile.com"><i class="fas fa-envelope"></i> Email</a></li>
+                    <li><a href="payment.html"><i class="fas fa-credit-card"></i> Payment</a></li>
+                    <li style="opacity: 0.8; font-size: 0.85rem;"><i class="fas fa-map-marker-alt"></i> Mannarkkad,
+                        Kerala</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 CareTechMobile. All rights reserved. | Secured by Cloudflare</p>
+            <div class="footer-bottom-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="refund.html">Refund Policy</a>
+            </div>
+        </div>
+    </div>
+</footer>
+    
+
+    <script src="chat-widget.js"></script>
+</body>
+
+</html>
+
